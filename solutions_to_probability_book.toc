@@ -4,4 +4,4 @@
 \contentsline {chapter}{\numberline {4}Continuous and Mixed Random Variables}{53}
 \contentsline {chapter}{\numberline {5}Joint Distributions}{71}
 \contentsline {chapter}{\numberline {6}Introduction to Simulation Using Python}{105}
-\contentsline {chapter}{\numberline {7}Recursive Methods}{133}
+\contentsline {chapter}{\numberline {7}Recursive Methods}{131}

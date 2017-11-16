@@ -1,5 +1,14 @@
 \pagenumbering{gobble}
 
+The Python programming language is one of the most popular languages in both academia and industry.  It is heavily used in data science for simple data analysis and complex machine learning.  By most accounts, in the last few years, Python has eclipsed the R programming language in popularity for scientific/statistical computation.  Its popularity is due to intuitive and readable syntax that can be implemented in a powerful object oriented programming paradigm, if so desired, as well as being open source.  It is for these reasons that I decided to transcribe the Introduction to Simulation chapter in Pishro Nik's Introduction to Probability, Statistics and Random Processes book into Python.
+
+This entire chapter was written in a Jupyter notebook, an interactive programming environment, primarily for Python, that can be run locally in a web browser. Jupyter notebooks are ideal for quick and interactive data analysis, incorporating markdown functionality for clean presentations and code sharing.  If you are a fan of RStudio, you will most likely be fond of Jupyter notebooks.  This entire notebook is available freely at [https://github.com/dsrub/solutions_to_probability_statistics](https://github.com/dsrub/solutions_to_probability_statistics).  
+
+Additionally, much of this code was written using the Numpy/SciPy library, Python's main library for scientific computation and numerical methods.  Numpy has a relatively clear and well documented API ([https://docs.scipy.org/doc/numpy/reference/index.html](https://docs.scipy.org/doc/numpy/reference/index.html)), a reference which I utilize almost daily.
+
+I start with a few basic imports, and define several functions I will use throughout the rest of this chapter.
+
+
 ```python
 #define html style element for notebook formatting
 from IPython.core.display import HTML
@@ -44,7 +53,6 @@ def plot_results(x, y, xlim=None, ylim=None, xlabel=None, ylabel=None, \
     plt.figure(1, figsize = (6, 4))
     plt.rc('text', usetex=True)
     plt.rc('font', family = 'serif')
-    plt.rcParams['savefig.dpi'] = 300
     
     if labels:
         plt.plot(x[0], y[0], label=labels[0], linewidth = 2)
@@ -93,9 +101,9 @@ print_vals(draw_bern, p, 1)
 
     X_0 =  0
     X_1 =  0
-    X_2 =  1
+    X_2 =  0
     X_3 =  0
-    X_4 =  0
+    X_4 =  1
 
 
 Note that we can directly sample from a $Bern(p)$ distribution with Numpy's binomial random number generator (RNG) by setting $n=1$ with: `np.random.binomial(1, p)`.
@@ -120,12 +128,12 @@ np.random.seed(0)
 ```
 
 
-![png](chapter_12_files/chapter_12_8_0.png)
+![png](chapter_12_files/chapter_12_9_0.png)
 
 
 **Example 3.** (Binomial) Generate a $Bin(50, 0.2)$ random variable.
 
-> *Solution:* If $X_1,X_2, \ldots,X_n$ are drawn $iid$ from a $Bern(p)$ distribution, then we can express a $Bin(n, p)$ random variable as $X = X_1+X_2+ \ldots +X_n$.  Therefore we can utilize the code we have already written for drawing a $Bern(p)$ random variable to draw a $Bin(n, p)$ random variable.
+> *Solution:* If $X_1,X_2, \ldots,X_n$ are drawn iid from a $Bern(p)$ distribution, then we can express a $Bin(n, p)$ random variable as $X = X_1+X_2+ \ldots +X_n$.  Therefore we can utilize the code we have already written for drawing a $Bern(p)$ random variable to draw a $Bin(n, p)$ random variable.
 
 
 ```python
@@ -163,7 +171,7 @@ Note that we can directly sample from a $Bin(n, p)$ distribution with Numpy's bi
 `np.random.binomial(n, p)`.
 
 **Example 4.** Write an algorithm to simulate the value of a random variable X such that:
-\begin{equation}  
+\begin{equation*}  
     P_X(x) = 
     \begin{cases}
         0.35 & \text{for $x = 1$} \\
@@ -171,7 +179,7 @@ Note that we can directly sample from a $Bin(n, p)$ distribution with Numpy's bi
         0.4 & \text{for $x = 3$} \\
         0.1 & \text{for $x = 4$}.
     \end{cases} 
-\end{equation}
+\end{equation*}
 
 > *Solution:*  We can utilize the algorithm presented in the book which divides the unit interval into 4 partitioned sets and uses a uniformly drawn random variable.
 
@@ -201,7 +209,7 @@ def draw_general_discrete(P, R_X, N):
 
 ```python
 #print a few examples of the RGNs to the screen
-P = [0.35, 0.15, 0.4, .1]
+P = [0.35, 0.15, 0.4, 0.1]
 R_X = [1, 2, 3, 4]
 print_vals(draw_general_discrete, P, R_X, 1)
 ```
@@ -219,15 +227,15 @@ If a binomial random variable represents the number of heads we flip out of $n$ 
 
 To directly sample from a discrete PMF with (ordered) range array `R_X` and associated probability array `P` we can use Numpy's multinomial RNG function by setting $n=1$ (one roll).  To sample one time we can use the code: `X = R_X[np.argmax(np.random.multinomial(1, pvals=P))]`, and to sample `N` times, we can use the code: `X = [R_X[np.argmax(x)] for x in np.random.multinomial(1, pvals=P, size=N)]`.
 
-Additionally, to sample from an arbitrary discrete PMF, we can use Numpy's choice function, which samples randomly from a specified list, where each entry in the list is sampled according to a specified probability.  To sample `N` values from an array `R_X`, with corresponding probability array `P`, we can use the code: `X = np.random.choice(R_X, size=N, replace=True, p=P)`.  Make sure to specify `replace=True` to sample with replacement.
+Additionally, to sample from an arbitrary discrete PMF, we can also use Numpy's choice function, which samples randomly from a specified list, where each entry in the list is sampled according to a specified probability.  To sample `N` values from an array `R_X`, with corresponding probability array `P`, we can use the code: `X = np.random.choice(R_X, size=N, replace=True, p=P)`.  Make sure to specify `replace=True` to sample with replacement.
 
 
 **Example 5.** (Exponential) Generate an $Exp(1)$ random variable.
 
 > *Solution:*  Using the method of inverse transformation, as shown in the book, for a strictly increasing CDF, $F$, the random variable $X = F^{-1}(U)$, where $U \sim Unif(0,1)$, has distribution $X\sim F$.  Therefore, it is not difficult to show that,
-\begin{equation}
+\begin{equation*}
     -\frac{1}{\lambda} \ln (U) \sim Exp(\lambda),
-\end{equation}
+\end{equation*}
 where the fact that $1-U\sim Unif(0,1)$ has been used.
 
 
@@ -258,6 +266,9 @@ print_vals(draw_exp, lam, 1)
     X_3 =  0.0388069650697
     X_4 =  1.23049637556
 
+
+Note that we can directly sample from an $Exp(\lambda)$ distribution with Numpy's exponential RNG with:
+`np.random.exponential(lam)`.
 
 **Example 6.** (Gamma) Generate a $Gamma(20,1)$ random variable.
 
@@ -295,6 +306,9 @@ print_vals(draw_gamma, alpha, lam, 1)
     X_3 =  22.3654600391
     X_4 =  22.331744631
 
+
+Note that we can directly sample from a $Gamma(n, \lambda)$ distribution with Numpy's gamma RNG with:
+`np.random.gamma(shape, scale)`.
 
 **Example 7**. (Poisson) Generate a Poisson random variable. Hint: In this example, use the fact
 that the number of events in the interval $[0, t]$ has Poisson distribution when the elapsed times
@@ -344,6 +358,7 @@ Note that we can directly sample from a $Poiss(\lambda)$ distributions with Nump
 
 **Example 8.**  (Box-Muller) Generate 5000 pairs of normal random variables and plot both
 histograms.
+
 > *Solution*: Using the Box-Muller transformation as described in the book:
 
 
@@ -379,7 +394,7 @@ for i, (Z1, Z2) in enumerate(zip(Z1_arr, Z2_arr)):
     (Z_1, Z_2)_4 = ( -0.65055423687 0.179187077215 )
 
 
-In addition to plotting the histograms (plot in the first panel below) I also make a scatter plot of the 2 Gaussian random variables.  The Box-Muller method produces pairs of independent random variables, and indeed, in the plot we see a bivariate Normal distribution with no correlation, i.e., it is an axis-aligned (recall that independence $\implies \rho = 0$).  I further compute the correlation coefficient between $Z_1$ and $Z_2$ and it is indeed very close to 0.
+In addition to plotting the histograms (plot in the first panel below) I also make a scatter plot of the 2 Gaussian random variables.  The Box-Muller method produces pairs of independent random variables, and indeed, in the plot we see a bivariate Normal distribution with no correlation, i.e., it is axis-aligned (recall that independence $\implies \rho = 0$).  I further compute the correlation coefficient between $Z_1$ and $Z_2$ and it is indeed very close to 0.
 
 
 ```python
@@ -420,7 +435,7 @@ np.random.seed(0)
 
 
 
-![png](chapter_12_files/chapter_12_31_1.png)
+![png](chapter_12_files/chapter_12_32_1.png)
 
 
 Note that we can directly sample from a $\mathcal N(0, 1)$ distribution with Numpy's normal RNG with: `np.random.randn(d0, d1, ..., dn)`, where `d0`, `d1`, ..., `dn` are the dimensions of the desired output array.
@@ -493,7 +508,7 @@ def draw_pascal(m, p, N):
 ```python
 #print a few examples of the RGNs to the screen
 p = 0.2
-m=2
+m = 2
 print_vals(draw_pascal, m, p, 1)
 ```
 
@@ -504,7 +519,7 @@ print_vals(draw_pascal, m, p, 1)
     X_4 =  4
 
 
-Note that we can directly sample from $Geom(p)$ and $Pascal(m, p)$ distributions with Numpy's: `np.random.geometric(p)` and `np.random.negative_binomial(n, p)` functions respectively.
+Note that we can directly sample from $Geom(p)$ and $Pascal(m, p)$ distributions with Numpy's `np.random.geometric(p)` and `np.random.negative_binomial(n, p)` functions respectively.
 
 **Exercise 2**. (Poisson) Use the algorithm for generating discrete random variables to obtain a Poisson
 random variable with parameter $\lambda = 2$.
@@ -552,9 +567,9 @@ print_vals(draw_poiss2, 2, 1)
 
 
 **Exercise 3**. Explain how to generate a random variable with the density
-\begin{equation}
+\begin{equation*}
     f(x) = 2.5x\sqrt{x}
-\end{equation}
+\end{equation*}
 for $0 < x < 1$.
 
 > *Solution*: The CDF is given by $F_X(x) = 2.5\int_0^{x} {x^\prime}^{3/2}dx^\prime = x^{5/2}$, and therefore $F_X^{-1}(x) = x^{2/5}$.  Using the method of inverse transformation, if $U\sim Unif(0, 1)$, then $F_X^{-1}(U)$ is distributed according to the desired distribution.
@@ -588,15 +603,15 @@ print_vals(draw_dist3)
 
 **Exercise 4**. Use the inverse transformation method to generate a random variable having distribution
 function
-\begin{equation}
+\begin{equation*}
 F_X(x) = \frac{x^2+x}{2},
-\end{equation}
+\end{equation*}
 for $0 \le x \le 1$.
 
 > *Solution*: By inverting the CDF, we have that.
-\begin{equation}
+\begin{equation*}
 F_X^{-1}(x) = -\frac{1}{2} +\sqrt{\frac{1}{4}+2x},
-\end{equation}
+\end{equation*}
 for $0 \le x \le 1$.
 
 
@@ -625,11 +640,11 @@ print_vals(draw_dist4)
 
 **Exercise 5**. Let $X$ have a standard Cauchy distribution.
 function
-\begin{equation}
+\begin{equation*}
 F_X(x) = \frac{1}{\pi} \arctan x +\frac{1}{2}.
-\end{equation}
+\end{equation*}
 
-Assuming you have $U ∼ Unif(0, 1)$, explain how to generate $X$. Then, use this result
+Assuming you have $U \sim Unif(0, 1)$, explain how to generate $X$. Then, use this result
 to produce 1000 samples of $X$ and compute the sample mean. Repeat the experiment 100
 times. What do you observe and why?
 
@@ -679,16 +694,16 @@ np.random.seed(0)
 ```
 
 
-![png](chapter_12_files/chapter_12_51_0.png)
+![png](chapter_12_files/chapter_12_52_0.png)
 
 
 We see that the means for each trial vary wildly.  This is because the Cauchy distribution actually has no mean.
 
-**Exercise 6**. (The Rejection Method) When we use the Inverse Transformation Method, we need a simple form of the cdf $F(x)$ that allows direct computation of $X = F^{-1}(U)$.  When $F(x)$ doesn’t have a simple form but the pdf $f(x)$ is available, random variables with density $f(x)$ can be generated by the rejection method. Suppose you have a method
+**Exercise 6**. (The Rejection Method) When we use the Inverse Transformation Method, we need a simple form of the CDF, $F(x)$, that allows direct computation of $X = F^{-1}(U)$.  When $F(x)$ doesn’t have a simple form but the PDF, $f(x)$, is available, random variables with density $f(x)$ can be generated by the rejection method. Suppose you have a method
 for generating a random variable having density function $g(x)$. Now, assume you want to generate a random variable having density function $f(x)$. Let $c$ be a constant such that $f(y)/g(y) \le c$ (for all $y$).  Show that the following method generates a random variable, $X$, with density function $f(x)$.
 
  
-> 1) initialize $U$ and $Y$ such that $U \le \frac{f(Y)}{cg(Y)}$
+> 1) initialize $U$ and $Y$ such that $U > \frac{f(Y)}{cg(Y)}$
 
 **repeat** until $U \le \frac{f(Y)}{cg(Y)}$ $\big \{$ 
 
@@ -702,71 +717,70 @@ $\big \}$
 
 > *Solution*:
 
-First note that, as a technical matter, $c\ge 1$, which can be shown by integrating both sides of $f(y)/g(y) \le c$.
+Firstly, as a technical matter, note that $c\ge 1$, which can be shown by integrating both sides of $f(y) \le c g(y)$.
 
 We see that this algorithm keeps iterating until it outputs a random variable $Y$, given that we know that $U \le \frac{f(Y)}{cg(Y)}$.  Therefore, the goal is to show that the random variable $Y|U \le \frac{f(Y)}{cg(Y)}$ has PDF $f(y)$ (or equivalently CDF $F(y)$).  In other words, we must show that $P\left(Y \le y \big|U \le \frac{f(Y)}{cg(Y)}\right) = F(y)$.  I show this with Baye's rule:
 
-\begin{align}
+\begin{align*}
 P\left(Y \le y \big | U \le \frac{f(Y)}{c g(Y)}\right) & = \frac{P\left(U \le \frac{f(Y)}{c g(Y)} \big| Y \le y\right) P(Y \le y)}{P \left(U \le \frac{f(Y)}{c g(Y)}\right)} \\
 &=\frac{P\left(U \le \frac{f(Y)}{c g(Y)}\big| Y \le y\right) G(y)}{P \left(U \le \frac{f(Y)}{c g(Y)}\right)}.
-\end{align}
+\end{align*}
 Thus, we must calculate the quantities: $P\left(U \le \frac{f(Y)}{c g(Y)}\big| Y \le y\right)$ and $P \left(U \le \frac{f(Y)}{c g(Y)}\right)$.
 
-First note that 
-\begin{align}
+As an intermediate step, note that 
+\begin{align*}
 P\left(U \le \frac{f(Y)}{c g(Y)}\Big |Y = y\right) & = P\left(U \le \frac{f(y)}{c g(y)}\Big |Y = y\right) \\
 & = P\left(U \le \frac{f(y)}{c g(y)}\right) \\
 & = F_U\left(\frac{f(y)}{c g(y)}\right) \\
 & = \frac{f(y)}{c g(y)},
-\end{align}
+\end{align*}
 where in the second line I have used that $U$ and $Y$ are independent and in the fourth I have used the fact that for a uniform distribution $F_U(u) = u$.  Notice that the requirement that $f(y)/g(y) \le c$ (for all $y$) is crucial at this step.  This is because $f(y)/g(y) \le c \implies c>0$ (since $f(y)$ and $g(y)$ are positive), so that $0 < f(y)/cg(y) \le 1$.  If this condition did not hold, then the above expression would be $\min \{1, \frac{f(y)}{c g(y)} \}$, for positive $c$ and 0 for negavtive $c$, which would interfere with the rest of the derivation.
 
 I may now calculate $P \left(U \le \frac{f(Y)}{c g(Y)}\right)$:
 
-\begin{align}
+\begin{align*}
 P \left(U \le \frac{f(Y)}{c g(Y)}\right) &= \int_{-\infty}^{\infty} P \left(U \le \frac{f(Y)}{c g(Y)}\Big|Y=y\right)g(y)dy \\
 &= \int_{-\infty}^{\infty} \frac{f(y)}{c g(y)}g(y)dy \\
 &= \frac{1}{c}\int_{-\infty}^{\infty} f(y)dy \\
 &= \frac{1}{c}.
-\end{align}
+\end{align*}
 
 I now calculate the remaining quantity:
-\begin{align}
+\begin{align*}
 P \left(U \le \frac{f(Y)}{c g(Y)}\big| Y \le y\right) &= \frac{P \left(U \le \frac{f(Y)}{c g(Y)},Y \le y\right)}{G(y)} \\
 &=\frac{\int_{-\infty}^\infty P \left(U \le \frac{f(Y)}{c g(Y)},Y \le y \big | Y =v\right) g(v)dv}{G(y)} \\
 &=\frac{\int_{-\infty}^\infty P \left(U \le \frac{f(Y)}{c g(Y)} \big|Y \le y,  Y =v\right) P(Y\le y| Y=v) g(v)dv}{G(y)},
-\end{align}
-where in the second line I have used the law of total probability and in the third I have used the chain rule of probability.  Note that:
+\end{align*}
+where in the second line I have used the law of total probability, and in the third line I have used the definition of conditional probability.  Note that:
 
-\begin{equation}  
+\begin{equation*}  
     P(Y \le y|Y=v) = 
     \begin{cases}
         1 & \text{for $v \le y$} \\
         0 & \text{for $v>y$},
     \end{cases} 
-\end{equation}
+\end{equation*}
 
 and thus
-\begin{align}
-P \left(U \le \frac{f(Y)}{c g(Y)}\big| Y \le y\right) &= \frac{P \left(U \le \frac{f(Y)}{c g(Y)},Y \le y\right)}{G(y)} \\
-&=\frac{\int_{-\infty}^y P \left(U \le \frac{f(Y)}{c g(Y)} \big|Y \le y,  Y =v\right)g(v)dv}{G(y)} \\
+\begin{align*}
+P \left(U \le \frac{f(Y)}{c g(Y)}\big| Y \le y\right) &=\frac{\int_{-\infty}^y P \left(U \le \frac{f(Y)}{c g(Y)} \big|Y \le y,  Y =v\right)g(v)dv}{G(y)} \\
 &=\frac{\int_{-\infty}^y P \left(U \le \frac{f(Y)}{c g(Y)} \big|Y =v\right)g(v)dv}{G(y)} \\
 &=\frac{\int_{-\infty}^y \frac{f(v)}{c g(v)}g(v)dv}{G(y)} \\
 &=\frac{\frac{1}{c}F(y)}{G(y)},
-\end{align}
-where in the third line I have used the fact that conditioning on $Y=v$ already implies that $Y \le y$ since we only consider values of $v$ less than or equal to $y$ in the integration.  In fourth line I have used the expression for $P\left(U \le \frac{f(Y)}{c g(Y)}\Big |Y = y\right)$ that we derived above.
+\end{align*}
+where in the second line I have used the fact that conditioning on $Y=v$ already implies that $Y \le y$ since we only consider values of $v$ less than or equal to $y$ in the integration.  In the third line I have used the expression for $P\left(U \le \frac{f(Y)}{c g(Y)}\Big |Y = y\right)$ that we derived above.
 
 Inserting these quantities into Baye's rule:
 
-\begin{align}
+\begin{align*}
 P\left(Y \le y \big | U \le \frac{f(Y)}{c g(Y)}\right) &=\frac{P\left(U \le \frac{f(Y)}{c g(Y)}\big| Y \le y\right) G(y)}{P \left(U \le \frac{f(Y)}{c g(Y)}\right)} \\ 
 & = \frac{\frac{\frac{1}{c}F(y)}{G(y)} G(y)}{\frac{1}{c}} \\
 & = F(y),
-\end{align}
+\end{align*}
 which is what we set out to prove.
 
 
-**Exercise 7**.  Use the rejection method to generate a random variable having density function Beta(2, 4). Hint: Assume g(x) = 1 for 0 < x < 1.
+**Exercise 7**.  Use the rejection method to generate a random variable having density function $Beta(2, 4)$. Hint: Assume $g(x) = 1$ for $0 < x < 1$.
 
 > *Solution:* I first visualize these distributions so we can get a handle on what we are dealing with.
 
@@ -784,7 +798,7 @@ plot_results([x1, x2], [y1, y2], xlim=(0, 1), ylim=(0, 2.5), xlabel='$X$', \
 ```
 
 
-![png](chapter_12_files/chapter_12_58_0.png)
+![png](chapter_12_files/chapter_12_59_0.png)
 
 
 Since $f(x)/g(x)$ (where $f(x)$ is the PDF of the Beta and $g(x)$ is the PDF of the uniform) needs to be smaller than $c$ for all $x$ in the support of these distributions, a fine value of $c$ to use would be 2.5 since it is evident from the plot that this value satisfies the requirement.  The book uses the smallest possible value of $c$, i.e., the max of the $Beta(2, 4)$ distribution, which it derives analytically and finds to be $135/64 \approx 2.11$.  It is not necessary to use the smallest value of $c$, but will certainly help the speed of the algorithm since the algorithm only stops when $U \le f(Y)/cg(Y)$.  I will stick with the value of $2.5$ just to illustrate that the algorithm works for this value as well. 
@@ -795,7 +809,7 @@ def draw_beta_2_4(N):
     """
     A Beta(2, 4) pseudo-RNG using the rejection method
     """
-    c=2.5
+    c = 2.5
     
     X_list = []
     for _ in range(N):
@@ -832,8 +846,11 @@ print_vals(draw_beta_2_4, 1)
     X_4 =  0.26455561210462697
 
 
+Note that we can directly sample from a $Beta(\alpha, \beta)$ distribution with Numpy's beta RNG with: `np.random.beta(a, b)`.
+
 **Exercise 8**.  Use the rejection method to generate a random variable having the $Gamma(5/2, 1)$ density function.  Hint: Assume $g(x)$ is the PDF of the $Gamma(1, 2/5)$.
-> Solution: Note that there is a mistake in the phrasing of the question in the book.  The PDF for $g(x)$ should be $Gamma(1, 2/5)$, *not* $Gamma(5/2, 1)$.  Also note that we cannot use the method that we used in **Example**, 6. since in this case $\alpha$ is not an integer (however, we can use that method to draw from g(x)).  I first visualize these distributions so we can get a handle on what we are dealing with.
+
+> Solution: Note that there is a mistake in the phrasing of the question in the book.  The PDF for $g(x)$ should be $Gamma(1, 2/5)$, *not* $Gamma(5/2, 1)$.  Also note that we cannot use the method that we used in **Example**, 6. since in this case $\alpha$ is not an integer (however, we can use that method to draw from $g(x)$).  I first visualize these distributions so we can get a handle on what we are dealing with.
 
 
 ```python
@@ -849,10 +866,10 @@ plot_results([x1, x2], [f, g], xlim=(0, 15), ylim=(0, 0.4), xlabel='$X$', \
 ```
 
 
-![png](chapter_12_files/chapter_12_63_0.png)
+![png](chapter_12_files/chapter_12_64_0.png)
 
 
-The $\ max\{ f(x)/g(x) \}$ for $x >0$ is approximately given by:
+The $\max\{ f(x)/g(x) \}$ for $x >0$ is approximately given by:
 
 
 ```python
@@ -866,7 +883,7 @@ np.max(f/g)
 
 
 
-As a sanity check, this value is very close to the analytically derived value in the book, which is$\frac{10}{3 \sqrt{\pi}} \left(\frac{5}{2}\right)^{3/2} \exp(-3/2) \approx 1.6587162$.  Therefore, I set the value of $c$ to be 1.7, and use the function I wrote for **Example**. 6, `draw_gamma(alpha, lam, N)` to draw from $g(x)$.
+As a sanity check, this value is very close to the analytically derived value in the book, which is $\frac{10}{3 \sqrt{\pi}} \left(\frac{5}{2}\right)^{3/2}e^{-3/2} \approx 1.6587162$.  Therefore, I set the value of $c$ to be 1.7, and use the function I wrote in **Example**. 6, `draw_gamma(alpha, lam, N)`, to draw from $g(x)$.
 
 
 ```python
@@ -874,7 +891,7 @@ def draw_gamma_2(alpha, lam, N):
     """
     A Gamma(5/2, 1) pseudo-RNG using the rejection method
     """
-    c=1.7
+    c = 1.7
     
     X_list = []
     for _ in range(N):
@@ -912,13 +929,13 @@ print_vals(draw_gamma_2, 5/2, 1, 1)
 
 
 **Exercise 9**.  Use the rejection method to generate a standard normal random variable. Hint: Assume
-$g(x)$ is the pdf of the exponential distribution with $\lambda = 1$.
+$g(x)$ is the PDF of the exponential distribution with $\lambda = 1$.
 
 > *Solutuion* As in the book, to solve this problem, I use the rejection method to sample from a half Gaussian:
-\begin{equation}
+\begin{equation*}
     f(x) = \frac{2}{\sqrt{2 \pi}} e^{-\frac{x^2}{2}},
-\end{equation}
-with range $(0, \infty)$, with an $Exp(1)$ distribution for $g(x)$.  The book analytically computes $\max \{f(x)/g(x) \}$ to be $\sqrt{2 e/\pi} \approx 1.32$, and I thus use $c=4$.  Once the algorithm is able to sample from the half Gaussian, to turn this distribution into a full Gaussian with range $\mathbb R$, one need only to randomly multiply by -1.  I therefore sample $Q$ ($\in \{0, 1\}$) from a $Bern(0.5)$ distribution and multiply by 1-2Q ($\in \{-1, 1\}$) in order to sample from the full Gaussian.
+\end{equation*}
+with range $(0, \infty)$, with an $Exp(1)$ distribution for $g(x)$.  The book analytically computes $\max \{f(x)/g(x) \}$ to be $\sqrt{2 e/\pi} \approx 1.32$, and I thus use $c=1.4$.  Once the algorithm is able to sample from the half Gaussian, to turn this distribution into a full Gaussian with range $\mathbb R$, one need only to randomly multiply by -1.  I therefore sample $Q$ ($\in \{0, 1\}$) from a $Bern(0.5)$ distribution and multiply by 1-2Q ($\in \{-1, 1\}$) in order to sample from the full Gaussian.
 
 
 ```python
@@ -926,7 +943,7 @@ def draw_standard_normal(N):
     """
     A standard normal pseudo-RNG using the rejection method
     """
-    c=1.4
+    c = 1.4
     
     X_list = []
     for _ in range(N):
@@ -967,9 +984,9 @@ print_vals(draw_standard_normal, 1)
 
 
 **Exercise 10**.  Use the rejection method to generate a $Gamma(2, 1)$ random variable conditional on its
-value being greater than 5.  Hint: Assume $g(x)$ be the density function of exponential distribution.
+value being greater than 5.  Hint: Assume $g(x)$ is the density function of exponential distribution.
 
-> *Solution* As in the book, I use an $Exp(0.5)$ conditioned on $X>5$ as the distribution for $g(x)$.  It is not difficult to show by integrating the PDf of this distribution that $G^{-1}(x) = 5- 2 \ln(1-x)$ (where $G$ is the CDF).  I therefore use the method of inverse transformation to first draw a random variable from this distribution ($Y$).  Note that for $U\sim Unif(0, 1)$, $1- U\sim Unif(0, 1)$, and therefore the formula for $G^{-1}(U)$ can be simplified to $5- 2 \ln(U)$.  I then use the rejection method to sample from the desired distribution.  By maximizing $f(x)/g(x)$, the book shows that $c$ must be greater than $5/3$, and I therefore use $c=1.7$.
+> *Solution* As in the book, I use an $Exp(0.5)$ conditioned on $X>5$ as the distribution for $g(x)$.  It is not difficult to show by integrating the PDF of this distribution that $G^{-1}(x) = 5- 2 \ln(1-x)$ (where $G$ is the CDF).  I therefore use the method of inverse transformation to first draw a random variable from this distribution ($Y$).  Note that for $U\sim Unif(0, 1)$, $1- U\sim Unif(0, 1)$, and therefore the formula for $G^{-1}(U)$ can be simplified to $5- 2 \ln(U)$.  I then use the rejection method to sample from the desired distribution.  By maximizing $f(x)/g(x)$, the book shows that $c$ must be greater than $5/3$, and I therefore use $c=1.7$.
 
 
 ```python
@@ -977,7 +994,7 @@ def draw_gamma_2_1_cond_5(N):
     """
     A Gamma(2, 1) conditional on X>5 pseudo-RNG using the rejection method
     """
-    c=1.7
+    c = 1.7
     
     X_list = []
     for _ in range(N):
@@ -1016,15 +1033,15 @@ print_vals(draw_gamma_2_1_cond_5, 1)
 
 Notice that, as required, the random variables are all $> 5$.
 
-As a final check, I draw samples from the most of the RNG functions that I implemented in this chapter, compute the corresponding PMFs/PDFs, and compare to the theoretical distributions.  I first check the discrete distributions, and I start by implementing a function that will compute the empirical PMFs.  Note that the phrase "empirical PMF" (and "empirical PDF") is standard terminology to refer to the probability distribution associated with a sample of data.  Formally, they are given by
-\begin{equation}
-    P_X(x) = \frac{1}{N}\sum_{i=1}^N \mathbb 1 \{x = x_i \}
-\end{equation}
+As a final check to close this chapter, I draw samples from most of the RNG functions that I implemented above, compute the corresponding PMFs/PDFs, and compare to the theoretical distributions.  I first check the discrete distributions, and I start by writing a function that will compute the empirical PMFs.  Note that the phrase, "empirical PMF", (and "empirical PDF") is standard terminology to refer to the probability distribution associated with a sample of data.  Formally, for a collection of data, $\{x_i\}_{i=1}^N$, they are given by
+\begin{equation*}
+    P_X(x) = \frac{1}{N}\sum_{i=1}^N \boldsymbol{I} (x = x_i )
+\end{equation*}
 for the empirical PMF, and by
-\begin{equation}
+\begin{equation*}
     f_X(x) = \frac{1}{N}\sum_{i=1}^N \delta(x = x_i)
-\end{equation}
-for the empirical PDF (where $\mathbb 1 \{\cdot \}$ is the indicator function, and $\delta ( \cdot )$ is the delta function).
+\end{equation*}
+for the empirical PDF (where $\boldsymbol I (\cdot )$ is the indicator function, and $\delta ( \cdot )$ is the delta function).
 
 
 ```python
@@ -1041,11 +1058,13 @@ def compute_PMFs(counts, xrange):
     return pmf[np.min(xrange):np.max(xrange)+1]
 ```
 
-Now I compute the theoretical distributions, generate the data and compute the empirical distributions.
+I now compute the theoretical distributions, generate the data and compute the empirical distributions.
 
 
 ```python
 from scipy.stats import bernoulli, binom, poisson, geom, nbinom
+#set seed for reproducibility
+np.random.seed(1984)
 
 x_ranges = [range(2), range(26), range(9), range(1, 11), range(4, 26), range(9)]
 
@@ -1097,12 +1116,12 @@ for i, ax in enumerate(ax_arr):
 ```
 
 
-![png](chapter_12_files/chapter_12_81_0.png)
+![png](chapter_12_files/chapter_12_82_0.png)
 
 
-We see that the empirical distributions match almost perfectly with the theoretical distributions, and even closer correspondence for larger $N$.  
+We see that the empirical distributions match almost perfectly with the theoretical distributions, with even better correspondence for larger $N$.  
 
-I now check some of the continuous RNG functions I implemented in this chapter.  I first start by computing the theoretical distributions and generating the data.
+I now check some of the continuous RNG functions that I implemented in this chapter.  I first start by computing the theoretical distributions and generating the data.
 
 
 ```python
@@ -1112,7 +1131,7 @@ x_ranges = [np.linspace(0, 8, 1000), np.linspace(0, 50, 1000), \
             np.linspace(-20, 20, 1000), np.linspace(0, 1, 1000), \
             np.linspace(0, 15, 1000), np.linspace(-5, 5, 1000)]
 
-#compute PMF arrays for the theoretical distributions
+#compute PDF arrays for the theoretical distributions
 numpy_dists = [expon, gamma, cauchy, beta, gamma, norm]
 numpy_args = [[0, 1], [20, 0, 1], [], [2, 4], [5/2, 0, 1], []]
 numpy_y = [np_dist.pdf(xrange, *np_args) for np_dist, xrange, np_args in \
@@ -1124,9 +1143,12 @@ my_rngs = [draw_exp, draw_gamma, draw_stand_cauchy, draw_beta_2_4, draw_gamma_2,
            draw_standard_normal]
 my_args = [[1, N], [20, 1, N], [N], [N], [5/2, 1, N], [N]]
 my_rvs = [rng(*args) for rng, args in zip(my_rngs, my_args)]
+
+#reset seed
+np.random.seed(0)
 ```
 
-I now plot normalized histograms of the data and compare to the theoretical distributions.  Again, we see almost perfect correspondence between the empirical and theoretica distributions.  The correspondence becomes even better with larger values of $N$.
+I now plot normalized histograms of the data and compare to the theoretical distributions.  Again, we see almost perfect correspondence between the empirical and theoretical distributions.  The correspondence becomes even better with larger values of $N$.
 
 
 ```python
@@ -1134,7 +1156,7 @@ I now plot normalized histograms of the data and compare to the theoretical dist
 names = ['Exp(1) (inverse trans.)', 'Gamma(20, 1) (inverse trans.)', \
          'Cauchy(0, 1) (inverse trans.)', 'Beta(2, 4) (rejection)', \
          'Gamma(5/2, 1) (rejection)', 'N(0, 1) (rejection)'] 
-bin_arr = [50, 30, 60, 45, 45, 40]
+bin_arr = [50, 35, 60, 45, 45, 35]
 xlims=[(0, 8), (0, 50), (-20, 20), (0, 1), (0, 15), (-5, 5)]
 range_arr = [None]*6
 range_arr[2] = (-20, 20)
@@ -1160,5 +1182,5 @@ for i, ax in enumerate(ax_arr):
 ```
 
 
-![png](chapter_12_files/chapter_12_85_0.png)
+![png](chapter_12_files/chapter_12_86_0.png)
 
