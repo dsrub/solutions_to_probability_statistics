@@ -1,0 +1,96 @@
+\documentclass[11pt]{book}
+ 
+\usepackage[dvips,letterpaper,margin=1in,bottom=0.7in]{geometry}
+\usepackage{amsmath} % AMS Math Package
+\usepackage{amsthm} % Theorem Formatting
+\usepackage{amssymb}    %s Math symbols such as \mathbb
+\usepackage{graphicx} % Allows for eps images
+\usepackage{bbm}
+  \usepackage{tikz}
+  \usepackage{asymptote}
+  \renewcommand{\qedsymbol}{$\blacksquare$}
+  \usepackage{mathtools}
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+\usepackage{afterpage}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{pdfpages}
+
+\makeatletter
+\newcommand{\distas}[1]{\mathbin{\overset{#1}{\kern\z@\sim}}}%
+\newsavebox{\mybox}\newsavebox{\mysim}
+\newcommand{\distras}[1]{%
+  \savebox{\mybox}{\hbox{\kern3pt$\scriptstyle#1$\kern3pt}}%
+  \savebox{\mysim}{\hbox{$\sim$}}%
+  \mathbin{\overset{#1}{\kern\z@\resizebox{\wd\mybox}{\ht\mysim}{$\sim$}}}%
+}
+\makeatother
+
+
+\makeatletter % Need for anything that contains an @ command 
+\renewcommand{\maketitle} % Redefine maketitle to conserve space
+{ \begingroup \vskip 10pt \begin{center} \Huge {\bf \@title}
+    \vskip 10pt \large \@author \hskip 20pt \@date \end{center}
+  \vskip 10pt \endgroup \setcounter{footnote}{0} }
+\makeatother % End of region containing @ commands
+\renewcommand{\labelenumi}{(\alph{enumi})} % Use letters for enumerate
+ 
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+
+
+\begin{document}
+\pagenumbering{gobble} 
+
+%\pagecolor{brown}\afterpage{\nopagecolor}
+
+
+%\title{Complete Solutions Guide Pishro-Nik's Probability, Statistics and Random Processes}
+%\author{Douglas S. Rubin, PhD}
+%\date{\today}
+%\maketitle
+%\vspace{3cm}
+%	\begin{figure}[h]
+%\centering
+%\hspace*{-1.63cm}  
+ %     \includegraphics[totalheight=11cm]{book_cover.jpg}
+
+%	\end{figure}
+
+	\begin{figure}[h]
+\centering
+\vspace*{-2.54cm}  
+\hspace*{-2.63cm}  
+     \includegraphics[totalheight=11in]{book_cover.pdf}
+	\end{figure}
+
+
+%\newpage
+\pagenumbering{arabic}  
+\tableofcontents
+
+\chapter{Basic Concepts}
+\include{chpt1/chpt1}
+
+\chapter{Combinatorics: Counting Methods}
+\include{chpt2/chpt2}
+
+\chapter{Discrete Random Variables}
+\include{chpt3/chpt3}
+
+\chapter{Continuous and Mixed Random Variables}
+\include{chpt4/chpt4}
+
+\chapter{Joint Distributions}
+\include{chpt5/chpt5}
+
+\chapter{Introduction to Simulation Using Python}
+\includepdf[pages={1-}, pagecommand={}]{chpt12/chapter_12.pdf}
+
+\chapter{Recursive Methods}
+\include{chpt13/chpt13}
+
+\end{document}

@@ -1,0 +1,3 @@
+ipython nbconvert --to markdown chapter_12.ipynb
+
+pandoc --highlight-style tango --latex-engine=xelatex -V geometry:"margin=1in, bottom=.7in" -V fontsize=11pt -fmarkdown-implicit_figures chapter_12.md -o test.pdf

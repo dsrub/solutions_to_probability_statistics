@@ -1,0 +1,318 @@
+
+\begin{problem}{1} We can use the multiplication principle, making sure to enumerate all the cream/sugar/milk possibilities:
+
+	\begin{equation}
+		4 \cdot 3 \cdot \left[\binom{3}{0}+\binom{3}{1}+\binom{3}{2}+\binom{3}{3}\right] = 4 \cdot 3 \cdot 8 = 96.
+	\end{equation}
+
+\end{problem}
+
+\begin{problem}{2} Let $N$ be the number of unique permutations of the 8 people in the 12 chairs.  The 4 empty chairs are indistinguishable, so, for any given unique permutation, the permutations amongst those 4 chairs do not count toward the number of unique permutations, $N$.  We know that the total  number of permutations (including the non-unique permutations is $12!$), and therefore $12! = N 4!$, so that
+	\begin{equation}
+		\frac{12!}{4!} = 19958400.
+	\end{equation}
+
+\end{problem}		
+
+
+
+
+
+
+\begin{problem}{3} $ $
+
+	\begin{enumerate}
+
+		\item 
+			Let $B$ represent the set of the 20 black cell phones, $\{b_1, b_2, \ldots, b_{20} \}$, and $W$ represent the set of the 30 white cell phones, $ \{w_1, w_2, \ldots, w_{30} \}$.  Let $\mathcal B$ be the set containing all possible sets of the 4 distinct black cell phones that were chosen (without replacement) from the 20 black cell phones, $\mathcal B = \{ \{b_1, b_2, b_3, b_4\}, \{b_1, b_2, b_3, b_5\} \ldots \{b_{17}, b_{18}, b_{19}, b_{20}\}  \}$, and $\mathcal W$ be the corresponding set for the 6 white cell phones.  Therefore, the sets of sets representing all unique ways to obtain 4 black cell phones and 6 white cell phones is given by $\{ \mathcal B_1\cup \mathcal W_1,  \mathcal B_1\cup W_2\ldots \mathcal B_{|\mathcal B|} \cup \mathcal W_{|\mathcal W|} \}$, whose total cardinality can be seen to be $ |\mathcal B|  |\mathcal W|$.  $ |\mathcal B|$ is clearly $\binom{20}{4}$, and |$\mathcal W$| is clearly $\binom{30}{6}$, so the size of this set is $\binom{20}{4}\binom{30}{6}$.  The sample space for this experiment is all possible unique sets of size 10 that can be chosen from $B \cup W$.  Therefore, the probability of obtaining exactly 4 black cell phones is given by:
+			
+			\begin{equation}
+				P(4~\mathrm{black~phones}) = \frac{\binom{20}{4} \binom{30}{6}} {\binom{50}{10}} \approx 0.28.
+			\end{equation}
+In this problem I somewhat laboriously spelled out how to obtain the proper number of sets from the sample space with exactly 4 black cell phones.  I did this for the purpose of illustration since this type of situation arises commonly in combinatorics problems.  In the future I will typically be typically be more terse.
+		
+	\item 
+		\begin{align*}
+			P(N_B<3) &= P(N_B=0 \cup N_B=1 \cup N_B=2) \\
+			& =P(N_B=0) + P(N_B=1)+ P(N_B=2) \\
+			& = \frac{\binom{20}{0} \binom{30}{10}} {\binom{50}{10}}+\frac{\binom{20}{1} \binom{30}{9}} {\binom{50}{10}}+\frac{\binom{20}{2} \binom{30}{8}} {\binom{50}{10}} \\
+			& \approx 0.14
+		\end{align*}
+			
+
+	\end{enumerate}
+
+\end{problem}
+
+\begin{problem}{4} $ $
+
+	\begin{enumerate}
+
+		\item The sample space is all possible sets of length 5 chosen from the 52 cards, and the events we are interested in are all possible sets of size 5, one of which is certainly an ace.  Therefore:
+		\begin{equation*}
+			P(N_A=1) = \frac{\binom{4}{1}\binom{48}{4}}{\binom{52} {5} } \approx 0.30.
+		\end{equation*}
+	
+	
+		\item Let $N_A \ge 1$ be the event that the hand contains at least 1 ace.  It will be easier to consider the complement of this event:
+			\begin{align*}
+				P(N_A \ge 1) &=1-P(N_A =0) \\
+				& = 1- \frac{\binom{48}{5}}{\binom{52}{5}} \\
+				& \approx 0.34.
+			\end{align*}
+\end{enumerate}
+
+\end{problem}
+
+\begin{problem}{5} It will be convenient to use Bayes' rule so that we can move $N_A \ge 1$ to the first slot of $P(\cdot | \cdot)$:
+
+\begin{equation}
+P(N_A=2|N_A \ge 1) = \frac{P(N_A \ge 1|N_A=2) P(N_A=2)}{P(N_A \ge 1)}.
+\end{equation}
+We have already computed the denominator in the previous problem.  In the numerator $P(N_A \ge 1|N_A=2) = 1$ since the probability of obtaining at least 1 ace is unity if we already know there are 2 aces.  The probability of obtaining exactly 2 aces is 
+\begin{align*}
+P(N_A =2) &=\frac{\binom{4}{2}\binom{48}{3}}{\binom{52}{5}} \approx 0.04,
+\end{align*}
+and therefore:
+\begin{equation}
+P(N_A=2|N_A \ge 1) \approx \frac{1\cdot 0.04}{0.34} \approx 0.12.
+\end{equation}
+
+\end{problem}
+
+
+\begin{problem}{6} Let $C_4$ be the event that $C$ receives exactly 4 spades.  Each player has 13 cards, and between players $A$ and $B$, we know there are 7 spades, and 19 non-spades.  This leaves 6 spades and 20 non-spades to be chosen amongst players $C$ and $D$.  If the 26 cards are first dealt to $A$ and $B$, and another 13 are dealt to $C$, then the probability that $C$ obtains exactly 4 spades is:
+
+\begin{equation*}
+P(C_4) = \frac{\binom{6}{4}\binom{20}{9}}{\binom{26}{13}} \approx 0.24.
+\end{equation*}
+
+\end{problem}
+
+\begin{problem}{7} Let $J$ be the event that Joe is chosen and $Y$ be the event that you are chosen.  By inclusion-exclusion:
+\begin{equation*}
+P(J \cup Y) = P(J)+P(Y)-P(J, Y).
+\end{equation*}
+There are $\binom{1}{1}\binom{49}{14}$ different ways Joe can be chosen and the same number of ways you can be chosen.  There are $\binom{2}{2}\binom{48}{13}$ different ways both you and Joe can be chosen, and thus: 
+\begin{equation*}
+P(J \cup Y) = 2\frac{\binom{49}{14}}{\binom{50}{15}}-\frac{\binom{48}{13}}{\binom{50}{15}}  \approx 0.51.
+\end{equation*}
+\end{problem}
+
+\begin{problem}{8} In general, for a sequence with $n$ elements, $r$ of which are unique, the number of unique permutations is given by:
+
+\begin{equation}
+N = \frac{n!}{n_1!n_2!\ldots n_r!}, 
+\end{equation}
+where $n_i$ is the number of repeats of the $i^{th}$ unique element in the original sequence.  This can easily be shown, since the number of total permutations must be equal to to the sum of each unique permutation, times the number of times each element in the unique permutation can be permuted amongst themselves, $n! = N n_1!n_2!\ldots n_r!$.  For example, one unique permutation of the word ``Massachusetts" is Massachusetts itself.  We see that the ``a"s can be permuted $2!$ ways amongst second and fifth position, while still forming the word Massachusetts.  Likewise, the ``s"s can be permuted $4!$ ways and the ``t"s $2!$ ways, resulting in $2!4!2!$ permutations of all letters which result in this unique permutation.  Thus, the total number of ways of arranging the word ``Massachusetts" is:
+
+\begin{equation}
+N = \frac{n!}{n_a!n_s!n_t!} =\frac{13!}{2!4!2!}= 64864800. 
+\end{equation}
+
+
+\end{problem}
+
+\begin{problem}{9} $ $
+
+	\begin{enumerate}
+		\item
+			Using the formula for the binomial distribution, I find:
+			\begin{equation*}
+				P(k= 8) = \binom{20}{8} p^8(1-p)^{20-8}.
+			\end{equation*}
+			
+		\item
+			Since both the number of heads and number of tails must be $>8$, the possible observed number of heads (tails) can be 9 (11) or 10 (10) or 11 (9).  These are disjoint events, so the total probability we are interested in is 
+			
+			\begin{align*}
+				P(\{k=9, k=10, k=11\}) &=P(k=9)+P(k=10)+P(k=11) \\
+				& =  \binom{20}{9} p^9(1-p)^{20-9}+ \binom{20}{10} p^{10}(1-p)^{20-10}+ \binom{20}{11} p^{11}(1-p)^{20-11} \\
+			& =\binom{20}{9}p^9(1-p)^{9}\left [1-2p+2p^2\right]+\binom{20}{10} p^{10}(1-p)^{10}.
+			\end{align*}
+	\end{enumerate}
+
+
+\end{problem}
+
+\begin{problem}{10} Let $u$ denote a move up and $r$ denote a move to the right.  A path from $(0, 0)$ to $(20,10)$ can be represented by a sequence of $u$s and $r$s.  Note that in every possible sequence, there must be 10 $u$s and 20 $r$s because we always need to travel 10 units up and 20 units to the right regardless of the path.  Therefore, the problem reduces to ascertaining the number of unique sequences with 10 $u$s and 20 $r$s, which, from Problem 8 we can see to be:
+
+\begin{equation*}
+\frac{30!}{20! 10!}= 30045015.
+\end{equation*}
+
+\end{problem}
+
+\begin{problem}{11}  Let $A$ denote the event that the message passes through $(10, 5)$ on its way to $(20, 10)$. To reach the point $(10, 5)$ on the way from $(0, 0)$ to $(20, 10)$, the first 15 entries of the sequence must have exactly 5 $u$s and 10 $r$s.  This may occur in any number of the unique permutations $15!/(10! 5!)$.  To reach $(20, 10)$, the remaining entries must also contain exactly 5 $u$s and 10 $r$s, again giving $15!/(10! 5!)$ unique permutations from $(10, 5)$ to $(20, 10)$.  The total number of unique permutations starting at $(0, 0)$ and  going through $(10, 5)$ on its way to $(20, 10)$ is therefore $(15!/(10! 5!))^2$, so that the probability that the message goes through $(10, 5)$ is:
+
+\begin{equation*}
+P(A) = \frac{\left(\frac{15!}{10!5!}\right)^2}{\frac{30!}{10!20!}} \approx 0.30
+\end{equation*}
+ 
+\end{problem}
+
+\begin{problem}{12}
+Let $A$ denote the event that the message passes through $(10, 5)$.  This occurs if, out of the first 15 entries of the sequence there are exactly 5 $u$s and 10 $r$s in any order.  For a binary outcome experiment, the probability of obtaining 5 $u$s with probability $p_a$ is given by the binomial distribution:
+
+\begin{equation*}
+P(A) = \binom{15}{5} p_a^5(1-p_a)^{10}.
+\end{equation*}
+
+\end{problem}
+
+
+
+\begin{problem}{13} Let $p_i$ be the probability of flipping a heads for coin $i$ ($i \in \{1, 2\}$), let $C_i$ be the event that coin $i$ is chosen.  Using the law of total probability and the binomial distribution, I find:
+
+	\begin{enumerate}
+		\item 
+		\begin{align*}
+			P(N_H \ge 3) &= P(N_H=3 \cup N_H=4 \cup N_H=5) \\
+			& = P(N_H=3)+P(N_H=4)+P(N_H=5) \\
+			& = \sum_{i=1}^2 \left[P(N_H=3|C_i)P(C_i)+P(N_H=4|C_i)P(C_i)+P(N_H=5|C_i)P(C_i)\right] \\
+			& = \frac{1}{2} \sum_{i=1}^2 \left[\binom{5}{3} p_i^3(1-p_i)^2+ \binom{5}{4} p_i^4(1-p_i)+ \binom{5}{5} p_i^5 \right] \\
+			& \approx 0.35.
+		\end{align*}
+		
+		\item From Bayes':
+		\begin{equation*}
+			P(C_2|N_H \ge 3) =\frac{P(N_H \ge 3|C_2)P(C_2)}{P(N_H \ge 3) },
+		\end{equation*}
+		where $P(N_H \ge 3)$ has already been solved, $P(C_2)=0.5$ and
+		\begin{equation*}
+			P(N_H \ge 3|C_2) =  \sum_{j=3}^5 \binom{5}{j}p_2^j(1-p_2)^{5-j} \approx 0.21.
+		\end{equation*}
+		Therefore, the probably we are interested in is
+		\begin{equation*}
+			P(C_2|N_H \ge 3) \approx \frac{0.21 \cdot 0.5}{0.35} = 0.3.
+		\end{equation*}
+The fact that this probability is less than 0.5 makes sense, since more heads were observed than tails, and so it is more probable that coin 1 was chosen since the probability that it lands heads is higher.
+	\end{enumerate}
+
+\end{problem}
+
+\begin{problem}{14}
+There are $\binom{13}{3, 5, 5}$ different ways Hannah and Sarah can be arranged on the same team.  However, we do not care about players being assigned to a particular team name, we just care about the number of possible divisions.  Therefore, to avoid over-counting, we must divide this value by $2!$.  Likewise, there are $\binom{15}{5, 5, 5}$ total ways to construct 3 teams of 5 each, and we must divide by $3!$ since we only care about the number of possible divisions:
+
+\begin{equation*}
+P(\mathrm{H~and~S~in~same~division}) = \frac{\frac{1}{2!}\binom{13}{3, 5, 5}}{\frac{1}{3!}\binom{15}{5, 5, 5}} \approx 0.29.
+\end{equation*}
+
+\end{problem}
+
+\begin{problem}{15}  We would like to find $P(N_1 >1 \cup N_2 >1 \cup \ldots \cup N_1 >6) = 1- P(N_1 \le 1, N_2 \le 1, \ldots, N_6 \le 1)$.  For the first roll, we therefore have 6 allowable options, for the second 5 allowable options, $\ldots$.  Therefore the probability is:
+
+\begin{equation*}
+P(N_1 >1 \cup N_2 >1 \cup \ldots \cup N_1 >6) = 1- \frac{6\cdot5\cdot4\cdot3\cdot2}{6^5} \approx 0.91.
+\end{equation*}
+
+\end{problem}
+
+\begin{problem}{16} $ $
+
+\begin{enumerate}
+
+\item
+Let $A$ be the desired event.  If the first 15 cards are to have 10 red cards, then there are $\binom{10}{5} \binom{10}{10}$ different possible groups for the first 15 cards, of which we can arrange in 15! possible ways.  There are $\binom{5}{5}$ possible groups for the remaining 5 cards, of which we can arrange 5! possible ways.  Finally, the total number of permutations of the 20 cards is 20!, and therefore:
+
+\begin{equation*}
+P(A) = \frac{\binom{10}{5}\binom{10}{10}15!\binom{5}{5}5!}{20!}\approx 0.02.
+\end{equation*}
+
+\item
+Let $A^\prime$ be the event we desire.  This problem is almost identical to the first:
+
+\begin{equation*}
+P(A^\prime) = \frac{\binom{10}{7}\binom{10}{8}15!\binom{3}{3}\binom{2}{2}5!}{20!}\approx 0.35.
+\end{equation*}
+
+\end{enumerate}
+
+\end{problem}
+
+\begin{problem}{17} Let $B_i$ be the event that I choose bag $i$ ($i \in \{1, 2\}$) and $N_r = 2$ be the event that I choose exactly 2 red marbles out of the 5.  Using Bayes'
+
+\begin{equation}
+P(B_1|N_r=2) = \frac{P(N_r=2|B_1)P(B_1)}{P(N_r=2|B_1)P(B_1)+P(N_r=2|B_2)P(B_2)}.
+\end{equation}
+The probability of choosing either bag is 1/2 and the probability of $N_r = 2$ conditioned on choosing bag 1 is
+\begin{equation*}
+P(N_r=2|B_1) = \frac{\binom{6}{2} \binom{10}{3}}{\binom{16}{5}} \approx 0.41,
+\end{equation*}
+while the probability of $N_r = 2$ conditioned on choosing bag 2 is
+\begin{equation*}
+P(N_r=2|B_2) = \frac{\binom{6}{2} \binom{15}{3}}{\binom{21}{5}} \approx 0.34.
+\end{equation*}
+Sticking all relevant probabilities into Bayes', I arrive at
+\begin{equation}
+P(B_1|N_r=2) = \frac{0.41 \cdot  0.5}{0.41 \cdot  0.5+0.34 \cdot  0.5} \approx 0.55.
+\end{equation}
+
+\end{problem}
+
+
+\begin{problem}{18}
+Let $E^c$ denote the event that an error has not occurred for the $X_i^{th}$ trial.  We seek the probability of all sequences of length $n$, ending in $E^c$, where the 1st $n-1$ entries can be any sequence, provided they contain exactly $k-1$ $E^c$s, which I denote by $A_{n-1}$.  The probability we desire is $P(A_{n-1}, X_{n}=E^c) = P(A_{n-1})P(X_{n}=E^c)$ by independence.  I note that $P(A_{n-1})$ is a binomial distribution, and therefore:
+
+\begin{equation*}
+P(A_{n-1}, X_{n}=E^c) = \binom{n-1}{k-1}p^{k-1}(1-p)^{(n-1)-(k-1)}p = \binom{n-1}{k-1}p^{k}(1-p)^{n-k}
+\end{equation*}
+\end{problem}
+
+
+
+
+\begin{problem}{19} Let $y_i \equiv x_i -1$ for $i=1, \ldots, 5$, and therefore all $y_i$s can take on values $\{0, 1, 2, \ldots \}$.  The equation for which we are trying to find the number of distinct integer solutions then becomes:
+\begin{equation}
+y_1+y_2+y_3+y_4+y_5 = 95,
+\end{equation}
+which has $\binom{5+95-1}{95}=\binom{99}{95}$ integer solutions.
+
+\end{problem}
+
+
+\begin{problem}{20}  It is not difficult to explicitly to enumerate the total number of solutions when $x_1 = 0, 1, \ldots, 10$.  The total number of integer valued solutions is thus the number of solutions for when $x_1=0$, plus the number of solutions for when $x_1 =1$, $\ldots$ plus the total number of solutions for when $x_1 =10$.  In each one of these instances, we must find the number of integer solutions for the equation 
+\begin{equation*}
+x_2+x_3+x_4 = 100 - i ,
+\end{equation*}
+(where $x_2, x_3, x_4 \in \{0, 1, 2, \ldots \}$) which has $\binom{3+100-i-1}{100-i}$ solutions.  Therefore, the total number of integer solutions for this equation, $N$, with $x_1 \in \{0, 1, \ldots, 10 \}$ is:
+\begin{align*}
+N &= \sum_{i=0}^{10}\binom{3+100-i-1}{100-i} \\
+&=\frac{1}{2}\sum_{i=0}^{10}\left [10302-203i+i^2 \right] \\
+& = \frac{11 \cdot 10302}{2} -\frac{203}{2}(0+1+2+ \ldots+ 10)+\frac{1}{2}(0+1+4+ \ldots+ 100) \\
+& = 51271.
+\end{align*} 
+
+\end{problem}
+
+\begin{problem}{21}
+Let $A_1 = \{ (x_1, x_2, x_3): x_1+x_2+x_3 = 100, x_1 \in \{41, 42, \ldots \}, x_2, x_3 \in \{0, 1, 2, \ldots \} \}$, and let $A_2$ and $A_3$ be defined analogously.  By inclusion-exclusion, the total number of possible unique integer solutions to this problem is then:
+
+\begin{align*}
+|A_1 \cup A_2 \cup A_3| & = |A_1| + |A_2| + |A_3| -|A_1\cap A_2|  -|A_1\cap A_3|  -|A_2\cap A_3| +|A_1 \cap A_2 \cap A_3| \\
+& = 3 |A_1|-3|A_1\cap A_2|+|A_1 \cap A_2 \cap A_3|,
+\end{align*}
+where the second equality follows from symmetry.  The cardinality of $|A_1 \cap A_2 \cap A_3|$ is 0 since it is impossible to have all $x_i$s $> 40$ and constrained to add to 100.
+
+The cardinality of $|A_1|$ can be found by letting $y_1 \equiv x_1-41$, so that $y_1, x_2, x_3 \in \{0, 1, 2, \ldots \}$: $y_1+x_2+x_3 =59$, which has $\binom{3+59-1}{59}=\binom{61}{59}$ solutions.  The cardinality of $|A_1 \cap A_2|$ can be found by letting $y_1 \equiv x_1-41$ and $y_2 \equiv x_2-41$ so that $y_1, y_2, x_3 \in \{0, 1, 2, \ldots \}$: $y_1+y_2+x_3 =18$, which has $\binom{3+18-1}{18}=\binom{20}{18}$ solutions.  Therefore, the total number of solutions to this problem is:
+
+\begin{equation*}
+|A_1 \cup A_2 \cup A_3| = 3\binom{61}{59}-3\binom{20}{18} = 4920.
+\end{equation*}
+
+The following bit of python code confirms what we derived theoretically:
+\begin{lstlisting}
+In [1]: i=range(101); j=range(101); k=range(101)
+
+In [2]: tups = [(x, y, z) for x in i for y in j for z in k]
+
+In [3]: len([x for x in tups if x[0]+x[1]+x[2]==100 
+   ...: and (x[0]>40 or x[1]>40 or x[2]>40)])
+Out[3]: 4920
+\end{lstlisting}
+
+\end{problem}
+
+
+
+

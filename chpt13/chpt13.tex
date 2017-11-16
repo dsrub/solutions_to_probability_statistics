@@ -1,0 +1,79 @@
+\begin{problem}{1} $ $
+
+	\begin{enumerate}
+		\item The characteristic polynomial for this recursive formula is
+		
+		\begin{equation*}
+		x^2-2x+\frac{3}{4}=0,
+		\end{equation*}
+		which has roots 1/2 and 3/2, and therefore:		
+		\begin{equation*}
+		a_n=\alpha \left(\frac{3}{2} \right)^n+\beta \left(\frac{1}{2} \right)^n.
+		\end{equation*}
+		Using the initial conditions $a_0=1$ and $a_1=-1$ leads $\alpha=-1$ and $\beta=1$.  Thus, the solution to the recurrence equation is:
+		\begin{equation*}
+		a_n=-\left(\frac{3}{2} \right)^n+ \left(\frac{1}{2} \right)^n.
+		\end{equation*}
+		
+		\item  The characteristic polynomial for this recursive formula is
+		
+		\begin{equation*}
+		x^2-4x+4=0,
+		\end{equation*}
+		which can be factored into $(x-2)^2=0$.  The polynomial thus has one root, $x=2$, with a multiplicity of 2, and therefore:
+		\begin{equation*}
+		a_n=\alpha 2^n+\beta n 2^n.
+		\end{equation*}
+		Using the initial conditions $a_0=2$ and $a_1=6$ leads $\alpha=0$ and $\beta=3$.  Thus, the solution to the recurrence equation is:
+		\begin{equation*}
+		a_n=3n2^n.
+		\end{equation*}
+
+	\end{enumerate}
+
+\end{problem}
+
+
+\begin{problem}{2} $ $
+
+	\begin{enumerate}
+		\item Let $A_{n,k}$ be the event of observing exactly $k$ heads out of $n$ coin tosses, and let $H$ denote the event that the last coin toss is a heads.  By conditioning on the last coin toss I obtain:
+		\begin{align*}
+		P(A_{n, k}) &= P(A_{n, k}|H)p+P(A_{n, k}|H^c)(1-p) \\
+		&= P(A_{n-1, k-1})p+P(A_{n-1, k})(1-p),
+		\end{align*}
+where the equality follows because if the last coin toss is heads, then we need exactly $k-1$ heads from $n-1$ toss, and if the last coin toss is tails, then we need $k$ heads from $n-1$ tosses.  Converting this to the notation used in the problem:
+		\begin{equation*}
+		a_{n,k}= a_{n-1, k-1}p+a_{n-1, k}(1-p)
+		\end{equation*}
+$\implies$
+		\begin{equation*}
+		a_{n+1,k+1}= a_{n, k}p+a_{n, k+1}(1-p).
+		\end{equation*}
+
+\item We recognize that this is precisely a binomial experiment, so the probability associated with exactly $k$ heads out of $n$ is given by $\binom{n}{k} p^k (1-p)^{n-k}$, and therefore:
+		\begin{equation*}
+		\binom{n+1}{k+1} p^{k+1} (1-p)^{(n+1)-(k+1)}= p\binom{n}{k} p^k (1-p)^{n-k}+(1-p)\binom{n}{k+1} p^{k+1} (1-p)^{n-(k+1)},
+		\end{equation*}
+which, when simplified results in:
+
+		\begin{equation*}
+		\binom{n+1}{k+1}= \binom{n}{k}+\binom{n}{k+1}.
+		\end{equation*}
+We need the restriction that $0 \le k <n$ to hold for this equation to be true, since the original recursion relation does not hold if $k = n$ (in that case the last flip cannot be a tails since we need all flips to be heads, so that the $P(A_{n, k}|H^c)$ term should be 0).
+
+
+
+
+\end{enumerate}
+\end{problem}
+
+
+
+
+
+
+
+
+
+
