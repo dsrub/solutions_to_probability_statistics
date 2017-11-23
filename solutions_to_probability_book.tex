@@ -16,6 +16,7 @@
 \usepackage{xcolor}
 \usepackage{listings}
 \usepackage{pdfpages}
+\usepackage{bm}
 
 \makeatletter
 \newcommand{\distas}[1]{\mathbin{\overset{#1}{\kern\z@\sim}}}%
@@ -45,21 +46,6 @@
 \begin{document}
 \pagenumbering{gobble} 
 
-%\pagecolor{brown}\afterpage{\nopagecolor}
-
-
-%\title{Complete Solutions Guide Pishro-Nik's Probability, Statistics and Random Processes}
-%\author{Douglas S. Rubin, PhD}
-%\date{\today}
-%\maketitle
-%\vspace{3cm}
-%	\begin{figure}[h]
-%\centering
-%\hspace*{-1.63cm}  
- %     \includegraphics[totalheight=11cm]{book_cover.jpg}
-
-%	\end{figure}
-
 	\begin{figure}[h]
 \centering
 \vspace*{-2.54cm}  
@@ -86,6 +72,9 @@
 
 \chapter{Joint Distributions}
 \include{chpt5/chpt5}
+
+\chapter{Methods for More Than Two Random Variables}
+\include{chpt6/chpt6}
 
 \chapter{Introduction to Simulation Using Python}
 \includepdf[pages={1-}, pagecommand={}]{chpt12/chapter_12.pdf}

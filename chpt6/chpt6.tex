@@ -1,0 +1,510 @@
+\begin{problem}{1} $ $
+
+	\begin{enumerate}
+		\item 
+	\begin{align*}  
+ f_{XY}(x, y) &= \int f_{XYZ}(x, y, z) dz \\ 
+ &= \begin{cases}
+                                 \int_0^1 (x+y) dz& \text{for $0\le x, y\le 1$} \\
+                                  0& \text{otherwise}
+       \end{cases} \\
+&= \begin{cases}
+                                 x+y & \text{for $0\le x, y\le 1$} \\
+                                  0& \text{otherwise}
+       \end{cases}
+\end{align*}
+		
+\item
+	
+	\begin{align*}  
+ f_{X}(x) &= \int f_{XY}(x, y) dy \\ 
+ &= \begin{cases}
+                                 \int_0^1 (x+y) dy& \text{for $0\le x\le 1$} \\
+                                  0& \text{otherwise}
+       \end{cases} \\
+&= \begin{cases}
+                                 x+\frac{1}{2} & \text{for $0\le x\le 1$} \\
+                                  0& \text{otherwise}
+       \end{cases}
+\end{align*}
+	
+		
+		
+\item First note that:
+	\begin{align*}  
+ f_{Z}(z) &= \int f_{XYZ}(x, y, z) dx dy \\ 
+ &= \begin{cases}
+                                 \int_0^1 \int_0^1 (x+y) dx dy & \text{for $0\le z \le 1$} \\
+                                  0& \text{otherwise}
+       \end{cases} \\
+&= \begin{cases}
+                                 1& \text{for $0\le z\le 1$} \\
+                                  0& \text{otherwise},
+       \end{cases}
+\end{align*}
+so that \begin{equation*}
+f_{XY|Z}(x, y|z) = \frac{f_{XYZ}(x, y, z)}{f_Z(z)} = f_{XYZ}(x, y, z).
+\end{equation*}
+
+
+
+\item
+
+\begin{equation*}
+f_{XY|Z}(x, y|z) = f_{XYZ}(x, y, z) = f_{XY}(x, y)
+\end{equation*}
+$\implies X$ and $Y$ are independent $Z$
+\end{enumerate}
+
+\end{problem}
+
+\begin{problem}{2} $ $
+
+Since $X$, $Y$, $Z$ are independent, $f_{XY|Z}(x, y, 1) = f_{XY}(x, y) = f_X(x)f_Y(y)$, so that:
+\begin{equation*}
+E[XY|Z=1] = E[XY] = E[X]E[Y] = 0,
+\end{equation*}
+and
+\begin{equation*}
+E[X^2Y^2Z^2|Z=1] = E[X^2Y^2] = E[X^2]E[Y^2] = 1.
+\end{equation*}
+
+\end{problem}
+
+
+
+\begin{problem}{4} $ $
+Due to the symmetry of the problem, $Y_1, Y_2, \ldots Y_n$ are all identically distributed, and thus:
+\begin{equation*}
+E[Y] = E[Y_1+Y_2+\ldots +Y_n] = E[Y_1]+E[Y_2]+\ldots +E[Y_n]  = nE[Y_1],
+\end{equation*}
+and
+\begin{equation*}
+Var[Y] = Var[Y_1+Y_2+\ldots +Y_n] = \sum_{i=1}^n Var [Y_i]+2 \sum_{i<j} Cov[Y_i, Y_j]  = nVar[Y_1]+2 \left (\frac{n^2-n}{2} \right)Cov[Y_1, Y_2].
+\end{equation*}
+We therefore need to compute $E[Y_1]$, $Var[Y_1]$ and $Cov[Y_1, Y_2]$.  Since $Y_1 = X_1X_2$, and $X_1, X_2 \distas{iid} Bern(p)$, the range of $Y$ is $\{0, 1 \}$, with probability $p^2$ of obtaining $1$ ($X_1 =1$ and $X_2 = 1$).  In other words, $Y_1\sim Bern(p^2)$, so that $E[Y_1] = p^2$ and $Var[Y_1] = p^2 (1-p^2)$.  All that is left to do is to compute the covariance:
+\begin{align*}
+Cov[Y_1, Y_2] &= E[Y_1Y_2]-E[Y_1]E[Y_2] \\
+&= E[X_1X_2 X_2X_3]-E[X_1X_2]E[X_2X_3] \\
+& = E[X_1]E[X_2^2]E[X_3]-E[X_1]E[X_2]^2E[X_3] \\
+& = p\cdot p \cdot p - p\cdot p^2 \cdot p \\
+& = p^3(1-p),
+\end{align*}
+where in the second line I have used the fact that all the $X$s are independent, and in the fourth line I have used the fact that for a $Bern(p)$ distribution, $p(1-p) = E[X^2] - p^2$. 
+
+Thus, we have that:
+\begin{equation*}
+E[Y]  = np^2
+\end{equation*}
+and
+\begin{equation*}
+Var[Y] = np^2 (1-p^2)+2 (n^2-n) p^3(1-p).
+\end{equation*}
+
+
+\end{problem}
+
+
+\begin{problem}{6} I start by writing out the definition of the MGF:
+\begin{align*}
+M_X(s) & = E[e^{sX}] \\
+& = \sum_{k=1}^\infty p(1-p)^{k-1} e^{sk}\\
+&= \frac{p}{1-p}\left  \{\sum_{k=0}^\infty[(1-p)e^{s}]^k-1\right \},
+\end{align*}
+where we recognize that the summation is a geometric series, and is finite provided $(1-p)e^{s}<1$.  Using the formula for a geometric series, and simplifying, I have that:
+\begin{equation*}
+M_X(s) =\frac{pe^{s}}{1+(p-1)e^s},
+\end{equation*}
+for $s< -\ln(1-p).$
+
+
+\end{problem}
+
+\begin{problem}{7}  We can solve this problem by realizing that the $k^{th}$ derivative of the MGF evaluated at $s=0$ gives the $k^{th}$ moment of the distribution:
+\begin{align*}
+E[X] &= \frac{dM_X}{ds}\Big |_{s=0} \\
+&= \frac{d}{ds} \left [ \frac{1}{4}+\frac{1}{2}e^s+\frac{1}{4}e^{2s} \right]_0 \\
+& = 1,
+\end{align*}
+\begin{align*}
+E[X^2] &= \frac{d^2M_X}{ds^2}\Big |_{s=0} \\
+&= \frac{d^2}{ds^2} \left [ \frac{1}{4}+\frac{1}{2}e^s+\frac{1}{4}e^{2s} \right]_0 \\
+& = \frac{3}{2}.
+\end{align*}
+We therefore have that $Var[X] = 3/2-1 = 1/2.$
+
+\end{problem}
+
+\begin{problem}{8}  We already know from Problem 5 in section 6.1.6 of the book that the MGF for a $\mathcal N(\mu, \sigma^2)$ distribution is $M(s) = \exp ( s\mu +\sigma^2 s^2/2 )$, and since the MGF of the sum of independent random variables is the product of the MGFs of the random variables, we have that:
+\begin{align*}
+M_{X+Y}(s) &= M_X(s)M_Y(s) \\
+&=\exp \left(s\mu_X+\frac{\sigma_X^2 s^2}{2} \right)\exp \left(s\mu_Y+\frac{\sigma_Y^2 s^2}{2} \right) \\
+& = \exp \left[s(\mu_X+\mu_Y)+\frac{s^2}{2}(\sigma_X^2+\sigma_Y^2) \right].
+\end{align*}
+We recognize this as the MGF of a $\mathcal N(\mu_X+\mu_Y, \sigma_X^2+\sigma_Y^2)$ distribution.  Further, by Theorem 6.1 in the book, the MGF of a random variable uniquely determines its distribution, so that indeed $X+Y \sim \mathcal N(\mu_X+\mu_Y, \sigma_X^2+ \sigma_Y^2)$.
+
+\end{problem}
+
+
+\begin{problem}{9} 
+\begin{align*}
+M_X(s) &= E[e^{sX}] \\
+& = \frac{\lambda}{2}\int_{-\infty}^\infty e^{-\lambda |x|+sx}dx \\ 
+&=\frac{\lambda}{2}\left [\int_{-\infty}^0e^{x(\lambda+s)}dx+ \int_0^{\infty}e^{x(s-\lambda)}dx \right]
+\end{align*}
+Notice that, for both integrals to be finite, we have the conditions that $\lambda +s>0$ (for the first integral) and $s- \lambda <0$ (for the second), or in other words $|s|<\lambda$.  Assuming these two conditions, the integral can easily be evaluated, and is:
+\begin{equation*}
+M_X(s) = \frac{\lambda^2}{\lambda^2-s^2}.
+\end{equation*}
+
+\end{problem}
+
+\begin{problem}{10}
+\begin{align*}
+M_X(s) &= E[e^{sX}] \\
+& = \int_0^\infty \frac{e^{sx}\lambda^\alpha x^{\alpha-1}e^{-\lambda x}}{\Gamma(\alpha)}dx \\
+& = \frac{\lambda^\alpha}{\Gamma(\alpha)}\int_0^\infty x^{\alpha-1} e^{-(\lambda-s)x}dx \\
+&= \frac{\lambda^\alpha}{\Gamma(\alpha)}\frac{\Gamma(\alpha)}{(\lambda-s)^\alpha}~~\mathrm{for~} s<\lambda \\
+& = \left( \frac{\lambda}{\lambda-s}\right)^\alpha
+\end{align*}
+
+\end{problem}
+
+
+\begin{problem}{11} For $X_i \sim Exp(\lambda)$, from Example 6.5 in the book, we have that $M_{X_i} = \lambda/(\lambda-s)$ for $s<\lambda$.  Moreover since the MGF of the sum of independent random variables is the product of the MGFs of the random variables, we have that:
+\begin{align*}
+M_Y(s) &= M_{X_1}(s)M_{X_2}(s) \ldots M_{X_n}(s) \\
+&=\left(\frac{\lambda}{\lambda-s}\right)^n,
+\end{align*}
+which, from the previous problem, we notice is the MGF of a $Gamma(n, \lambda)$ random variable.  By Theorem 6.1 in the book, the MGF of a random variable uniquely determines its distribution,
+so $Y\sim Gamma(n, \lambda)$.
+\end{problem}
+
+\begin{problem}{12}
+By the definition of the characteristic function, we have that:
+\begin{align*}
+\phi_Y(\omega) &= E[e^{i \omega Y}] \\
+& = E[e^{i \omega (aX+b)}] \\
+&= e^{i\omega b}E[e^{i(a\omega)X}] \\
+&=e^{i\omega b}\phi_X(a\omega).
+\end{align*}
+\end{problem}
+
+\begin{problem}{13}$ $
+\begin{enumerate}
+\item  To solve for $E[\bm U]$, I first find the marginal PDFs:
+	\begin{equation*}  
+ f_{X}(x) = \begin{cases}
+                                  \int_0^1 \frac{1}{2}(3x+y)dy & \text{for $0\le x\le 1$} \\
+                                  0& \text{otherwise}
+       \end{cases} \\
+= \begin{cases}
+                                 \frac{3}{2}x+\frac{1}{4} & \text{for $0\le x\le 1$} \\
+                                  0& \text{otherwise}
+       \end{cases},
+\end{equation*}
+and
+	\begin{equation*}  
+ f_{Y}(y) = \begin{cases}
+                                  \int_0^1 \frac{1}{2}(3x+y)dx & \text{for $0\le y\le 1$} \\
+                                  0& \text{otherwise}
+       \end{cases} \\
+= \begin{cases}
+                                 \frac{1}{2}y+\frac{3}{4} & \text{for $0\le y\le 1$} \\
+                                  0& \text{otherwise}
+       \end{cases}.
+\end{equation*}
+Thus, $E[X] = \int_0^1x(3x/2+1/4)dx = 5/8$ and $E[Y] = \int_0^1y(y/2+3/4)dy = 13/24$, so that
+\begin{equation*}
+E[\bm U]  =\begin{bmatrix} E[X] \\ E[Y] \end{bmatrix}= \left[\begin{matrix}
+    \frac{5}{8}  \\[6pt]
+    \frac{13}{24}
+\end{matrix}\right].
+\end{equation*}
+
+\item In order to solve for$\bm R_U$, I will first need to compute $E[X^2]$, $E[Y^2]$ and $E[XY]$:
+\begin{equation*}
+E[X^2] = \int_0^1x^2 \left(\frac{3}{2}x+\frac{1}{4} \right)dx = \frac{11}{24},
+\end{equation*}
+\begin{equation*}
+E[Y^2] = \int_0^1y^2 \left(\frac{1}{2}y+\frac{3}{4} \right)dy = \frac{3}{8},
+\end{equation*}
+and
+\begin{equation*}
+E[XY] = \frac{1}{2}\int_0^1 \int_0^1xy (3x+y)dxdy = \frac{1}{3}.
+\end{equation*}
+I can now immediately write down the correlation matrix:
+\begin{align*}
+\bm{R_U}  &= E[\bm U \bm U^T] \\
+& = \left[\begin{matrix}
+    E[X^2] & E[XY] \\
+    E[YX] & E[Y^2] 
+\end{matrix}\right] \\
+&= \left[\begin{matrix}
+    \frac{11}{24} & \frac{1}{3} \\[6pt]
+    \frac{1}{3} & \frac{3}{8} 
+\end{matrix}\right].
+\end{align*}
+
+\item  The covariance matrix is:
+
+\begin{align*}
+\bm{C_U}  &= E[\bm U \bm U^T]-E[\bm U] E[\bm U]^T \\
+& =\bm{R_U} - \left[\begin{matrix}
+    E[X]^2 & E[X]E[Y] \\
+    E[Y]E[X] & E[Y]^2 
+\end{matrix}\right] \\
+&= \left[\begin{matrix}
+    \frac{11}{24} & \frac{1}{3} \\[6pt]
+    \frac{1}{3} & \frac{3}{8} 
+\end{matrix}\right] -
+ \left[\begin{matrix}
+    \left(\frac{5}{8}\right)^2 & \left(\frac{5}{8}\right) \left(\frac{13}{24}\right) \\[6pt]
+    \left(\frac{13}{24}\right)\left(\frac{5}{8}\right) & \left(\frac{13}{24}\right)^2 
+\end{matrix}\right]  \\
+&= \left[\begin{matrix}
+    \frac{13}{192} & -\frac{1}{192} \\[6pt]
+    -\frac{1}{192} & \frac{47}{576}
+\end{matrix}\right].
+\end{align*}
+
+\end{enumerate}
+\end{problem}
+
+
+
+\begin{problem}{14}$ $
+
+\begin{enumerate}
+\item  First note that the range of $Y$ is $[0, 1]$.  Since we know the distribution of $Y|X=x$ and the distribution of $X$. the law of total probability for PDFs will probably be useful.  Note that $f_{Y|X}(y|x) = 1/x$ for $0 \le y \le x$ and 0 otherwise, which can be written as $(1/x)\mathbbm 1 \{0 \le y \le x \}$, which will be helpful in the integral to get the bounds of integration correct:
+\begin{align*}
+f_Y(y)& = \int_0^1 f_{Y|X}(y|x)f_X(x)dx \\
+&= \int_0^1\frac{1}{x}\mathbbm 1 \{0 \le y \le x \} dx \\
+&= \int_0^1\frac{1}{x}\mathbbm 1 \{y \le x \} dx ~~\mathrm{for~}y>0\\
+&=\int_y^1\frac{1}{x} dx \\
+&= - \ln y,
+\end{align*}
+and thus
+\[
+  f_Y(y) =
+  \begin{cases}
+                                   -\ln y & \text{for $0\le y\le1$} \\
+                                   0 & \text{otherwise},
+  \end{cases}
+\]
+which I checked integrates to 1. 
+
+Finding the PDF of $Z$ is very similar to that of finding the PDF for $Y$.  Firstly, the range of $Z$ is $[0, 2]$.  Note that in this case $f_{Z|X}(z|x) = 1/2x$ for $0 \le z \le 2z$ and 0 otherwise, which can be written as $(1/2x)\mathbbm 1 \{0 \le z \le 2x \}$, so that the integral above becomes:
+\begin{align*}
+f_Z(z) &= \int_0^1\frac{1}{2x}\mathbbm 1 \{z \le 2x \} dx ~~\mathrm{for~}z>0\\
+&=\int_{z/2}^1\frac{1}{2x} dx \\
+&= \frac{\ln 2}{2}- \frac{\ln z}{2},
+\end{align*}
+and thus
+\[
+  f_Z(z) =
+  \begin{cases}
+                                   \frac{\ln 2}{2}- \frac{\ln z}{2} & \text{for $0\le z\le 2$} \\
+                                   0 & \text{otherwise},
+  \end{cases}
+\]
+which I checked integrates to 1. 
+
+\item Using the chain rule of probability, we have that:
+\begin{align*}
+f_{XYZ}(x, y, z) &= f_{Z|XY}(z|x, y)f_{Y|X}(y|x)f_X(x) \\
+& =f_{Z|X}(z|x)f_{Y|X}(y|x)f_X(x),
+\end{align*}
+where in the second line I used the fact that $Z$ and $Y$ are conditionally independent given $X$.  We thus have that 
+\[
+  f_{XYZ}(x, y, z) =
+  \begin{cases}
+                                   \frac{1}{2x^2} & \text{for $0\le x \le 1 $}, 0\le y \le x, 0\le z \le 2x \\
+                                   0 & \text{otherwise},
+  \end{cases}
+\]
+which I again checked integrates to 1. 
+\end{enumerate}
+
+\end{problem}
+
+
+\begin{problem}{15}$ $
+\begin{enumerate}
+
+\item As stated in the problem, we have that 
+\begin{equation*}
+\begin{bmatrix} X_1 \\ X_2 \end{bmatrix} \sim \mathcal N \left(\begin{bmatrix} 1 \\ 2 \end{bmatrix},   \left[\begin{matrix}
+    4 & 1 \\
+    1 & 1 
+\end{matrix}\right] \right),
+\end{equation*}
+and for a bivariate normal, we know that 
+\begin{equation*}
+\begin{bmatrix} X_1 \\ X_2 \end{bmatrix} \sim \mathcal N \left(\begin{bmatrix} E[X_1] \\ E[X_2] \end{bmatrix},   \left[\begin{matrix}
+    Var[X_1] & Cov[X_1, X_2] \\
+    Cov[X_2, X_1] & Var[X_2] 
+\end{matrix}\right] \right).
+\end{equation*}
+Thus, I have that $X_2 \sim \mathcal N(2, 1)$, so that:
+\begin{align*}
+P(X_2>0) &= 1-P(X_2\le 0)\\
+&= 1-\Phi \left(\frac{0-2}{1} \right) \\
+&= \Phi(2) \\
+& \approx 0.98.
+\end{align*}
+
+\item 
+
+\begin{align*}
+\bm Y &= \bm A \bm X +\bm b \\
+=& \left[\begin{matrix}
+    2 & 1 \\
+    -1 & 1 \\
+    1 & 3  
+\end{matrix}\right] \begin{bmatrix} X_1 \\ X_2 \end{bmatrix}+\begin{bmatrix} -1 \\ 0 \\1 \end{bmatrix} \\
+& = \begin{bmatrix} 2X_1+X_2-1 \\ -X_1+X_2 \\X_1+3X_2+1 \end{bmatrix}
+\end{align*}
+$\implies$
+\begin{align*}
+E[\bm Y] &=  \begin{bmatrix} 2E[X_1]+E[X_2]-1 \\ -E[X_1]+E[X_2] \\E[X_1]+3E[X_2]+1 \end{bmatrix}\\
+& = \begin{bmatrix} 2\cdot 1+2-1 \\ -1+2 \\1+3\cdot 2+1 \end{bmatrix} \\
+& = \begin{bmatrix} 3 \\ 1 \\8 \end{bmatrix} 
+\end{align*}
+
+\item  We know that a linear combination of a multivariate Gaussian random variable is also Gaussian.  Specifically, $\bm Y$ is distributed as $\bm Y\sim \mathcal N(\bm A E[\bm X] \bm A+\bm b, \bm A \bm{C_X} \bm A^T)$, and thus the covariance matrix of $\bm Y$ is
+\begin{align*}
+\bm{C_Y}& =  \bm A \bm{C_X} \bm A^T \\
+&=\left[\begin{matrix}
+    2 & 1 \\
+    -1 & 1 \\
+    1 & 3  
+\end{matrix}\right] \left[\begin{matrix}
+    4 & 1 \\
+    1 & 1
+\end{matrix}\right] \left[\begin{matrix}
+    2 & -1 &1 \\
+    1 & 1 & 3 
+\end{matrix}\right] \\
+& = \left[\begin{matrix}
+    21& -6 &18 \\
+    -6& 3 & -13 \\
+    18& -3 &19 
+\end{matrix}\right].
+\end{align*}
+Notice that, as it should be, $\bm{C_Y}$ is symmetric.
+
+\item As with the first part of this problem, we know that
+
+\begin{equation*}
+\begin{bmatrix} Y_1 \\Y_2 \\Y_3 \end{bmatrix} \sim \mathcal N \left(\begin{bmatrix} E[Y_1] \\ E[Y_2]  \\ E[Y_3] \end{bmatrix},   \left[\begin{matrix}
+    Var[Y_1] & Cov[Y_1, Y_2] & Cov[Y_1, Y_3] \\
+    Cov[Y_2, Y_1] & Var[Y_2] & Cov[Y_2, Y_3] \\
+    Cov[Y_3, Y_1] & Cov[Y_3, Y_2] & Var[Y_3]
+\end{matrix}\right] \right),
+\end{equation*}
+so that $Y_2 \sim \mathcal N(1, 3)$, and therefore:
+\begin{equation*}
+P(Y_2 \le 2) = \phi \left(\frac{2-1}{\sqrt{3}} \right) \approx 0.72.
+\end{equation*}
+
+\end{enumerate}
+
+\end{problem}
+
+\begin{problem}{16}  To solve this problem, I first review how to ``complete the square" for matrices.  For $a \in \mathbb R$, $x, b \in \mathbb R^{m}$ and $C \in \mathbb R^{m \times m}$ (and symmetric), a quadratic of the form
+\begin{equation*}
+a+{\bm b}^T{\bm x} + \frac{1}{2}{\bm x}^T \bm C {\bm x}
+\end{equation*}
+can be factored into the form
+\begin{equation*}
+\frac{1}{2}({\bm x}-{\bm m})^T \bm M ({\bm x}-{\bm m})+v,
+\end{equation*}
+where 
+\begin{equation*}
+\bm M= \bm C,
+\end{equation*}
+\begin{equation*}
+{\bm m}=-\bm C^{-1}{\bm b},
+\end{equation*}
+and
+\begin{equation*}
+v = a-\frac{1}{2} {\bm b}^T \bm C^{-1} {\bm b}.
+\end{equation*}
+I now explicitly write out the MGF of $\bm X$:
+\begin{align*}
+M_{\bm X}(s, t, r) &= E[e^{sX_1+tX_2+rX_3}] \\
+& = \int_{\mathbb R^3} \exp \{ \bm s^T \bm x \}\frac{1}{(2 \pi)^{3/2} |\bm \Sigma|^{1/2}} \exp \left \{-\frac{1}{2}(\bm x-\bm \mu)^T \bm \Sigma^{-1}(\bm x-\bm \mu) \right \}d^3x\\
+& =\frac{1}{(2 \pi)^{3/2} |\bm \Sigma|^{1/2}} \int_{\mathbb R^3}  \exp \left \{ -\frac{1}{2}(\bm x-\bm \mu)^T \bm \Sigma^{-1}(\bm x-\bm \mu) + \bm s^T \bm x\right \}d^3x,
+\end{align*}
+where $\bm x^T \equiv [x_1, x_2, x_3]$ and $\bm s^T \equiv[s, t, r]$.  To make the exponent more Gaussian looking, I now expand the exponent out and complete the square (note that since $\bm \Sigma$ is symmetric, then so too is $\bm \Sigma^{-1}$):
+\begin{align*}
+-\frac{1}{2}(\bm x-\bm \mu)^T \bm \Sigma^{-1}(\bm x-\bm \mu) + \bm s^T \bm x & = -\frac{1}{2}\left [ \bm x^T \bm \Sigma^{-1}\bm x -\bm x^T \bm \Sigma^{-1}\bm \mu-\bm \mu^T \bm \Sigma^{-1}\bm x  +\bm \mu^T \bm \Sigma^{-1}\bm \mu  \right ] + \bm s^T \bm x \\
+ & = -\frac{1}{2} \bm x^T \bm \Sigma^{-1}\bm x +\bm \mu^T \bm \Sigma^{-1}\bm x  -\frac{1}{2} \bm \mu^T \bm \Sigma^{-1}\bm \mu + \bm s^T \bm x \\
+  & = -\frac{1}{2} \bm x^T \bm \Sigma^{-1}\bm x +(\bm s^T+ \bm \mu^T \bm \Sigma^{-1})\bm x  -\frac{1}{2} \bm \mu^T \bm \Sigma^{-1}\bm \mu,
+\end{align*}
+where I have used the fact that $(\bm x^T \bm \Sigma^{-1}\bm \mu )^T=\bm x^T \bm \Sigma^{-1}\bm \mu$ since this is just a real number.  I can now read off $a$, $\bm b$ and $\bm C$:
+\begin{equation*}
+a = -\frac{1}{2} \bm \mu^T \bm \Sigma^{-1}\bm \mu,
+\end{equation*}
+\begin{equation*}
+\bm b^T = \bm s^T+ \bm \mu^T \bm \Sigma^{-1}
+\end{equation*}
+and 
+\begin{equation*}
+\bm C = -\bm \Sigma^{-1},
+\end{equation*}
+so that 
+\begin{equation*}
+\bm b =(\bm b ^T)^T =\bm s + \bm \Sigma^{-1} \bm \mu
+\end{equation*}
+and 
+\begin{equation*}
+\bm C^{-1} = \left( -{\bm  \Sigma^{-1}}\right)^{-1}=-\bm \Sigma .
+\end{equation*} 
+Finally, the exponent can be re-expressed as
+\begin{equation*}
+-\frac{1}{2}({\bm x}-{\bm{\tilde m}})^T \bm {\tilde M }({\bm x}-{{\bm{\tilde m}}})+\tilde v,
+\end{equation*}
+where 
+\begin{equation*}
+\bm{\tilde m} = \bm \Sigma(\bm s+\bm \Sigma^{-1}\bm \mu),
+\end{equation*}
+\begin{equation*}
+\bm{\tilde M} = \bm \Sigma^{-1}
+\end{equation*}
+and
+\begin{align*}
+\tilde v &= -\frac{1}{2} \bm \mu^T \bm \Sigma^{-1}\bm \mu +\frac{1}{2}(\bm s^T+ \bm \mu^T \bm \Sigma^{-1}) \bm \Sigma (\bm s + \bm \Sigma^{-1} \bm \mu) \\
+& =\bm s^T \bm \mu +\frac{\bm s^T \bm \Sigma s}{2},
+\end{align*}
+so that the integral becomes:
+\begin{align*}
+M_{\bm X}(s, t, r) &= \exp ( \tilde v) \frac{1}{(2 \pi)^{3/2} | \bm \Sigma |^{1/2}} \int_{\mathbb R^3}  \exp \left \{ -\frac{1}{2}({\bm x}-{\bm{\tilde m}})^T \bm \Sigma^{-1}({\bm x}-{{\bm{\tilde m}}})\right \}d^3x \\
+&=\exp \left ( \bm s^T \bm \mu +\frac{\bm s^T \bm \Sigma s}{2} \right ) ~~ \forall \bm s \in \mathbb R^3.
+\end{align*}
+I have used the fact that the integral is that of a Gaussian integrated over its entire domain, so that the integral evaluates to 1.  Note that we probably could have guessed this form of the MGF of $\bm X$, since it is the vector analogue of the 1 dimensional case: $M_X(s) = \exp \{s\mu +\sigma^2 s^2/2 \}$, as found in Problem 5 of 6.1.6 in the book.
+
+The specified values of the mean vector and covariance matrix are:
+\begin{equation*}
+ \bm \mu = \left[\begin{matrix}
+    1\\
+    2 \\
+    0
+\end{matrix}\right],
+\end{equation*}
+and 
+\begin{equation*}
+\bm \Sigma = \left[\begin{matrix}
+    9& 1 &-1 \\
+    1& 4 & 2 \\
+    -1& 2 &4
+\end{matrix}\right],
+\end{equation*}
+and plugging in these specific values into the equation I derived above, and multiplying the matrices, I finally arrive at:
+\begin{equation*}
+M_{\bm X}(s, t, r) = \exp \left \{ s\left (\frac{9}{2}s+1 \right)+2t(t+1)+2r^2-rs+st+2rt \right \}.
+\end{equation*}
+
+\end{problem}
+

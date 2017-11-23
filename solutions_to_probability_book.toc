@@ -3,5 +3,6 @@
 \contentsline {chapter}{\numberline {3}Discrete Random Variables}{35}
 \contentsline {chapter}{\numberline {4}Continuous and Mixed Random Variables}{53}
 \contentsline {chapter}{\numberline {5}Joint Distributions}{71}
-\contentsline {chapter}{\numberline {6}Introduction to Simulation Using Python}{105}
-\contentsline {chapter}{\numberline {7}Recursive Methods}{131}
+\contentsline {chapter}{\numberline {6}Methods for More Than Two Random Variables}{105}
+\contentsline {chapter}{\numberline {7}Introduction to Simulation Using Python}{115}
+\contentsline {chapter}{\numberline {8}Recursive Methods}{141}
