@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  28 NOV 2017 12:22
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  30 NOV 2017 15:12
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1516,23 +1516,42 @@ Chapter 8.
 ]
 \openout2 = `chpt13/chpt13.aux'.
 
- (./chpt13/chpt13.tex) [150
+ (./chpt13/chpt13.tex [150
 
-] (./solutions_to_probability_book.aux
-(./chpt1/chpt1.aux) (./chpt2/chpt2.aux) (./chpt3/chpt3.aux) (./chpt4/chpt4.aux)
-(./chpt5/chpt5.aux) (./chpt6/chpt6.aux) (./chpt13/chpt13.aux))
+] [151] [152]
+<chpt13/prob4.pdf, id=951, 823.87799pt x 289.08pt>
+File: chpt13/prob4.pdf Graphic file (type pdf)
+ <use chpt13/prob4.pdf>
+Package pdftex.def Info: chpt13/prob4.pdf used on input line 186.
+(pdftex.def)             Requested size: 486.53638pt x 170.71652pt.
+
+Overfull \hbox (16.78136pt too wide) in paragraph at lines 186--187
+ [][] 
+ []
+
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 206.
+
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 206.
+ [153]) [154 <./chpt13/prob4.pdf>] (./solutions_to_probability_book.aux (./chpt
+1/chpt1.aux)
+(./chpt2/chpt2.aux) (./chpt3/chpt3.aux) (./chpt4/chpt4.aux) (./chpt5/chpt5.aux)
+(./chpt6/chpt6.aux) (./chpt13/chpt13.aux))
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 15971 strings out of 492995
- 302576 string characters out of 6132704
- 362797 words of memory out of 5000000
- 19093 multiletter control sequences out of 15000+600000
+ 15996 strings out of 492995
+ 303030 string characters out of 6132704
+ 362810 words of memory out of 5000000
+ 19114 multiletter control sequences out of 15000+600000
  17656 words of font info for 67 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,20n,54p,1562b,1144s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 55i,20n,54p,1562b,1469s stack positions out of 5000i,500n,10000p,200000b,80000s
  </Users/rubind/Library/texlive/2017/texmf-var/fonts/pk/ljfour/public/bbm/bbm
 10.657pk></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cmextr
 a/cmbsy8.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm
@@ -1567,11 +1586,11 @@ lmmib10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/lm/lmr10.pfb
 st/fonts/type1/public/lm/lmsy8.pfb></usr/local/texlive/2017/texmf-dist/fonts/ty
 pe1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2017/texmf-dist/font
 s/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on solutions_to_probability_book.pdf (150 pages, 4238532 bytes).
+Output written on solutions_to_probability_book.pdf (154 pages, 4258026 bytes).
 
 PDF statistics:
- 1026 PDF objects out of 1200 (max. 8388607)
- 732 compressed objects within 8 object streams
+ 1057 PDF objects out of 1200 (max. 8388607)
+ 755 compressed objects within 8 object streams
  0 named destinations out of 1000 (max. 500000)
- 248 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 253 words of extra memory for PDF output out of 10000 (max. 10000000)
 
