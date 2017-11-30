@@ -177,7 +177,7 @@ Finally, for a sequence that starts with 2 head and with $n=1$, the number of he
 
 I can check this coupled set of recursive equations by recognizing that we can compute $P(A_n)$ directly using the binomial distribution and only summing over the number of successes which are divisible by 3.  This can be written as:
 \begin{equation*}
-P(A_n) =\sum_{k=0}^{\floor{\frac{n}{3}} }\binom{n}{3k} p^nq^{n-3k}.
+P(A_n) =\sum_{k=0}^{\floor{\frac{n}{3}} }\binom{n}{3k} p^{3k}q^{n-3k}.
 \end{equation*}
 I wrote a python function (below) to compute $P(A_n)$ using both methods.  I compute $P(A_n)$ for a range of $n$, for several values of $p$, and plot $P(A_n)$ calculated recursively against  $P(A_n)$ calculated with the binomial distribution as well as the 45 degree line in Fig.~\ref{fig:prob_4}.  If there is perfect agreement between the 2 methods, the points should lie along this line, and indeed this is exactly what we see.
 
