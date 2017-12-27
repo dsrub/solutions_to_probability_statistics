@@ -4,5 +4,6 @@
 \contentsline {chapter}{\numberline {4}Continuous and Mixed Random Variables}{53}
 \contentsline {chapter}{\numberline {5}Joint Distributions}{71}
 \contentsline {chapter}{\numberline {6}Methods for More Than Two Random Variables}{105}
-\contentsline {chapter}{\numberline {7}Introduction to Simulation Using Python}{123}
-\contentsline {chapter}{\numberline {8}Recursive Methods}{149}
+\contentsline {chapter}{\numberline {7}Limit Theorems and Convergence of Random Variables}{123}
+\contentsline {chapter}{\numberline {8}Introduction to Simulation Using Python}{135}
+\contentsline {chapter}{\numberline {9}Recursive Methods}{161}

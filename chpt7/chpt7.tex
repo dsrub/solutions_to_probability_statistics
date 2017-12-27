@@ -1,0 +1,433 @@
+\begin{problem}{1}$ $
+\begin{enumerate}
+\item 
+\begin{align*}
+E[M_n] &= \frac{1}{n}E[X_1+\ldots+X_n] \\
+& = \frac{1}{n}nE[X_1] \\
+& = \frac{1}{2}
+\end{align*}
+
+\begin{align*}
+Var[M_n] &= \frac{1}{n^2}Var[X_1+\ldots+X_n] \\
+& = \frac{1}{n^2}nVar[X_1] ~~\mathrm{(independence)}\\
+& = \frac{1}{12n}
+\end{align*}
+
+\item 
+\begin{align*}
+P\left(\left |M_n-\frac{1}{2} \right| \ge \frac{1}{100}\right) &= P\left( |M_n-E[M_n]| \ge \frac{1}{100}\right) \\
+& \le \frac{Var[M_n]}{\left(\frac{1}{100}\right)^2} \\
+& = \frac{2500}{3n}
+\end{align*}
+
+\item
+
+\begin{equation*}
+\lim_{n \rightarrow \infty} P\left( |M_n-E[M_n]| \ge \frac{1}{100}\right)\le \lim_{n \rightarrow \infty} \frac{2500}{3n} = 0
+\end{equation*}
+$\implies$
+\begin{equation*}
+\lim_{n \rightarrow \infty} P\left( \left|M_n-\frac{1}{2}\right| \ge \frac{1}{100}\right) = 0
+\end{equation*}
+
+\end{enumerate}
+\end{problem}
+
+\begin{problem}{2} Let $X_1, X_2, \ldots, X_{365}$ be the number of accidents on day 1, day 2, $\ldots$, day 365, so that the total number of accidents in the year is $Y = X_1+\ldots+X_{365}$.  We know that $X_1, X_2, \ldots, X_{365} \distas{iid} Poiss(\lambda)$, where $\lambda = $ 10 accidents/day, so that $\mu = E[X_i] = \lambda = 10$ and $\sigma = \sqrt{Var[X_i]} = \sqrt{\lambda} = \sqrt{10}$.   Using the central limit theorem, I have
+\begin{align*}
+P(Y>3800) & = P\left(\frac{Y-365\cdot 10}{\sqrt{365\cdot 10}}>\frac{3800-365\cdot 10}{\sqrt{365\cdot 10}} \right) \\
+& = P\left(Z_{365}>\frac{3800-365\cdot 10}{\sqrt{365\cdot 10}} \right) \\
+& = 1- P\left(Z_{365} \le \frac{3800-365\cdot 10}{\sqrt{365\cdot 10}} \right) \\
+& \approx 1- \Phi \left( \frac{3800-365\cdot 10}{\sqrt{365\cdot 10}}\right ) \\
+& \approx 6.5 \times 10^{-3}.
+\end{align*}
+\end{problem}
+
+\begin{problem}{3} Let the random variable, $X_i$ be 0 if the $i^{th}$ bit is not received in error and 1 if it is.  Notice that $X_1, X_2, \ldots, X_{1000} \distas{iid} Bern(0.1)$, and let the total number of errors, $Y$, be $Y=X_1+\ldots+X_{1000}$.  Note that $\mu = E[X_i] = p = 0.1$ and $\sigma = \sqrt{Var[X_i]} = \sqrt{p(1-p)} = \sqrt{0.09}$.  We seek the probability of decoding failure, in other words $P(Y>125)$:
+\begin{align*}
+P(Y>125) &= 1- P(Y \le125) \\
+& = 1- P\left (\frac{Y-1000\cdot 0.1}{\sqrt{0.09\cdot 1000}} \le \frac{125-1000\cdot 0.1}{\sqrt{0.09\cdot 1000}}\right ) \\
+& = 1- P\left (Z_{1000} \le \frac{125-1000\cdot 0.1}{\sqrt{0.09\cdot 1000}}\right ) \\
+& \approx 1- \Phi \left(\frac{25}{3\sqrt{10}} \right)\\
+&= 4.2 \times 10^{-3}.
+\end{align*}
+
+\end{problem}
+
+\begin{problem}{4} Let the random variable, $X_i$ be 0 if the $i^{th}$ student does not have a car and 1 if the $i^{th}$ student does have a car.  Notice that $X_1, X_2, \ldots, X_{50} \distas{iid} Bern(0.5)$, and let the total number of cars, $Y$, be $Y=X_1+\ldots+X_{50}$.  Note that $\mu = E[X_i] = p = 0.5$ and $\sigma = \sqrt{Var[X_i]} = \sqrt{p(1-p)} = 0.5$.  We seek the probability that there are not enough car spaces, in other words $P(Y>30)$:
+\begin{align*}
+P(Y>30) &= P(Y>29.5)~~\mathrm{(using~the~continuity~correction)} \\
+&=1- P(Y \le 29.5) \\
+& = 1- P\left (\frac{Y-50\cdot 0.5}{\sqrt{50}\cdot 0.5} \le \frac{29.5-50\cdot 0.5}{\sqrt{50}\cdot 0.5}\right ) \\
+& = 1- P\left (Z_{50} \le \frac{29.5-50\cdot 0.5}{\sqrt{50}\cdot 0.5}\right ) \\
+& \approx 1- \Phi \left(1.27 \right)\\
+& \approx 0.10.
+\end{align*}
+
+\end{problem}
+
+\begin{problem}{5} Let $N$, a random variable, be the number of jobs processed in 7 hours (420 mins).  We seek the probability that the number of jobs processed in 7 hours is less than or equal to 40, $P(N\le 40)$.  This can be rephrased as the probability that the total time to processes 40 jobs is greater than or equal to 7 hours:
+\begin{align*}
+P(N\le 40) &= P(X_1+\ldots+X_{40} \ge 420) \\
+& = P\left(\frac{X_1+\ldots+X_{40}-40\cdot 10}{\sqrt{40}\cdot \sqrt{2}} \ge \frac{420-40\cdot 10}{\sqrt{40}\cdot \sqrt{2}} \right) \\
+& = P\left(Z_{40} \ge \frac{5}{\sqrt{5}}\right) \\
+& = 1 - P\left(Z_{40} < \frac{5}{\sqrt{5}}\right) \\
+& \approx 1 - \Phi \left(\frac{5}{\sqrt{5}}\right) \\
+& \approx 1.3 \times 10^{-2}.
+\end{align*}
+
+\end{problem}
+
+\begin{problem}{6} Let $X_i$ be the number of heads flipped on toss $i$, so that the total proportion of heads out of $n$ tosses, $X$, is $X=(X_1+ \ldots +X_n)/n$.  Notice that $X_1, \ldots, X_n \distas{iid}Bern(0.5)$, so that $\mu = E[X_i] = p = 0.5$ and $\sigma = \sqrt{Var[X_i]} = \sqrt{0.5^2} = 0.5$.  To be at least 95\% sure that $0.45\le X \le 0.55$, we have that:
+\begin{align*}
+0.95 & \le P(0.45 \le X \le 0.55) \\
+& = P\left(\frac{0.45n-n\cdot0.5}{\sqrt{n}\cdot 0.5} \le \frac{X_1+\ldots+X_n-n\cdot0.5}{\sqrt{n}\cdot 0.5} \le \frac{0.55n-n\cdot0.5}{\sqrt{n}\cdot 0.5} \right) \\
+& = P\left(-0.1 \sqrt{n} \le Z_n \le 0.1 \sqrt{n}  \right) \\
+& \approx \Phi (0.1 \sqrt{n}) - \Phi (-0.1 \sqrt{n}) \\
+& =2\Phi (0.1 \sqrt{n}) - 1.
+\end{align*}
+Thus, I have that $0.95 \lesssim 2 \Phi(0.1\sqrt{n})-1$.  Applying the inverse normal CDF function to this inequality, I arrive at:
+\begin{equation}
+n \gtrsim \ceil*{100\left[ \Phi^{-1} \left ( \frac{1.95}{2} \right)\right]^2} = 385.
+\end{equation}
+
+\end{problem}
+
+\begin{problem}{7} Note that $X_1, X_2, \ldots, X_n$ are $iid$ with $\mu = E[X_i] = 0$ and $\sigma = \sqrt{Var[X_i]} = 2$, so we can use the CLT.  To be at least 95\% sure that the final estimate is within 0.1 units of $q$, we require:
+\begin{align*}
+0.95 &\le P(q-0.1 \le M_n \le q+0.1) \\
+& = P \left (q-0.1 \le \frac{X_1+\ldots+X_n +nq}{n} \le q+0.1 \right) \\
+& = P \left ((q-0.1)n-nq \le X_1+\ldots+X_n \le (q+0.1)n-nq \right) \\
+& = P \left (\frac{(q-0.1)n-nq}{2\sqrt{n}} \le \frac{X_1+\ldots+X_n}{2\sqrt{n}} \le \frac{(q+0.1)n-nq}{2\sqrt{n}} \right) \\
+& = P \left (\frac{-0.1\sqrt{n}}{2} \le Z_n \le \frac{0.1\sqrt{n}}{2} \right) \\
+& \approx \Phi \left( \frac{0.1\sqrt{n}}{2} \right)-\Phi \left( \frac{-0.1\sqrt{n}}{2} \right) \\
+& = 2\Phi \left( \frac{0.1\sqrt{n}}{2} \right)-1.
+\end{align*}
+We therefore have that $0.95 \lesssim 2 \Phi(0.1\sqrt{n}/2)-1$.  Applying the inverse normal CDF function to this inequality, I arrive at:
+\begin{equation}
+n \gtrsim \ceil*{400\left[ \Phi^{-1} \left ( \frac{1.95}{2} \right)\right]^2} = 1537.
+\end{equation}
+\end{problem}
+
+\begin{problem}{8}  To solve this problem, I first compute the limit of $\exp[n(x-1)]/\{1+\exp[n(x-1)] \}$ for $x>0$ as $n$ goes to $\infty$.  Notice that this function has different behavior for $x=1$ (in which case the limit evaluates easily to 1/2), $0<x<1$ (in which case the limit evaluates easily to 0) and for $x>1$ (in which case the numerator and denominator evaluate to infinity).  Using L'hopital's rule in this case I find that the limit evaluates to 1.  Therefore, I have that:
+\begin{equation*}  
+\lim_{n \rightarrow \infty} F_{X_n}(x) = \begin{cases}
+                                   \lim_{n \rightarrow \infty} \frac{e^{n(x-1)}}{1+e^{n(x-1)}} & \text{for $x > 0$} \\
+                                   0& \text{otherwise} 
+       \end{cases} \quad
+= \begin{cases}
+                                   0 & \text{for $-\infty<x<1$} \\
+                                    \frac{1}{2} & \text{for $x = 1$} \\
+                                   1 & \text{for $x >1$}.
+       \end{cases}
+\end{equation*}
+For the ``random variable", $X$, that takes on a value of 1 with probability 1, the CDF is:
+\[
+  F_X(x) =
+  \begin{cases}
+                                   0 & \text{for $-\infty<x<1$} \\
+                                   1 & \text{for $x\ge1$}
+  \end{cases}
+\]
+Thus, we see that $\lim_{n \rightarrow \infty} F_{X_n}(x)= F_X(x)$ everywhere $F_X(x)$ is continuous (i.e, $\mathbb{R}-\{1\}$), and hence $X_n \xrightarrow{d} X$.
+
+\end{problem}
+
+\begin{problem}{9}  To solve this problem, I first state without proof the following 2 limits:
+\begin{equation*}
+\lim_{n\rightarrow \infty}\frac{e^{nx}+xe^{nx}}{1+\left(\frac{n+1}{n}\right) e^n} = x~~~\mathrm{for}~~0\le x \le1,
+\end{equation*}
+and
+\begin{equation*}
+\lim_{n\rightarrow \infty}\frac{e^{nx}+e^{nx}}{1+\left(\frac{n+1}{n}\right) e^n} = 1~~~\mathrm{for}~~x>1.
+\end{equation*}
+I therefore have that:
+\begin{equation*}  
+\lim_{n \rightarrow \infty} F_{X_n}(x) = \begin{cases}
+				0 & \text{for $x < 0$} \\
+                                  \lim_{n\rightarrow \infty}\frac{e^{nx}+xe^{nx}}{1+\left(\frac{n+1}{n}\right) e^n} & \text{for $0\le x \le 1$} \\
+                                   \lim_{n\rightarrow \infty}\frac{e^{nx}+e^{nx}}{1+\left(\frac{n+1}{n}\right) e^n}& \text{for $x>1$} 
+       \end{cases} \quad
+= \begin{cases}
+                                   0 & \text{for $x < 0$} \\
+                                   x & \text{for $0\le x \le 1$}\\
+                                   1 & \text{for $x >1$},
+\end{cases}
+\end{equation*}
+which is the same CDF as a $Unif(0,1)$ distribution.  Hence, $X_n \xrightarrow{d} X$ for $X\sim Unif(0,1)$.
+
+\end{problem}
+
+\begin{problem}{10} $ $
+\begin{enumerate}
+
+\item 
+
+\begin{align*}
+\lim_{n \rightarrow \infty}P(|X_n-0|\ge \epsilon) &= \lim_{n \rightarrow \infty}P(X_n\ge \epsilon) ~~(\mathrm{since}~X_n\ge 0) \\
+& = \begin{cases}
+                                   \frac{1}{n^2} & \text{for $\epsilon \le n$} \\
+                                    0 & \text{for $\epsilon >n$}
+       \end{cases}\\
+& = \lim_{n \rightarrow \infty} \frac{1}{n^2} \\
+& = 0
+\end{align*}
+
+$\implies X_n \xrightarrow{p} 0$
+
+\item 
+
+\begin{align*}
+\lim_{n \rightarrow \infty}E[|X_n-0|^r] &= \lim_{n \rightarrow \infty}E[X_n^r] ~~(\mathrm{since}~X_n\ge 0) \\
+& = \lim_{n \rightarrow \infty} \frac{1}{n^2}n^r \\
+& = \lim_{n \rightarrow \infty} n^{r-2} \\
+& = 0 ~~(\mathrm{for}~1\le r<2) 
+\end{align*}
+$\implies X_n \xrightarrow{L^r} 0$ (for $1\le r<2$)
+
+\item 
+For $r \ge 2$,
+\begin{align*}
+\lim_{n \rightarrow \infty}E[|X_n-0|^r] &= \lim_{n \rightarrow \infty}E[X_n^r] ~~(\mathrm{since}~X_n\ge 0) \\
+& = \lim_{n \rightarrow \infty} \frac{1}{n^2}n^r \\
+& = \lim_{n \rightarrow \infty} n^{r-2},
+\end{align*}
+which converges to 1 for $r=2$ and diverges for $r>2$.  Therefore, $X_n$ does not converge to 0 in the $r^{th}$ mean for $r \ge 2$.
+
+\item  To solve this problem I use Theorem 7.5 in the book, and must thus show that $\sum_{n=1}^\infty P(|X_n| > \epsilon)$ (for all $\epsilon>0$) is finite:
+\begin{align*}
+\sum_{n=1}^\infty P(|X_n|> \epsilon)& =\sum_{n=1}^\infty P(X_n> \epsilon) \\
+& = \sum_{n=\ceil{\epsilon}}^\infty \frac{1}{n^2} \\
+&\le \sum_{n=1}^\infty \frac{1}{n^2} \\
+& = \frac{\pi^2}{6} \\
+& < \infty,
+\end{align*}
+where in the first line I have used the fact that $X_n$ is always greater than or equal to zero.
+
+\end{enumerate}
+\end{problem}
+
+\begin{problem}{11} $ $
+This is a hypergeometric experiment with $b = n+\delta$ (with $\delta = 0, 1, 2, \ldots$), $r=n$ and $k=10$, so that the PMF for $X_{10}, X_{11}, \ldots$ is given by:
+\begin{equation*}
+P_{X_n}(x) = \frac{\binom{n+\delta}{x}\binom{n}{10-x}}{\binom{2n+\delta}{10}},
+\end{equation*}
+for $x = 0, 1, \ldots 10$ (and 0 otherwise).  Since $X, X_{10}, X_{11}, \ldots$ are non-negative random integers (for $X\sim Bin(10, 0.5)$), by Theorem 7.1 in the book, we need only prove that $\lim_{n \rightarrow \infty}P_{X_n}(x) = P_X(x)$ to prove convergence in distribution.  As for the RHS of this equation, for $X\sim Bin(10, 0.5)$, the PMF is given by:
+\begin{equation*}
+P_{X}(x) = \binom{10}{x}(0.5)^{10},
+\end{equation*}
+for $x=0, 1, \ldots, 10$ (and 0 otherwise).   
+
+As for the LHS of this equation, taking the limit of $P_{X_n}(x)$ as $n \rightarrow \infty$ I have that:
+\begin{align*}
+\lim_{n \rightarrow \infty}P_{X_n}(x) &= \lim_{n \rightarrow \infty} \frac{\binom{n+\delta}{x}\binom{n}{10-x}}{\binom{2n+\delta}{10}} \\
+& = \lim_{n \rightarrow \infty} \binom{n+\delta}{x} \lim_{n \rightarrow \infty} \binom{n}{10-x}  \left[\lim_{n \rightarrow \infty} \binom{2n+\delta}{10}\right]^{-1}.
+\end{align*}
+The first limit can be found easily by expanding the factorial in the numerator:
+\begin{align*}
+\lim_{n \rightarrow \infty} \binom{n+\delta}{x} &= \frac{1}{x!}\lim_{n \rightarrow \infty} (n+\delta)(n+\delta-1)\ldots(n+\delta-x+1) \\
+&=\frac{1}{x!}\lim_{n \rightarrow \infty} n^x + \mathcal{O}\left( n^{x-1}\right) \\
+& = \lim_{n \rightarrow \infty} \frac{n^x}{x!},
+\end{align*}
+and the remaining 2 limits can be worked out similarly.  Plugging these limits in, I have that:
+\begin{align*}
+\lim_{n \rightarrow \infty}P_{X_n}(x) &= \lim_{n \rightarrow \infty} \left \{ \frac{n^x}{x!} \right \} \lim_{n \rightarrow \infty} \left \{ \frac{n^{10-x}}{(10-x)!} \right \} \lim_{n \rightarrow \infty}  \left \{ \left[\frac{(2n)^{10}}{10!} \right] \right \}^{-1}\\
+&= \lim_{n \rightarrow \infty}\left \{ \frac{n^x}{x!} \cdot \frac{n^{10-x}}{(10-x)!} \cdot \left[\frac{(2n)^{10}}{10!} \right]^{-1} \right \} \\
+& = \binom{10}{x}(0.5)^{10}.
+\end{align*}
+Thus $\lim_{n \rightarrow \infty}P_{X_n}(x) = P_X(x)$, and by Theorem 7.1 $X_{n} \xrightarrow{d} X$.
+
+\end{problem}
+
+\begin{problem}{12} Let 
+\begin{equation*}
+X_n = \frac{X_1+\ldots+X_n -n \mu_X}{\sigma_X \sqrt{n}},
+\end{equation*}
+where $X_1, \ldots, X_n$ are $iid$ from any distribution with finite mean $\mu_X$ and finite variance $\sigma^2_X$.  Also, let $Y_n$ be defined analogously (and let all $X_i$s be independent from all $Y_i$s, so that $X_n$ is independent of $Y_n$).  Moreover, let $X\sim \mathcal N(0, 1)$ and let $Y=X$.  Now, from the CLT, we know that $X_n \xrightarrow{d}X$ and $Y_n \xrightarrow{d}Y$.
+
+From the CLT, we also know that in the limit that $n \rightarrow \infty$, $X_n+Y_n$ is simply the sum of two independent standard normal random variables, so that in this limit $X_n+Y_n \sim \mathcal N(0, 2)$.  Also, since $X+Y=2X$, we have that $X+Y \sim \mathcal N(0, 4)$, since for $\mathcal X \sim \mathcal N(E[\mathcal X], Var[\mathcal X])$, $\mathcal Y=a\mathcal X+b \sim \mathcal N (a E[\mathcal X]+b, a^2 Var[\mathcal X])$ (see Sec. 6.1.5 from the book).  Thus, in this example, I have that $X_n \xrightarrow{d}X$ and $Y_n \xrightarrow{d}Y$, but $X_n+Y_n$ does not converge in distribution to $X+Y$.
+
+\end{problem}
+
+\begin{problem}{13} $X_n \xrightarrow{d} 0$ since:
+
+\begin{align*}
+\lim_{n \rightarrow \infty} P(|X_n| \ge \epsilon) &= \lim_{n \rightarrow \infty} 2 \int_{\epsilon}^\infty \frac{n}{2}e^{-nx}dx~~\mathrm{(by~symmetry)} \\
+&=\lim_{n \rightarrow \infty}  \frac{1}{e^{n \epsilon}} \\
+& = 0.
+\end{align*}
+
+\end{problem}
+
+\begin{problem}{14}  This can easily be proven by realizing that $X_n$ is never negative (so $|X_n|=X_n$), and by re-expressing the integral over the PDF in terms of an indicator functions depending on whether $\epsilon>1/n$ (in which case the lower bound of the integral is $\epsilon$) or whether $\epsilon \le 1/n$ (in which case the integral evaluates to 1):
+\begin{align*}
+\lim_{n \rightarrow \infty} P(|X_n|\ge \epsilon) &\lim_{n \rightarrow \infty} P(X_n\ge \epsilon)\\
+& =\lim_{n \rightarrow \infty} \left( \mathbbm{1}\left\{\epsilon > \frac{1}{n} \right\} \int_{\epsilon}^\infty \frac{1}{n}x^{-2}dx + \mathbbm{1} \left\{\epsilon \le \frac{1}{n} \right\} \right) \\
+& =\int_{\epsilon}^\infty x^{-2}dx\lim_{n \rightarrow \infty}\left( \mathbbm{1}\left\{\epsilon > \frac{1}{n} \right\} \right) \lim_{n \rightarrow \infty}\left( \frac{1}{n} \right) +\lim_{n \rightarrow \infty} \left( \mathbbm{1} \left\{\epsilon \le \frac{1}{n} \right\} \right) \\
+& = \int_{\epsilon}^\infty x^{-2}dx\cdot 1\cdot 0 + 0 \\
+&=0.
+\end{align*}
+
+\end{problem}
+
+ \begin{problem}{15}  For convenience, I first write $X_n$ in summation notation:
+ \begin{equation*}
+ X_n = \frac{1}{n} \left (\sum_{i=1}^{n-1}Y_i Y_{1+1}+Y_nY_1 \right ).  
+ \end{equation*}
+ To solve this problem, I will use Chebyshev's inequality, and will thus need to compute $E[X_n]$ and $Var[X_n]$.  Computing $E[X_n]$:
+ \begin{align*}
+ E[X_n] & = \frac{1}{n} \left(\sum_{i=1}^{n-1}E[Y_i Y_{1+1}]+E[Y_nY_1]  \right) \\
+ & = \frac{1}{n} \left(\sum_{i=1}^{n-1}E[Y_i] E[Y_{1+1}]+E[Y_n]E[Y_1]  \right) \\
+  & = \frac{1}{n} \left(\sum_{i=1}^{n-1}\mu^2+\mu^2 \right) \\
+  & = \mu^2,
+ \end{align*}
+ where in the first line I have used the linearity of expectation and in the second I have used the fact that all $Y$s are independent.  
+
+ Solving for $Var[X_n]$ is slightly more tricky.  To do this, I will first need to compute $Cov[Y_iY_{i+1}, Y_{i+1}Y_{i+2}]$ for $i=1, 2, \ldots n-2$ (I will also need to compute $Cov[Y_{n-1}Y_{n}, Y_{n}Y_{1}]$ and $Cov[Y_{n}Y_{1}, Y_{1}Y_{2}]$, but it is not difficult to show that the following computation gives the same answer for these 2 covariances) and $Var[Y_i Y_{i+1}]$ for $i=1, 2, \ldots n-1$ (I will also need to compute $Var[Y_nY_1]$ but, again, it is not difficult to show that the following computation gives the same answer for this variance).  Computing the covariance:
+ \begin{align*}
+Cov[Y_iY_{i+1}, Y_{i+1}Y_{i+2}] & = E[Y_iY_{i+1}Y_{i+1}Y_{i+2}]-E[Y_iY_{i+1}]E[Y_{i+1}Y_{i+2}] \\
+&= E[Y_i]E[Y_{i+1}^2]E[Y_{i+2}]-E[Y_i]E[Y_{i+1}]^2E[Y_{i+2}] \\
+& = \mu^2(E[Y_{i+1}^2]-E[Y_{i+1}]^2) \\
+& = \mu^2 \sigma^2,
+ \end{align*}
+ where in the second line I have used independence.   Now I compute the variance:
+  \begin{align*}
+Var[Y_i Y_{i+1}]& = E[(Y_iY_{i+1})^2] -(E[Y_iY_{i+1}])^2\\
+&=E[Y_i^2Y_{i+1}^2] -E[Y_i]^2E[Y_{i+1}]^2\\
+&=E[Y_i^2]E[Y_{i+1}^2] -E[Y_i]^2E[Y_{i+1}]^2\\
+&=(\sigma^2+E[Y_i]^2)(\sigma^2+E[Y_{i+1}]^2)] -E[Y_i]^2E[Y_{i+1}]^2\\
+&=(\sigma^2+\mu^2)(\sigma^2+\mu^2)] -\mu^2 \mu^2\\
+& = \sigma^4+2\sigma^2\mu^2,
+ \end{align*}
+ where in the second and third lines I have used independence.  I now compute $Var[X_n]$:
+ \begin{align*}
+ Var[X_n] &= \frac{1}{n^2}Var\left[ \sum_{i=1}^{n-1}Y_i Y_{1+1}+Y_nY_1\right] \\
+ & = \frac{1}{n^2} \Bigg(\sum_{i=1}^{n-1}Var[Y_i Y_{1+1}]+Var[Y_nY_1]+2\sum_{i=1}^{n-2}Cov[Y_iY_{i+1}, Y_{i+1}Y_{i+2}]+2Cov[Y_{n-1}Y_n, Y_nY_1] \\
+ &+2Cov[Y_{n}Y_1, Y_1Y_2]\Bigg) \\
+ & = \frac{1}{n^2}[n(\sigma^4+2\sigma^2\mu^2)+2n(\mu^2 \sigma^2)] \\
+ & = \frac{\sigma^2}{n}(\sigma^2+4\mu^2).
+ \end{align*}
+For the summation of the covariances, I have only summed over the covariances of adjacent pairs of $Y_iY_{i+1}$, since pairs that are 2 or more away from each other have zero covariance since they are independent (since they do not share any $Y$ random variables).  To see why this is the proper summation over the covariances, I illustrate the summation in a matrix form for $X_5$ below.  We must sum all off diagonal terms, however, only adjacent pairs contribute non zero covariance, indicated by the spades in the figure.  It is not difficult to see that my summation corresponds exactly to adding the cells containing spades in this figure.
+\definecolor{light-gray}{gray}{0.70}
+\begin{center}
+\bgroup
+\def\arraystretch{2.2}
+  \begin{tabular}{ | c | c | c | c | c | c |}
+    \hline
+     & $Y_1Y_2$ & $Y_2Y_3$& $Y_3Y_4$& $Y_4Y_5$& $Y_5Y_1$ \\  \hline
+    $Y_1Y_2$ &\cellcolor{light-gray} &$\spadesuit$ & & &$\spadesuit$ \\ \hline
+    $Y_2Y_3$ &$\spadesuit$ &\cellcolor{light-gray} &$\spadesuit$ && \\ \hline
+    $Y_3Y_4$ & & $\spadesuit$&\cellcolor{light-gray} & $\spadesuit$ & \\ \hline
+     $Y_4Y_5$ & & & $\spadesuit$&\cellcolor{light-gray} & $\spadesuit$\\ \hline
+     $Y_5Y_1$ & $\spadesuit$& & &$\spadesuit$ &\cellcolor{light-gray} \\
+    \hline
+  \end{tabular}
+  \egroup
+\end{center}
+
+Finally, I complete the problem using Chebyshev's inequality:
+\begin{align*}
+\lim_{n \rightarrow \infty}P(|X_n-\mu^2| \ge \epsilon) & = \lim_{n \rightarrow \infty}P(|X_n-E[X_n]| \ge \epsilon) \\
+& \le \lim_{n \rightarrow \infty} \frac{Var[X_n]}{\epsilon^2} \\
+& = \lim_{n \rightarrow \infty}\frac{\sigma^2 (\sigma^2+4 \mu^2)}{n \epsilon^2} \\
+& = 0.
+\end{align*}
+Since probabilities cannot be less than 0, I conclude that $\lim_{n \rightarrow \infty}P(|X_n-\mu^2| \ge \epsilon)=0$, so that $X_{n} \xrightarrow{p} \mu^2$.
+ 
+ \end{problem}
+ 
+ \begin{problem}{16}  Using some simple algebra, since $X_n =\left( \Pi_{i=1}^nY_i \right)^{1/n}$, I have that $\ln X_n = \frac{1}{n} \sum_{i=1}^n\ln Y_i$.  Using the WLLN, I therefore have that:
+ \begin{align*}
+ \lim_{n \rightarrow \infty} P(|\ln X_n -\gamma | \ge \epsilon) & =  \lim_{n \rightarrow \infty} P\left(\left | \frac{1}{n} \sum_{i=1}^n\ln Y_i -E[\ln Y_i]\right | \ge \epsilon\right) \\
+ & = 0.
+ \end{align*}
+ This therefore implies that $\ln X_{n} \xrightarrow{p} \gamma$.  Now, by the Continuous Mapping Theorem (Theorem 7.7 in the book), since $\exp(\cdot)$ is a continuous function, $\exp(\ln X_{n}) \xrightarrow{p} \exp(\gamma)$, or in other words: $X_{n} \xrightarrow{p} e^{\gamma}$.
+ \end{problem}
+
+
+\begin{problem}{17}  To solve this problem, I compute $E[|Y_n-\lambda |^2]$, keeping in mind that for a $Poiss(\lambda)$ distribution, $E[X]=Var[X]=\lambda$:
+\begin{align*}
+E[|Y_n-\lambda |^2]& = E[(Y_n-\lambda )^2] \\
+& = E\left[\left(\frac{1}{n}X_n-\lambda \right)^2\right] \\
+& = E\left[\frac{1}{n^2}(X_n - \lambda n)^2\right] \\
+&=\frac{1}{n^2} E\left[(X_n - E[X_n])^2\right] \\
+&=\frac{1}{n^2} Var[X_n] \\
+&=\frac{1}{n^2} n\lambda \\
+& = \frac{\lambda}{n}.
+\end{align*}
+I thus have that $\lim_{n \rightarrow \infty}E[|Y_n-\lambda |^2] = 0$, so that $Y_n \xrightarrow{m.s.} \lambda$.
+
+\end{problem}
+
+
+\begin{problem}{18}  Using Minkowski's inequality, I have
+\begin{align*}
+E[|X_n+Y_n -(X+Y)|^r] &= E[|(X_n-X)+(Y_n-Y)|^r]\\
+ &\le E[|(X_n-X)|^r]^{1/r}+E[|(Y_n-Y)|^r]^{1/r},
+\end{align*}
+so that:
+\begin{align*}
+\lim_{n \rightarrow \infty} E[|X_n+Y_n -(X+Y)|^r] &\le \lim_{n \rightarrow \infty}E[|(X_n-X)|^r]^{1/r}+\lim_{n \rightarrow \infty}E[|(Y_n-Y)|^r]^{1/r} \\
+& = \left ( \lim_{n \rightarrow \infty}E[|(X_n-X)|^r]\right)^{1/r}+\left ( \lim_{n \rightarrow \infty}E[|(Y_n-Y)|^r]\right)^{1/r} \\
+& = 0,
+\end{align*}
+where the last line follows since $X_n\xrightarrow{L^r} X$ and $Y_n\xrightarrow{L^r} Y$.  Since, $|X_n+Y_n -(X+Y)|^r\ge0$, $E[|X_n+Y_n -(X+Y)|^r]\ge0$, so that the inequality must hold with equality, and thus $X_n+Y_n \xrightarrow{L^r} X+Y$.
+
+\end{problem}
+
+\begin{problem}{19} To solve this problem, I utilize Theorem 7.5 in the book and show that $\sum_{n=1}^\infty P(|X_n| > \epsilon)$ (for all $\epsilon>0$) is finite:
+
+\begin{align*}
+\sum_{n=1}^\infty P(|X_n| > \epsilon) &=\sum_{n=1}^\infty P(X_n > \epsilon) \\
+&=\sum_{n=1}^\infty n^2 \int_\epsilon^\infty x e^{-\frac{n^2 x^2}{2}} dx\\
+&=\sum_{n=1}^\infty e^{-\frac{n^2 \epsilon^2}{2}},
+\end{align*}
+where in the first line I have used the fact that the random variable $X_n$ is never negative and in the third line I have solved the integral with a substitution of $u =n^2 \epsilon^2/2$.
+
+Now, it is not difficult to show that for positive $\mu$ and $n\ge 1$, as we have in this case, that $e^{-x^2 \mu }\le e^{-x \mu }$, and therefore, each term in the above summation is $\le e^{-n \epsilon^2/2}$:
+\begin{align*}
+\sum_{n=1}^\infty P(|X_n| > \epsilon) & \le \sum_{n=1}^\infty e^{-\frac{n \epsilon^2}{2}} \\
+&=\frac{e^{-\frac{\epsilon^2}{2}}}{1-e^{-\frac{\epsilon^2}{2}}} \\
+& < \infty~~\mathrm{(for~\epsilon>0)}.
+\end{align*}
+
+\end{problem}
+
+\begin{problem}{20}  Note that for $X_2 = Y_1, X_3=Y_1Y_2, X_4 = Y_1Y_2Y_3, \ldots$, with $Y_n \sim Bern(n/(n+1))$, $R_{X_n} = \{0,1\}$.  It is therefore not difficult to show that for this sequence, for $0<\epsilon <1$:
+\begin{align*}
+\sum_{n=2}^\infty P(|X_n|>\epsilon) &= \sum_{k=1}^\infty \frac{1}{k+1} \\
+& = \infty.
+\end{align*}
+Therefore, we cannot simply appeal to Theorem 7.5 and must thus use Theorem 7.6.  That is, we must show that for any $\epsilon>0$, $\lim_{m \rightarrow \infty}P(A_m)=1$, where the set $A_m$ is defined in the book.  I show this for $0<\epsilon <1$.  For this interval, from the definition of $A_m$:
+\begin{align*}
+A_m &= \{|X_n|<\epsilon, \forall n \ge m \} \\
+&= \{X_n<\epsilon, \forall n \ge m \} \\
+&= \{X_n=0, \forall n \ge m \}.
+\end{align*}
+Evaluating the probability of this event, I have that:
+\begin{align*}
+P(A_m) &= P(\{X_n=0, \forall n \ge m \})\\
+&= P(\{X_m=0, X_{m+1}=0, \ldots \})\\
+&=P(Y_{m-1}Y_{m-2}\ldots Y_1 = 0, Y_{m}Y_{m-1}\ldots Y_1 = 0, \ldots)\\
+&=P(Y_{m-1}Y_{m-2}\ldots Y_1 = 0)P(Y_{m}Y_{m-1}\ldots Y_1 = 0, Y_{m+1}Y_{m}\ldots Y_1 = 0, \ldots|Y_{m-1}Y_{m-2}\ldots Y_1 = 0) \\
+&=P(Y_{m-1}Y_{m-2}\ldots Y_1 = 0) \\
+& = 1-P\left( \left( Y_{m-1}=0 \cup Y_{m-2}=0 \cup \ldots \cup Y_{1}=0 \right)^c \right) \\
+& = 1-P\left(Y_{m-1}=1, Y_{m-2}=1, \ldots, Y_{1}=1 \right) \\
+& = 1-\prod_{k=1}^{m-1}\frac{k}{k+1},
+\end{align*}
+where in the fifth line I have used the fact that if $Y_{m-1}Y_{m-2}\ldots Y_1 = 0$, then at least 1 $Y_i$ ($i =1, \ldots, m-1$) is 0.  Since the random variables $Y_{m}Y_{m-1}\ldots Y_1, Y_{m+1}Y_{m}\ldots Y_1, \ldots$ are all products of $Y_{m-1}Y_{m-2}\ldots Y_1$, given that $Y_{m-1}Y_{m-2}\ldots Y_1 = 0$, we know for sure that all random variables $Y_{m}Y_{m-1}\ldots Y_1, Y_{m+1}Y_{m}\ldots Y_1, \ldots$ are 0.  In the seventh line I have used De Morgan's law, and in the eighth I have used independence.  
+
+The product is easily solved:
+\begin{align*}  
+\prod_{k=1}^{m-1}\frac{k}{k+1} = \frac{1}{2} \cdot \frac{2}{3}\ldots \frac{m-2}{m-1} \cdot \frac{m-1}{m} = \frac{1}{m},
+\end{align*}
+where all denominators have cancelled out with the next numerator except for the last one.  I therefore have that
+\begin{align*}
+\lim_{m \rightarrow \infty}P(A_m) & = \lim_{m \rightarrow \infty}\left(1-\frac{1}{m} \right)\\
+& = 1,
+\end{align*}
+and therefore, by Theorem 7.6 $X_n \xrightarrow{a.s.} 0$.
+
+
+
+\end{problem}
