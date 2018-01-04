@@ -22,6 +22,7 @@
 
 \makeatletter
 \newcommand{\distas}[1]{\mathbin{\overset{#1}{\kern\z@\sim}}}%
+\newcommand{\propof}[1]{\mathbin{\overset{#1}{\kern\z@\propto}}}%
 \newsavebox{\mybox}\newsavebox{\mysim}
 \newcommand{\distras}[1]{%
   \savebox{\mybox}{\hbox{\kern3pt$\scriptstyle#1$\kern3pt}}%
@@ -29,6 +30,9 @@
   \mathbin{\overset{#1}{\kern\z@\resizebox{\wd\mybox}{\ht\mysim}{$\sim$}}}%
 }
 \makeatother
+
+
+
 
 
 \makeatletter % Need for anything that contains an @ command 
@@ -42,6 +46,7 @@
 \newenvironment{problem}[2][Problem]{\begin{trivlist}
 \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
 \DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
 
 
 
@@ -80,6 +85,12 @@
 
 \chapter{Limit Theorems and Convergence of Random Variables}
 \include{chpt7/chpt7}
+
+\chapter{Statistical Inference I: Bayesian Inference}
+\include{chpt8/chpt8}
+
+\chapter{Statistical Inference II: Classical Methods}
+\include{chpt9/chpt9}
 
 \chapter{Introduction to Simulation Using Python}
 \includepdf[pages={1-}, pagecommand={}]{chpt12/chapter_12.pdf}

@@ -1,0 +1,105 @@
+\begin{problem}{1} The posterior density can be found with Baye's rule:
+\begin{equation*}
+f_{X|Y}(x|2) = \frac{P_{Y|X}(2|x)f_X(x)}{\int P_{Y|X}(2|x)f_X(x)dx},
+\end{equation*}
+where
+\begin{equation*}
+P_{Y|X}(2|x) = x(1-x).
+\end{equation*}
+I therefore have that:
+\begin{align*}
+f_{X|Y}(x|2) &=\frac{x^2(1-x)^2}{\int_0^1 x^2(1-x)^2 dx} \\
+& = 30 x^2(1-x)^2
+\end{align*}
+for $0\le x \le1$ and 0 otherwise.  As a sanity check, I made sure the posterior integrates to 1.
+
+\end{problem}
+
+\begin{problem}{2} From Baye's rule we know that the posterior density is:
+\begin{equation*}
+f_{X|Y}(x|5) \propof{x} P_{Y|X}(5|x)f_X(x) = 3x^3(1-x)^4,
+\end{equation*}
+where the symbol $\propof{x}$ means proportional to as a function of $x$.  Therefore, the MAP estimate is given by
+\begin{equation*}
+\hat x_{MAP} = \argmax_{x \in [0, 1]}  \{3x^3(1-x)^4 \},
+\end{equation*}
+which can be found setting the derivative of the argument equal to zero and solving for $x$:
+\begin{equation*}
+0 = 9\hat x_{MAP}^2(1-\hat x_{MAP})^4-12\hat x_{MAP}^3(1-\hat x_{MAP})^3
+\end{equation*}
+$\implies$ $\hat x_{MAP} = 3/7$, which is indeed in the interval $[0, 1]$
+
+
+\end{problem}
+
+\begin{problem}{3}  The conditional PDF of $X|Y$ is given by
+\begin{equation*}
+f_{X|Y}(x|y) = \frac{f_{XY}(x,y)}{f_{Y}(y)} \propof{x} f_{XY}(x,y),
+\end{equation*}
+so that the MAP estimate of $x$ is:
+\begin{equation*}
+\hat x_{MAP} = \argmax_{x \in [0, 1]} \{ f_{XY}(x,y)\}.
+\end{equation*}
+On the other hand, the conditional PDF of $Y|X$ is given by
+\begin{equation*}
+f_{Y|X}(y|x) = \frac{f_{XY}(x,y)}{f_{X}(x)} = \frac{f_{XY}(x,y)}{\int f_{XY}(x,y)dy}, 
+\end{equation*}
+so that the ML estimate of $x$ is:
+\begin{equation*}
+\hat x_{ML} = \argmax_{x \in [0, 1]}\left  \{ \frac{f_{XY}(x,y)}{\int f_{XY}(x,y)dy} \right \}.
+\end{equation*}
+
+Since the joint PDF is
+\[
+  f_{XY}(x,y) =
+  \begin{cases}
+                                   x+\frac{3}{2}y^2 & \text{for $0 \le x,y\le 1$} \\
+                                   0 & \text{otherwise},
+  \end{cases}
+\]
+we see that $ f_{XY}(x,y)$ is maximized when $x = 1$, and therefore $\hat x_{MAP} = 1$.
+
+From the equation above:
+\begin{align*}
+f_{Y|X}(y|x) &=\frac{x+\frac{3}{2}y^2}{\int x+\frac{3}{2}y^2dy} \\
+& = \frac{2x+3y^2}{2x+1} \\
+&=1+\frac{3y^2-1}{2x+1}
+\end{align*},
+and thus we see that, to maximize this expression, if $3y^2-1\le 0$ we need to minimize the second term, while if $3y^2-1> 0$ we need to maximize it.  Therefore:
+\[
+  \hat x_{ML} =
+  \begin{cases}
+                                   1 & \text{for $y \le \frac{1}{\sqrt{3}}$} \\
+                                   0 & \text{otherwise}.
+  \end{cases}
+\]
+
+
+\end{problem}
+
+
+\begin{problem}{4} The posterior distribution is:
+
+\begin{align*}
+f_{X|Y}(x|y) &= \frac{f_{X|Y}(x|y) f_{X}(x)}{\int f_{X|Y}(x|y) f_{X}(x) dx} \\
+& = \frac{(xy- \frac{x}{2}+1)(2x^2+\frac{1}{3})}{\int_0^1 (xy- \frac{x}{2}+1)(2x^2+\frac{1}{3}) dx}\\
+& = \frac{2x^3y+\frac{xy}{3}-x^3-\frac{x}{6}+2x^2+\frac{1}{3}}{\frac{2}{3}y+\frac{1}{2}},
+\end{align*} 
+so that
+\begin{align*}
+\hat x_M &= E[X|Y=y]\\
+& = \frac{1}{\frac{2}{3}y+\frac{1}{2}} \int_0^1 \left (2x^4y+\frac{x^2y}{3}-x^4-\frac{x^2}{6}+2x^3+\frac{x}{3} \right)dx \\
+& = \frac{23}{45}y+\frac{37}{90}.
+\end{align*} 
+
+\end{problem}
+
+
+
+
+
+
+
+
+
+

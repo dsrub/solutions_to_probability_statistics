@@ -5,5 +5,7 @@
 \contentsline {chapter}{\numberline {5}Joint Distributions}{71}
 \contentsline {chapter}{\numberline {6}Methods for More Than Two Random Variables}{105}
 \contentsline {chapter}{\numberline {7}Limit Theorems and Convergence of Random Variables}{123}
-\contentsline {chapter}{\numberline {8}Introduction to Simulation Using Python}{135}
-\contentsline {chapter}{\numberline {9}Recursive Methods}{161}
+\contentsline {chapter}{\numberline {8}Statistical Inference I: Bayesian Inference}{135}
+\contentsline {chapter}{\numberline {9}Statistical Inference II: Classical Methods}{153}
+\contentsline {chapter}{\numberline {10}Introduction to Simulation Using Python}{157}
+\contentsline {chapter}{\numberline {11}Recursive Methods}{183}

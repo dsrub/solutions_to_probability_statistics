@@ -1,0 +1,740 @@
+\begin{problem}{1}$ $
+\begin{enumerate}
+\item Using the formulas for the sample mean, sample variance and sample standard deviation, I find that:
+
+\begin{equation*}
+\bar X \approx 164.3 ~\mathrm{lbs},
+\end{equation*}
+
+\begin{equation*}
+S^2 \approx 383.7 ~\mathrm{lbs^2},
+\end{equation*}
+and
+\begin{equation*}
+S \approx 19.59~ \mathrm{lbs}.
+\end{equation*}
+
+\end{enumerate}
+\end{problem}
+
+\begin{problem}{2}  To calculate the bias of this estimator, I first compute its expectation:
+\begin{align*}
+E[\hat \Theta] &= E\left [\left(\frac{1}{n}\sum_{k=1}^n X_k\right)^2 \right ] \\
+&= \frac{1}{n^2}E\left [\sum_{k=1}^n X_k^2 +\sum_{i, j: i \neq j} X_iX_j \right] \\
+&= \frac{1}{n^2}\left (\sum_{k=1}^n E[X_k^2] +\sum_{i, j: i \neq j} E[X_i]E[X_j] \right) \\
+&= \frac{1}{n^2}\left (n(\sigma^2+E[X_k]^2) +(n^2-n) E[X_k]^2 \right) \\
+&= \frac{1}{n^2}\left (n(\sigma^2+\mu^2) +(n^2-n) \mu^2 \right) \\
+& = \frac{\sigma^2}{n}+\mu^2,
+\end{align*}
+where the notation $\sum_{i, j: i \neq j}$ refers to a sum over all pairs of $i, j$ ($i, j = 1, \ldots, n$) except for the pairs where $i=j$.  In the third line I have used the linearity of expectation and independence.  The bias is thus:
+\begin{equation*}
+B(\hat \Theta) = E[\hat \Theta] - \theta = E[\hat \Theta] - \mu^2 = \frac{\sigma^2}{n},
+\end{equation*}
+and since $B(\hat \Theta) \ne 0$, $\hat \Theta$ is a biased estimator of $\theta$.
+
+\end{problem}
+
+
+\begin{problem}{3}$ $
+\begin{enumerate}
+\item To solve this problem, I first compute the expectation of $X_i$:
+\begin{align*}
+E[X_i] &= \int_0^1\left[ \theta \left (x-\frac{1}{2} \right)+1\right]x dx \\
+& = \frac{\theta}{3}- \frac{\theta}{4}+\frac{1}{2}.
+\end{align*}
+I now compute the expectation of the estimator:
+\begin{align*}
+E[\hat \Theta_n] &= E[12 \bar X - 6] \\ 
+&= E\left[\frac{12}{n}\sum_{i=1}^n X_i - 6 \right] \\ 
+&= \frac{12}{n}\sum_{i=1}^n E[X_i] - 6  \\ 
+&= \frac{12}{n}\sum_{i=1}^n \left(\frac{\theta}{3}- \frac{\theta}{4}+\frac{1}{2}\right) - 6  \\ 
+&= 12 \left(\frac{\theta}{3}- \frac{\theta}{4}+\frac{1}{2}\right) - 6  \\ 
+& = \theta.
+\end{align*}
+I therefore have that $B(\hat \Theta_n) = E[\hat \Theta_n] -\theta = 0$, and so $\hat \Theta_n$ is an unbiased estimator of $\theta$.
+
+
+\item I will use Chebyshev's inequality to show that this is a consistent estimator and I will therefore need to compute $Var[\hat \Theta_n]$.  To do this, I first compute $E[X_i^2]$:
+\begin{align*}
+E[X_i^2] &= \int_0^1\left[ \theta \left (x-\frac{1}{2} \right)+1\right]x^2 dx \\
+& = \frac{\theta}{4}- \frac{\theta}{6}+\frac{1}{3}.
+\end{align*}
+Now I compute $E[\hat \Theta_n]$:
+\begin{align*}
+E[\hat \Theta_n^2] &= E\left[(12 \bar X - 6)^2 \right] \\ 
+&= E\left[\frac{12^2}{n^2} \left(\sum_{i=1}^n X_i \right)^2 -6\cdot 2\cdot \frac{12}{n} \sum_{i=1}^n X_i +36 \right] \\ 
+&= \frac{144}{n^2} \left(\sum_{i=1}^n E[X_i^2] + \sum_{i, j: i \neq j} E[X_i]E[X_j] \right)-\frac{144}{n}\sum_{i=1}^n E[X_i] +36 \\
+&= \frac{144}{n^2} \left(n E[X_i^2] + (n^2-n) E[X_i]^2 \right)-144 E[X_i] +36,
+\end{align*}
+where the notation $\sum_{i, j: i \neq j}$ refers to a sum over all pairs of $i, j$ ($i, j = 1, \ldots, n$) except for the pairs where $i=j$.   In this derivation, I have used the linearity of expectation and independence.  Plugging in $E[X_i^2]$ and $E[X_i]$ and simplifying, I find that 
+\begin{equation*}
+E[\hat \Theta_n^2]  = \frac{12}{n}+ \theta^2\left (1-\frac{1}{n} \right),
+\end{equation*}
+so that 
+\begin{align*}
+Var[\hat \Theta_n] &= E[\hat \Theta_n^2]-E[\hat \Theta_n]^2 \\
+& = \frac{12}{n}+ \theta^2\left (1-\frac{1}{n} \right) - \theta \\
+& = \frac{12-\theta^2}{n}.
+\end{align*}
+
+To show that $\hat \Theta_n$ is a consistent estimator, I must show that $\hat \Theta_n \xrightarrow{p} \theta$.  Using Chebyshev's inequality, I have:
+\begin{align*}
+\lim_{n \rightarrow \infty} P(|\hat \Theta_n - \theta| \ge \epsilon)&= \lim_{n \rightarrow \infty} P(|\hat \Theta_n - E[\hat \Theta_n]| \ge \epsilon) \\
+& \le \lim_{n \rightarrow \infty}  \frac{Var[\hat \Theta_n]}{\epsilon^2} \\
+& =  \lim_{n \rightarrow \infty}\frac{12-\theta^2}{n \epsilon^2} \\
+& = 0.
+\end{align*}
+Since probabilities cannot be negative, I have that $\lim_{n \rightarrow \infty} P(|\hat \Theta_n - \theta| \ge \epsilon) = 0$ for all $\epsilon >0$, and thus $\hat \Theta_n$ is consistent.
+
+\item Since I have already computed the variance and bias of $\hat \Theta_n$, computing the mean squared error is easy:
+\begin{equation*}
+MSE(\hat \Theta_n) = Var[\hat \Theta_n]+B[\hat \Theta_n]^2 = \frac{12-\theta^2}{n}.
+\end{equation*}
+
+\end{enumerate}
+\end{problem}
+
+\begin{problem}{4}
+\begin{align*}
+L(x_1, \ldots, x_4;p) &= \prod_{i=1}^4 P_{X_i}(x_i;p) \\
+& = \prod_{i=1}^4 p(1-p)^{x_i-1} \\
+& = p^4(1-p)^{2-1}(1-p)^{3-1}(1-p)^{3-1}(1-p)^{5-1} \\
+& = p^4(1-p)^{9}
+\end{align*}
+
+\end{problem}
+
+\begin{problem}{5}
+\begin{align*}
+L(x_1, \ldots, x_4;\theta) &= \prod_{i=1}^4 f_{X_i}(x_i;\theta) \\
+& = \prod_{i=1}^4 \theta e^{-\theta x_i} \\
+& = \theta^4 e^{-2.35\theta }  e^{-1.55\theta } e^{-3.25\theta } e^{-2.65\theta } \\
+& =\theta^4 e^{-9.8\theta } 
+\end{align*}
+
+\end{problem}
+
+\begin{problem}{6} Since $\log(\cdot)$ is a monotonic increasing function on $\mathbb R$, $\mathrm{argmax}_{\theta \in \mathbb R}~L(\bm{x}; \theta) =\mathrm{argmax}_{\theta \in \mathbb R}~\log L(\bm x; \theta)$.  This can easily be proven by considering the definition of a strictly monotonic function.
+
+%\begin{proof}
+%Let
+%\begin{equation*}
+%f:  \mathbb R^k \rightarrow  \mathbb R,
+%\end{equation*}
+%and
+%\begin{equation*}
+%g:  \mathbb R \rightarrow  \mathbb R,
+%\end{equation*}
+%be a strictly monotonic increasing function (i.e., for all $x_1, x_2 \in \mathbb R$, if $x_2>x_1$ then $g(x_1) < g(x_2)$.  Suppose $\bm x_1 = \mathrm{argmax}_{\mathbb R^k}~f(\bm{x})$, and $\bm x_2 = \mathrm{argmax}_{\mathbb R^k}~g(f(\bm{x}))$ with $\bm x_1 \ne $\bm x_2$.
+
+%Now, either
+
+%\end{proof}
+
+\end{problem}
+
+
+
+\begin{problem}{7}  $ $
+
+\begin{enumerate}
+\item
+For a single data point, $X$, and our estimator $\hat \Theta$ (which is a function, $f$, of $X$) of $\sigma^2$, we have that $E[\hat \Theta] = E[f(X)] = \sigma^2$, where the last equality follows because we want the estimator to be unbiased.  Therefore, we are searching for a function such that:
+\begin{equation*}
+\int_{-\infty}^\infty \frac{1}{\sqrt{2 \pi} \sigma}f(x)e^{-\frac{x^2}{2\sigma^2}}dx = \sigma^2.
+\end{equation*}
+Since the PDF is that of $\mathcal N(0, \sigma^2)$, (i.e., it has mean zero), it is clear that the function that satisfies this equation is $f(x)=x^2$, and therefore $\hat \Theta = X^2$.
+
+\item
+\begin{equation*}
+\ln L(x; \sigma^2) = -\frac{1}{2} \ln 2\pi -\ln \sigma -\frac{x^2}{2\sigma^2}
+\end{equation*}
+
+\item Taking the derivative of the above equation with respect to $\sigma$, 
+\begin{equation*}
+\frac{\partial \ln L}{\partial \sigma} = -\frac{1}{\sigma} +\frac{x^2}{\sigma^3},
+\end{equation*}
+setting equal to zero, 
+\begin{equation*}
+0 = -\frac{1}{\hat \sigma_{ML}} +\frac{x^2}{\hat \sigma_{ML}^3},
+\end{equation*}
+and solving for $\hat \sigma_{ML}$, I find that $\hat \sigma_{ML} = |x|$. 
+
+\end{enumerate}
+
+
+\end{problem}
+
+
+
+\begin{problem}{8}  $ $
+
+\begin{enumerate}
+\item
+
+\begin{align*}
+L(x_1, \ldots, x_n; \lambda) &= \prod_{i=1}^n P_{X_i}(x_i; \lambda)\\
+& = \prod_{i=1}^n \frac{e^{-\lambda} \lambda^{x_i}}{x_i!} \\
+&= e^{-n \lambda} \lambda ^{\sum_{i=1}^n x_i}\prod_{i=1}^n \frac{1}{x_i!}
+\end{align*}
+
+\item The log-likelihood, $\ell$, is:
+\begin{align*}
+\ell(\lambda) &= \ln L(x_1, \ldots, x_n; \lambda) \\
+& = \ln e^{-\lambda n} +\ln \lambda ^{\sum_{i=1}^n {x_i}} +\sum_{i=1}^n \ln x_i!^{-1} \\
+& = -\lambda n +\sum_{i=1}^n x_i \ln \lambda -\sum_{i=1}^n \ln x_i!.
+\end{align*}
+Differentiating this respect to $\lambda$, and setting equal to zero, I have:
+\begin{equation*}
+0 = -n + \frac{1}{\hat \lambda_{ML}}\sum_{i=1}^n x_i.
+\end{equation*}
+Solving for the maximum likelihood estimate, I have that:
+\begin{equation*}
+\hat \lambda_{ML} = \frac{1}{n}\sum_{i=1}^n x_i,
+\end{equation*}
+that is, the maximum likelihood estimate of $\lambda$ is simply the sample mean.
+
+\end{enumerate}
+\end{problem}
+
+
+\begin{problem}{9}  To solve for the CDF for the $i^{th}$ order statistic, let us assume that $X_1, X_2, \ldots, X_n$ are a random sample from a continuous distribution with CDF, $F_X(x)$.  I fix a value $x \in \mathbb R$, and define the indicator random variable, $I_j$, by
+
+\[
+  I_j(X_j) =
+  \begin{cases}
+                                   1 & \text{if $X_j \le x$} \\
+                                   0 & \text{if $X_j > x$},
+  \end{cases}
+\]
+where $I_j =1 $ is a ``success" and $I_j=0$ is a ``failure."  Note that, since all $X_j$s are $iid$, the probability of a success, $P(X_j \le x)$, is the same for each trial and is given by $F_X(x)$.  Therefore, I have that $I_j \distas{iid} Bern(F_X(x))$.  I now define the random variable, $Y = \sum_{j=1}^n I_j$, and since this is the sum of $n$ independent Bernoulli random trials, it has a distribution: $Y \sim Bin(n, F_X(x))$.
+
+Now, given that $Y \sim Bin(n, F_X(x))$, the quantity, $P(Y \ge i)$ is therefore the probability that there are at least $i$ successes out of $n$ trials.  Given our definition of ``success", and given that the number of trials $n$ is simply the number of observations, this can be re-phrased as the probability that there are at least $i$ observations out of $n$ with values less than or equal to $x$.
+
+We desire to find $P(X_{(i)} \le x)$, the probability that the $i^{th}$ biggest observation out of $n$ observations has a value less than or equal to $x$.  In other words, we desire to find the probability that there are at least $i$ observations out of $n$ with a value less than or equal to $x$.  Notice that this is exactly $P(Y \ge i)$, so that:
+
+\begin{align*}
+F_{X_{(i)}}(x) &= P(X_{(i)} \le x) \\
+& = P(Y \ge i) \\
+& = \sum_{k=i}^n \binom{n}{k} [F_X(x)]^k [1-F_X(x)]^{n-k}.
+\end{align*}
+
+\end{problem}
+
+
+\begin{problem}{10}  Let region 1 be defined as the interval $(-\infty, x]$, region 2 as the interval $(x, x+\delta]$, (where $\delta$ is a small positive number) and region 3 as the interval $(x+\delta, \infty)$.  By the definition of the PDF, the probability that the $i^{th}$ order statistic is in region 2 is given by $P(x<X_{(i)} \le x+ \delta) \approx f_{X_{(i)}}(x) \delta$.  In other words, for $\delta$ small enough, $P(x<X_{(i)} \le x+ \delta)$ is the probability that, out of $n$ samples, there are $i-1$ samples in region 1, one in region 2 and $n-i$ in region 3.  
+
+Now, since all samples are $iid$ from a distribution with PDF $f_X(x)$ and CDF $F_X(x)$, the probability that a sample lands in region 1, is
+\begin{equation*}
+p_1 = P(X\le x) = F_X(x),
+\end{equation*}
+in region 2 is
+\begin{equation*}
+p_2 = P(x \le X \le x+\delta) \approx f_X(x) \delta,
+\end{equation*}
+and in region 3 is
+\begin{equation*}
+p_3 = P(X>x+\delta) = 1-F_X(x+\delta) \approx 1-F_X(x).
+\end{equation*}
+Notice that if we define $s_i$ as the event that a sample, out of $n$ samples, lands in region $i$ (with associated probability, $p_i$), this is precisely a multinomial experiment with 3 possible outcomes.  Thus the probability that out of $n$ samples (trials), there are $i-1$ in region 1, one in region 2 and $n-i$ in region 3 is given by:
+\begin{equation*}
+\frac{n!}{(i-1)!(n-1!)}p_1^{i-1} p_2 p_3^{n-1}.
+\end{equation*}
+However, this is precisely the probability $f_{X_{(i)}}(x) \delta$.  Therefore, I have that:
+\begin{align*}
+f_{X_{(i)}}(x) \delta &=\frac{n!}{(i-1)!(n-1!)}p_1^{i-1} p_2 p_3^{n-1}\\
+&= \frac{n!}{(i-1)!(n-1!)}[F_X(x)]^{i-1} f_X(x) \delta [1-F_X(x)]^{n-1}.
+\end{align*}
+Canceling the $\delta$ from both sides of the equation gives the desired result.
+
+
+\end{problem}
+
+\begin{problem}{11}  Since $n$ is relatively large, the variance is known, and we would like an approximate confidence interval for $\theta =E[X_i]$, we can calculate the confidence interval by employing the CLT and by using $\sqrt{n}(\bar X - \theta)$ as the pivotal quantity.  This computation is done in the book and the interval is given by:
+\begin{equation*}
+\left [\bar X -z_{\frac{\alpha}{2}}\frac{\sigma}{\sqrt{n}}, \bar X +z_{\frac{\alpha}{2}}\frac{\sigma}{\sqrt{n}} \right].
+\end{equation*}
+The quantities in this interval are $\bar X = 50.1$, $\sigma= 9$, $n=100$ and $z_\frac{\alpha}{2}=z_\frac{0.05}{2}=1.96$.  Using these values, I find that the $95\%$ confidence interval is given by: $[48.3, 51.9]$.  Note that $z_{\frac{\alpha}{2}}$ can be computed in Python with \texttt{scipy.stats.norm.ppf(1-alpha/2)}.
+
+
+
+
+
+\end{problem}
+
+\begin{problem}{12}  In this problem, we choose a random sample of size $n$ from a population, $X_1, X_2, \ldots, X_n$, where these random variables are $iid$ $Bern(\theta)$, where $X_i$ is 1 if the $i^{th}$ voter intends to vote for Candidate A, and 0 otherwise.
+\begin{enumerate}
+
+\item We require there to be at least a 90\% probability that the sample proportion, $\bar X$ is within 3 percentage points of the actual proportion, $\theta$.  In math, this is:
+\begin{equation*}
+P( \theta -0.03 \le \bar X \le \theta+0.03) \ge 0.9,
+\end{equation*}
+and algebraically manipulating the argument, it is easy to show that the 90\% confidence interval we require is:
+\begin{equation*}
+[\bar X -0.03, \bar X+0.03].
+\end{equation*}
+
+Following along Example 8.18 in the book, utilizing the CLT, and obtaining a conservative estimate for the interval by using $\sigma_{max}$, which for a Bernoulli distribution is 1/2 (since we do not actually know $\sigma$), the proper interval is given by:
+\begin{equation*}
+\left [\bar X -\frac{z_{\frac{\alpha}{2}}}{2 \sqrt{n}}, \bar X +\frac{z_{\frac{\alpha}{2}}}{2 \sqrt{n}}\right].
+\end{equation*}
+Comparing this interval with the one above, we see that:
+\begin{equation*}
+\frac{z_{\frac{\alpha}{2}}}{2 \sqrt{n}} = 0.03.
+\end{equation*}
+Thus, we require $n$ to be at least:
+\begin{equation*}
+\ceil*{\left( \frac{z_{\frac{\alpha}{2}}}{2 \cdot 0.03}\right)^2} = 748,
+\end{equation*}
+where I have used $z_{\frac{\alpha}{2}} =z_{\frac{0.1}{2}} \approx 1.64$.
+
+\item Using the same formula as above, but with $z_{\frac{\alpha}{2}} =z_{\frac{0.01}{2}} \approx 2.58$, I find that $n$ must be at least 1849.
+
+\end{enumerate}
+
+\end{problem}
+
+\begin{problem}{13} For this problem, since $n$ is relatively large, I use the standard approximate confidence interval derived using the CLT.  The variance, however, is unknown, but since $n$ is large should be well approximated by the sample variance, $S^2$.  The proper confidence interval is thus:
+\begin{equation*}
+\left [\bar X -z_{\frac{\alpha}{2}}\frac{S}{\sqrt{n}}, \bar X +z_{\frac{\alpha}{2}}\frac{S}{\sqrt{n}} \right],
+\end{equation*}
+and using $n=100$, $\bar X = 110.5$, $S^2 = 45.6$, and $z_{\frac{0.05}{2}} = 1.96$, I find the 95\% confidence interval for the distribution mean to be approximately be: $[109.2, 111.8]$.
+\end{problem}
+
+\begin{problem}{14}$ $
+\begin{enumerate}
+
+\item For an $n=36$ random sample from $\mathcal N(\mu, \sigma^2)$, with $\mu$ and $\sigma^2$ unknown, the proper pivotal quantity to use to estimate $\mu$ is $T=(\bar X-\mu/(S/\sqrt{n}))$, which because it has a $T$ distribution, results in a confidence interval of:
+\begin{equation*}
+\left [\bar X -t_{\frac{\alpha}{2}, n-1}\frac{S}{\sqrt{n}}, \bar X +t_{\frac{\alpha}{2}, n-1}\frac{S}{\sqrt{n}} \right],
+\end{equation*}
+as shown in the book.  For the desired confidence levels (90\%, 95\%, 99\%), the appropriate $t$ values are: $t_{0.1, 35} \approx 1.69$, $t_{0.05, 35} \approx 2.03$, $t_{0.01, 35} \approx 2.72$, and the corresponding confidence intervals are: $[34.8, 36.8]$, $[34.6, 37.0]$ and $[34.2, 37.4]$.  We see that as the confidence level increases, the width of the interval gets wider since we desire more confidence that the actual value of $\mu$ is encompassed by that random interval.  Note that $t_{\frac{\alpha}{2}, n-1}$ can be computed in Python with \texttt{scipy.stats.t.ppf(1-alpha/2, n-1)}.
+
+
+\item  The proper pivotal quantity to use to estimate $\sigma^2$ is $Q=(n-1)S^2/\sigma^2$, which because it has a $\chi^2$ distribution, results in a confidence interval of:
+\begin{equation*}
+\left [\frac{(n-1)S^2}{\chi^2_{\frac{\alpha}{2}, n-1}}, \frac{(n-1)S^2}{\chi^2_{1-\frac{\alpha}{2}, n-1}} \right],
+\end{equation*}
+as shown in the book.  Computing the proper $\chi^2_{\frac{\alpha}{2}, n-1}$ and $\chi^2_{1-\frac{\alpha}{2}, n-1}$ values, I find the following 90\%, 95\% and 99\% confidence intervals for $\sigma^2$: $[8.78, 19.47]$, $[8.22, 21.3]$ and $[7.26, 25.4]$.  Again, we see that as the confidence level increases, the width of the interval gets wider since we desire more confidence that the actual value of $\sigma^2$ is encompassed by that random interval. Note that $\chi^2_{\frac{\alpha}{2}, n-1}$ can be computed in Python with \texttt{scipy.stats.chi2.ppf(1-alpha/2, n-1)}.
+
+\end{enumerate}
+
+\end{problem}
+
+\begin{problem}{15}$ $
+\begin{enumerate}
+
+\item We recognize that since the data are drawn $iid$ from a normal distribution, since $\sigma^2$ is known, and since the hypotheses are of the form $H_o: \mu = \mu_o$ and $H_A:\mu \neq \mu_o$, this is a 2-sided $z$-test, as outlined in Table 8.2 in the book.  Thus, if the statistic $W=(\bar X-\mu_o)/(\sigma/\sqrt{n})$ satisfies $|W| \le z_{\frac{\alpha}{2}}$ then we fail to reject the null hypothesis, otherwise we reject it in favor of the alternative hypothesis
+
+Computing $\bar X$ and $W$, I find:
+\begin{equation*}
+\bar X \approx 5.96,
+\end{equation*}
+and 
+\begin{equation*}
+W \approx 2.15.
+\end{equation*}
+At a level of $\alpha=0.05$, the proper threshold is $z_{0.025} \approx 1.96$.  Since $W>z_{\frac{\alpha}{2}}$, we reject $H_o$ in favor of $H_A$ at a significance level of 0.05.
+
+\item  In this case, since the data are drawn $iid$ from a normal distribution with known variance, the proper $(1-\alpha)100\%$ confidence interval to use as shown in Section 8.3.3 of the book is:
+\begin{equation*}
+\left[\bar X- z_{\frac{\alpha}{2}}\frac{\sigma}{\sqrt{n}}, \bar X+ z_{\frac{\alpha}{2}}\frac{\sigma}{\sqrt{n}}  \right],
+\end{equation*}
+which, when plugging in the particular values for this problem results in a 95\% confidence interval of approximately $[5.08, 6.84]$.
+
+The value $\mu_o = 5 $ is not within this interval.  As shown in Section 8.4.3 of this book, for this type of hypothesis test, since we accept $H_o$ at a level of $\alpha$ if $|(\bar X-\mu_o)/(\sigma/\sqrt{n})| \le z_{\frac{\alpha}{2}}$, this results in the condition that we accept $H_o$ if:
+\begin{equation*}
+\mu_o \in \left[\bar X- z_{\frac{\alpha}{2}}\frac{\sigma}{\sqrt{n}}, \bar X+ z_{\frac{\alpha}{2}}\frac{\sigma}{\sqrt{n}}  \right].
+\end{equation*}
+I.e., for this test, if $\mu_o$ is in the $(1-\alpha)100\%$ confidence interval, we accept $H_o$ at a level of $\alpha$, otherwise we do not.  Since $\mu_o = 5 $ is not in the calculated confidence interval, this corresponds to rejecting $H_o$ in favor of $H_A$, which is indeed what we found above.
+
+
+\end{enumerate}
+
+\end{problem} 
+
+
+\begin{problem}{16}$ $
+\begin{enumerate}
+\item As with the previous problem, since the data are drawn $iid$ from a normal distribution with known variance, the proper $(1-\alpha)100\%$ confidence interval to use as shown in Section 8.3.3 of the book is:
+\begin{equation*}
+\left[\bar X- z_{\frac{\alpha}{2}}\frac{\sigma}{\sqrt{n}}, \bar X+ z_{\frac{\alpha}{2}}\frac{\sigma}{\sqrt{n}}  \right].
+\end{equation*}
+For this problem $\bar X \approx 17.0 $, $z_{\frac{\alpha}{2}} = z_{0.05} \approx 1.64$, so that the 90\% confidence interval is approximately $[16.45, 17.55]$.  The value of $\mu_o$ is not included in this interval, which, as explained above, means that we reject the null hypothesis at a significance level of $\alpha = 0.1$.
+
+\item  As shown in Section 8.4.3 of the book, the proper test statistic to use is $W=(\bar X-\mu_o)/(\sigma/\sqrt{n})$, and if $|W| \le z_{\frac{\alpha}{2}}$ (see Table 8.2) we cannot reject the null hypothesis.  For this problem, $W \approx 3$, $z_{\frac{\alpha}{2}} = z_{0.05} \approx 1.64$, and therefore we reject $H_o$ at a significance level of $\alpha=0.1$.
+
+
+
+
+
+
+\end{enumerate}
+
+\end{problem} 
+
+\begin{problem}{17} In this problem, the random sample comes from an unknown distribution with unknown variance and with a rather large $n$ ($n=150$).  Since the hypotheses we would like to test correspond to $H_o: \mu = 50$ and $H_A:\mu > 50$, this will most likely be a 1-sided $z$-test (using the sample variance).  Here I work out the test explicitly.  Using $W$ as my statistic, $(\bar X - \mu_o)/(S/\sqrt{n})$, If $H_o$ is true, then we would expect $\bar X \approx \mu_o$ and $W\approx 0$.  On the other hand, if $H_A$ is true we expect $\bar X>\mu_o$ and $W >0$.  Therefore I employ the following test:  if $W\le c$ I fail to reject $H_o$, while if $W>c$ I reject $H_o$ in favor of $H_A$.
+
+To solve for $c$ I must bound the probability of making a Type I error:
+\begin{align*}
+P(\mathrm{Type~I~error}) &= P(\mathrm{reject}~ H_o|H_o) \\
+&= P(W>c|H_o) \\
+& = 1-\Phi(c)~~(\mathrm{since~}W\sim \mathcal N (0, 1)~\mathrm{under}~H_o) \\
+& \le \alpha 
+\end{align*}
+Therefore, the critical value, $c$, occurs at equality: $1-\Phi(c) = \alpha$, or in other words $c=z_{\alpha}$.  Thus, if $W\le z_\alpha$ I fail to reject $H_o$, while if $W>z_\alpha$ I reject $H_o$ in favor of $H_A$.  
+
+For this problem $\bar X = 52.28$, $S^2 = 30.9$, and so $W \approx 5.02$, while $z_{\alpha}=z_{0.05} \approx 1.64$, so that I reject $H_o$ in favor of $H_A$ at a significance level of 0.05.
+
+
+\end{problem} 
+
+\begin{problem}{18}  In this problem, the random sample comes from a normal distribution with unknown variance, and the hypotheses we are testing are of the form $H_o: \mu \ge \mu_o$ and $H_A:\mu < \mu_o$, and I therefore use a 1-sided $t$-test.  As indicated in Table 8.4, we fail to reject $H_o$ if $W\ge -t_{\alpha, n-1}$.  For this problem, 
+\begin{equation*}
+\bar X = \frac{27.72+22.24+32.86+19.66+35.34}{5} \approx 27.56,
+\end{equation*}
+
+\begin{equation*}
+\bar S^2 = \frac{1}{n-1} \sum_{i=1}^n (X_i-\bar X)^2 \approx 44.84,
+\end{equation*}
+so that
+\begin{equation*}
+W = \frac{\bar X - \mu}{S/\sqrt{n}} \approx \frac{27.56- 30}{\sqrt{44.84}/\sqrt{5}} \approx -0.81.
+\end{equation*}
+Also, for this problem $-t_{\alpha, n-1} = -t_{0.05, 4} \approx -2.13$.  Since $W\ge -t_{\alpha, n-1}$, we fail to reject the null hypothesis at a level of $0.05$.
+
+\end{problem}
+
+\begin{problem}{19}  Since the random sample is drawn from an unknown distribution with unknown variance, but the sample number is relatively large ($n=121$), I can use a $z$-test with the sample variance.  Moreover, the hypotheses we are testing are of the form $H_o: \mu = \mu_o$ and $H_A:\mu < \mu_o$.  I therefore use a 1-sided $z$-test, where if $W<-z_{\alpha}$ with $W = (\bar X - \mu_o)/(S/\sqrt{n})$, then I reject the null hypothesis at a significance level of $\alpha$ (see table 8.4).
+
+The $p$-value is the probability of making a Type I error when the statistic threshold is set to that which was observed ($w_1$), in this case $w_1 \approx -0.81$.  Thus, the $p$-value for this problem is:
+\begin{align*}
+p-\mathrm{value} &= P(\mathrm{Type~I~error~when}~c=w_1|H_o) \\
+&=P(W<w_1|H_o)\\
+&=\Phi(w_1) \\
+& \approx 0.035,
+\end{align*}
+where, because of the CLT, I have used the CDF of a Gaussian.
+
+\end{problem}
+
+\begin{problem}{20}$ $
+\begin{enumerate}
+
+\item We would like to test the hypotheses that $H_o: \theta \ge 0.1$ and $H_A:\theta <0.1$, which, since equality gives us a worse case scenario (as shown in Section 8.4.3 of the book), can be simplified to:
+
+\begin{align*}
+&H_o: \theta = \theta_o=0.1 \\
+&H_A: \theta <\theta_o.
+\end{align*}
+
+\item If we let $X_i =1 $ if the $i^{th}$ student has allergies, and $0$ otherwise, we see that $X_i \sim Bern(\theta)$, so that $E[X_i] = \theta$ and $Var[X_i]= \theta(1-\theta)$.  Now, under the null hypothesis, and under the CLT (since $n$ is large), I have that
+\begin{equation*}
+\frac{\bar X n -\theta_o n}{\sqrt{n\theta_o(1-\theta_o)}} \sim \mathcal N(0, 1).
+\end{equation*}
+This is a convenient test statistic to use since I have its distribution, and since if the alternative hypothesis is true, $\bar X$ will be small (and so will the statistic), while if the null hypothesis is true, $\bar X$ will be large (and so will the statistic).  This suggests the following test: if 
+\begin{equation*}
+\frac{\bar X n -\theta_o n}{\sqrt{n\theta_o(1-\theta_o)}} < c
+\end{equation*}
+then reject the null hypothesis in favor of the alternative hypothesis, while if 
+\begin{equation*}
+\frac{\bar X n -\theta_o n}{\sqrt{n\theta_o(1-\theta_o)}} \ge c,
+\end{equation*}
+fail to reject the null hypothesis.
+
+Calculating the value of the statistic for the particular instance of the data that we have collected:
+\begin{equation*}
+w_1 = \frac{21-0.1 \cdot 225}{\sqrt{225\cdot0.1\cdot(1-0.1)}} \approx -0.33.
+\end{equation*}
+Now, the $p$-value is the probability of making a Type I error when the test threshold, $c$, is set to be $w_1$:
+\begin{align*}
+p-\mathrm{value} &= P(\mathrm{Type~I~error~with}~c=w_1) \\
+&= P(\mathrm{reject}~H_o~\mathrm{with}~c=w_1|H_o) \\
+&= P\left (\frac{\bar X n -\theta_o}{\sqrt{n\theta_o(1-\theta_o)}}<w_1|H_o \right) \\
+& = \Phi(w_1) \\
+& \approx 0.37.
+\end{align*}
+
+\item  Since the $p$-value is the lowest significance level $\alpha$ that results in rejecting the null hypothesis, at a level of $\alpha=0.05$, we cannot reject the null hypothesis.
+
+\end{enumerate}
+\end{problem}
+
+\begin{problem}{21}$ $
+\begin{enumerate}
+
+\item Using the equations for simple linear regression I have the following:
+
+\begin{equation*}
+\bar x = \frac{1}{n}\sum_{i=1}^n x_i= \frac{-5-3+0+2+1}{5} = -1,
+\end{equation*}
+
+\begin{equation*}
+\bar y= \frac{1}{n}\sum_{i=1}^n y_i= \frac{-2+1+4+6+3}{5} = 2.4,
+\end{equation*}
+
+\begin{equation*}
+s_{xx} = \sum_{i=1}^n(x_i-\bar x)^2 = (-5+1)^2+(-3+1)^2+(0+1)^2+(2+1)^2+(1+1)^2 = 34,
+\end{equation*}
+
+\begin{align*}
+s_{xy} &= \sum_{i=1}^n(x_i-\bar x)(y_i-\bar y) = (-5+1)(-2-2.4)+(-3+1)(1-2.4)+(0+1)(4-2.4)\\ 
+&+(2+1)(6-2.4) +(1+1)(3-2.4) = 34,
+\end{align*}
+
+\begin{equation*}
+\hat \beta_1 = \frac{s_{xy}}{s_{xx}} = \frac{34}{34}=1,
+\end{equation*}
+and
+\begin{equation*}
+\hat \beta_0 = \bar y - \hat \beta_1 \bar x = 2.4-1(-1) = 3.4.
+\end{equation*}
+The regression line is given by $\hat y = \hat \beta_0+\hat \beta_1 x$, and therefore
+
+\begin{equation*}
+\hat y =3.4+x.
+\end{equation*}
+
+\item The regression predictions for the training data are:
+\begin{equation*}
+\hat y_1 = 3.4-5=-1.6
+\end{equation*}
+\begin{equation*}
+\hat y_2 = 3.4-3=0.4
+\end{equation*}
+\begin{equation*}
+\hat y_3 = 3.4+0=3.4
+\end{equation*}
+\begin{equation*}
+\hat y_4 = 3.4+2=5.4
+\end{equation*}
+\begin{equation*}
+\hat y_5 = 3.4+1=4.4.
+\end{equation*}
+
+\item The residuals are:
+\begin{equation*}
+e_1 = y_1 - \hat y_1=-2+1.6=-0.4
+\end{equation*}
+\begin{equation*}
+e_2 = y_2 - \hat y_2=1-0.4=0.6
+\end{equation*}
+\begin{equation*}
+e_3 = y_3 - \hat y_3=4-3.4=0.6
+\end{equation*}
+\begin{equation*}
+e_4 = y_4 - \hat y_4=6-5.4=0.6
+\end{equation*}
+\begin{equation*}
+e_5 = y_5 - \hat y_5=3-4.4=-1.4.
+\end{equation*}
+As a check, we know that $\sum_{i=1}^n e_i =0$, which is indeed the case.
+
+\item To calculate the coefficient of determination, I first need to compute $s_{yy}$
+\begin{equation*}
+s_{yy} = \sum_{i=1}^n(y_i-\bar y)^2 = (-2-2.4)^2+(1-2.4)^2+(4-2.4)^2+(6-2.4)^2+(3-2.4)^2=37.2,
+\end{equation*}
+so that
+\begin{equation*}
+r^2 = \frac{s_{xy}^2}{s_{xx}s_{yy}}  = \frac{34^2}{34\cdot37.2} \approx 0.91.
+\end{equation*}
+
+\end{enumerate}
+
+\end{problem}
+
+\begin{problem}{22}$ $
+\begin{enumerate}
+
+\item Using the equations for simple linear regression I have the following:
+
+\begin{equation*}
+\bar x = \frac{1}{n}\sum_{i=1}^n x_i= \frac{1+3}{2} = 2,
+\end{equation*}
+
+\begin{equation*}
+\bar y= \frac{1}{n}\sum_{i=1}^n y_i= \frac{3+7}{2} = 5,
+\end{equation*}
+
+\begin{equation*}
+s_{xx} = \sum_{i=1}^n(x_i-\bar x)^2 = (1-2)^2+(3-2)^2= 2,
+\end{equation*}
+
+\begin{equation*}
+s_{xy} = \sum_{i=1}^n(x_i-\bar x)(y_i-\bar y) = (1-2)(3-5)+(3-2)(7-5) = 4
+\end{equation*}
+
+\begin{equation*}
+\hat \beta_1 = \frac{s_{xy}}{s_{xx}} = \frac{4}{2}=2,
+\end{equation*}
+and
+\begin{equation*}
+\hat \beta_0 = \bar y - \hat \beta_1 \bar x = 5-2\cdot2 = 1.
+\end{equation*}
+The regression line is given by $\hat y = \hat \beta_0+\hat \beta_1 x$, and therefore
+
+\begin{equation*}
+\hat y =1+2x.
+\end{equation*}
+
+\item The regression predictions for the training data are:
+\begin{equation*}
+\hat y_1 = 1+2\cdot 1=3
+\end{equation*}
+\begin{equation*}
+\hat y_2 = 1+2\cdot 3=7.
+\end{equation*}
+
+\item The residuals are:
+\begin{equation*}
+e_1 = y_1 - \hat y_1=3-3=0
+\end{equation*}
+\begin{equation*}
+e_2 = y_2 - \hat y_2=7-7=0.
+\end{equation*}
+As a check, we know that $\sum_{i=1}^n e_i =0$, which is indeed the case.
+
+\item To calculate the coefficient of determination, I first need to compute $s_{yy}$
+\begin{equation*}
+s_{yy} = \sum_{i=1}^n(y_i-\bar y)^2 = (3-5)^2+(7-5)^2=8,
+\end{equation*}
+so that
+\begin{equation*}
+r^2 = \frac{s_{xy}^2}{s_{xx}s_{yy}}  = \frac{4^2}{2\cdot8} =1.
+\end{equation*}
+
+\item Since there are only 2 data points in the training set, the regression line that minimizes the sum of squared errors goes exactly through those 2 points, and thus $r^2 = 0$.  This is a good fit to the training data, however, it will probably not generalize well to new, unseen data, and is probably therefore a poor predictive model.
+
+\end{enumerate}
+
+\end{problem}
+
+\begin{problem}{23}$ $
+\begin{enumerate}
+
+\item According to this model, $Y_i \sim \mathcal N(\beta_o+\beta_1x_i, \sigma^2)$.  To solve for the distribution of $\hat \beta_1$, note that it is fairly easy to find the distribution of a sum (or a linear combination) of independent normal random variables.  However, due to the fact that each $Y_i$ is in the sum that comprises $\bar Y$, clearly the term, $S_{xy}$ is not a sum of independent random variables.  In order to express the formula for $\hat \beta_1$ as a linear combination of the $Y_i$s (which are independent), I expand the formula for $\hat \beta_1$ and group each $Y_i$ term.  With $c_i \equiv (x_i -\bar x)$, I have:
+\begin{align*}
+\hat \beta_1 &= \frac{S_{xy}}{s_{xx}}\\
+& = \frac{1}{s_{xx}}\sum_{i=1}^n c_i(Y_i-\bar Y) \\
+&=\frac{1}{s_{xx}} \Bigg \{c_1\left[ Y_1 -  \frac{1}{n}\left(Y_1+Y_2+\ldots+Y_n \right) \right] +c_2\left[ Y_2 -  \frac{1}{n}\left(Y_1+Y_2+\ldots+Y_n \right) \right]  \\
+& + \ldots + c_n\left[ Y_n -  \frac{1}{n}\left(Y_1+Y_2+\ldots+Y_n \right) \right]  \Bigg  \} \\
+&=\frac{1}{s_{xx}} \Bigg \{ \left [ Y_1\left(c_1-\frac{c_1}{n}-\frac{c_2}{n} -\ldots-\frac{c_n}{n}\right) \right ]+\left [ Y_2\left(c_2-\frac{c_1}{n}-\frac{c_2}{n} -\ldots-\frac{c_n}{n}\right) \right ] \\
+& +\ldots + \left [ Y_n\left(c_n-\frac{c_1}{n}-\frac{c_2}{n} -\ldots-\frac{c_n}{n}\right) \right ] \Bigg \} \\
+& = Y_1\left \{\frac{1}{s_{xx}} \left[(x_1- \bar x)-\frac{1}{n}\sum_{j=1}^n(x_j-\bar x) \right] \right \}+Y_2\left \{\frac{1}{s_{xx}} \left[(x_1- \bar x)-\frac{1}{n}\sum_{j=1}^n(x_j-\bar x) \right] \right \} \\
+&+ \ldots+Y_n\left \{\frac{1}{s_{xx}} \left[(x_1- \bar x)-\frac{1}{n}\sum_{j=1}^n(x_j-\bar x) \right] \right \} \\
+& = \sum_{i=1}^n Y_i\left \{\frac{1}{s_{xx}} \left[(x_i- \bar x)-\frac{1}{n}\sum_{j=1}^n(x_j-\bar x) \right] \right \} \\
+& = \sum_{i=1}^n Y_i \frac{1}{s_{xx}}(x_i-\bar x) \\
+& = \sum_{i=1}^n U_i.
+\end{align*}
+Now, since each $U_i$ is a normal random variable ($Y_i$) multiplied by a constant, the distribution for each $U_i$ is given by:
+\begin{equation*}
+U_i \sim \mathcal N \left ((\beta_o+\beta_1x_i)\frac{1}{s_{xx}}(x_i-\bar x), \sigma^2 \frac{1}{s_{xx}^2}(x_i-\bar x)^2 \right).
+\end{equation*}
+Note that now, $\hat \beta_1$ is a sum of independent, normal random variables, so the distribution for $\hat \beta_1$ is simply normal, where the mean is the sum of the means and where the variance is the sum of the variances:
+\begin{equation*}
+\hat \beta_1  \sim \mathcal N \left ( \sum_{i=1}^n(\beta_o+\beta_1x_i)\frac{1}{s_{xx}}(x_i-\bar x),  \sum_{i=1}^n \sigma^2 \frac{1}{s_{xx}^2}(x_i-\bar x)^2 \right).
+\end{equation*}
+
+\item  Before I show that $\hat \beta_1$ is unbiased, first note the following:
+\begin{align*}
+s_{xx} &= \sum_{i=1}^n (x_i-\bar x)^2 \\
+&= \sum_{i=1}^n (x_i^2-2\bar x x_i +\bar x^2) \\
+&= \sum_{i=1}^n x_i^2-2\bar x n \frac{1}{n}\sum_{i=1}^n x_i +  \sum_{i=1}^n\bar x^2 \\
+&= \sum_{i=1}^n x_i^2-n \bar x ^2 \\
+&= \sum_{i=1}^n x_i^2-n \bar x \frac{1}{n}\sum_{i=1}^n x_i \\
+&= \sum_{i=1}^n (x_i^2-\bar x  x_i) \\
+&= \sum_{i=1}^n x_i(x_i-\bar x ).
+\end{align*}
+
+Now, it can be shown that $\hat \beta_1$ is unbiased by simplifying the expectation of $\hat \beta_1$ as given above:
+\begin{align*}
+E[\hat \beta_1] & = \sum_{i=1}^n(\beta_o+\beta_1x_i)\frac{1}{s_{xx}}(x_i-\bar x) \\
+& = \frac{\beta_o}{s_{xx}}\sum_{i=1}^n(x_i -\bar x)+ \frac{\beta_1}{s_{xx}}\sum_{i=1}^n x_i(x_i -\bar x) \\
+& = \frac{\beta_o}{s_{xx}}(n \bar x -n\bar x)+ \beta_1 \\
+& = \beta_1.
+\end{align*}
+
+\item  The variance can be further simplified by canceling out a factor of $s_{xx}$:
+\begin{equation*}
+Var [\hat \beta_1] = \frac{\sigma^2}{s_{xx}^2}\sum_{i=1}^n (x_i-\bar x)^2 = \frac{\sigma^2}{s_{xx}}.
+\end{equation*}
+
+\end{enumerate}
+
+\end{problem}
+
+
+\begin{problem}{24}$ $
+\begin{enumerate}
+
+\item This problem can be solved in a very similar manner to that of the previous problem.  I first expand out $\hat \beta_o$, use the fact that, $\hat \beta_1 = \sum_{i=1}^n Y_i \frac{1}{s_{xx}}(x_i-\bar x)$ (as found above), and group each $Y_i$ term:
+\begin{align*}
+\hat \beta_o &= \bar Y -\hat \beta_1 \bar x \\
+& = \frac{1}{n}(Y_1+Y_2+\ldots+Y_n) - \bar x \left [Y_1 \frac{1}{s_{xx}}(x_1-\bar x)+Y_2 \frac{1}{s_{xx}}(x_2-\bar x)+\ldots +Y_n \frac{1}{s_{xx}}(x_n-\bar x) \right] \\
+& = Y_1 \left[\frac{1}{n} -\bar x \frac{1}{s_{xx}} (x_1-\bar x)\right ]+Y_2 \left[\frac{1}{n} -\bar x \frac{1}{s_{xx}} (x_2-\bar x)\right ]+\ldots+Y_n \left[\frac{1}{n} -\bar x \frac{1}{s_{xx}} (x_n-\bar x)\right ] \\
+& = \sum_{i=1}^n Y_i \left[\frac{1}{n} -\bar x \frac{1}{s_{xx}} (x_i-\bar x)\right ] \\
+& = \sum_{i=1}^n U_i .
+\end{align*}
+
+As in the previous problem, since each $U_i$ is a normal random variable ($Y_i$) multiplied by a constant, the distribution for each $U_i$ is given by:
+\begin{equation*}
+U_i \sim \mathcal N \left ((\beta_o+\beta_1x_i)\left[\frac{1}{n} -\bar x \frac{1}{s_{xx}} (x_i-\bar x)\right ], \sigma^2 \left[\frac{1}{n} -\bar x \frac{1}{s_{xx}} (x_i-\bar x)\right ]^2 \right).
+\end{equation*}
+
+Also, as above, $\hat \beta_o$ is now a sum of independent, normal random variables, so the distribution for $\hat \beta_o$ is simply normal, where the mean is the sum of the means and where the variance is the sum of the variances:
+\begin{equation*}
+\hat \beta_o  \sim \mathcal N \left ( \sum_{i=1}^n (\beta_o+\beta_1x_i)\left[\frac{1}{n} -\bar x \frac{1}{s_{xx}} (x_i-\bar x)\right ],  \sum_{i=1}^n \sigma^2 \left[\frac{1}{n} -\bar x \frac{1}{s_{xx}} (x_i-\bar x)\right ]^2 \right).
+\end{equation*}
+
+\item To show that $\hat \beta_o$ is unbiased, I can simplify $E[\hat \beta_o]$ as found above (using $s_{xx} = \sum_{i=1}^n x_i(x_i-\bar x )$ as found in the previous problem):
+
+\begin{align*}
+E[\hat \beta_o] & =  \sum_{i=1}^n (\beta_o+\beta_1x_i)\left[\frac{1}{n} -\bar x \frac{1}{s_{xx}} (x_i-\bar x)\right ] \\
+& = \sum_{i=1}^n \frac{\beta_o}{n}-\frac{\beta_o \bar x}{s_{xx}}\sum_{i=1}^n (x_i-\bar x)+\frac{\beta_1}{n}\sum_{i=1}^n x_i -\frac{\beta_1 \bar x}{s_{xx}} \sum_{i=1}^n x_i(x_i -\bar x) \\
+& = \beta_o-\frac{\beta_o \bar x}{s_{xx}}(n \bar x -n \bar x)+\beta_1 \bar x-\beta_1 \bar x \\
+& = \beta_o.
+\end{align*}
+
+\item For any $i=1, 2, \ldots, n$, using $\hat \beta_1 = \sum_{i=1}^n Y_i \frac{1}{s_{xx}}(x_i-\bar x)$ (as derived in the previous problem), I have that:
+\begin{align*}
+Cov\left[\hat \beta_1, Y_i\right]&=Cov\left [\sum_{j=1}^n Y_j \frac{1}{s_{xx}}(x_j-\bar x), Y_i\right]  \\
+&=\sum_{j=1}^n Cov\left[Y_j \frac{1}{s_{xx}}(x_j-\bar x), Y_i\right] \\
+&=\sum_{j=1}^n \frac{1}{s_{xx}}(x_j-\bar x) Cov\left[Y_j, Y_i\right] \\
+&= \frac{1}{s_{xx}}(x_i-\bar x) Var\left[Y_i, Y_i\right] \\
+&= \frac{(x_i-\bar x) \sigma^2}{s_{xx}},
+\end{align*}
+where in the second to last line I have used the fact that all $Y_i$s are independent, so that $Cov[Y_i, Y_j] = 0$ for $i \neq j$.
+
+\item Again, using $\hat \beta_1 = \sum_{i=1}^n Y_i \frac{1}{s_{xx}}(x_i-\bar x)$, I have that:
+\begin{align*}
+Cov\left[\hat \beta_1, \bar Y \right]&=Cov\left [\sum_{i=1}^n Y_i \frac{1}{s_{xx}}(x_i-\bar x), \frac{1}{n}\sum_{j=1}^nY_j\right]  \\
+&=\sum_{i, j} Cov\left [ Y_i \frac{1}{s_{xx}}(x_i-\bar x), \frac{1}{n}Y_j\right]  \\
+&=\sum_{i, j}\frac{(x_i-\bar x)}{n s_{xx}} Cov\left [ Y_i , Y_j\right]  \\
+&=\sum_{i=1}^n\frac{(x_i-\bar x)}{n s_{xx}} Var[Y_i] \\
+&=\frac{\sigma^2}{ns_{xx}} \left(\sum_{i=1}^n x_i-\sum_{i=1}^n \bar x \right)\\
+&=\frac{\sigma^2}{ns_{xx}} (n \bar x - n \bar x)\\
+&=0.
+\end{align*}
+Again, I have used the fact that all $Y_i$s are independent, so that $Cov[Y_i, Y_j] = 0$ for $i \neq j$.
+
+
+
+\item The variance of $\hat \beta_o$ can be further simplified to give the desired result:
+\begin{align*}
+Var[\hat \beta_o] & = \sum_{i=1}^n \sigma^2 \left[\frac{1}{n} -\bar x \frac{1}{s_{xx}} (x_i-\bar x)\right ]^2 \\
+& =\sigma^2 \sum_{i=1}^n \left [ \frac{1}{n^2}-\frac{2 \bar x}{n s_{xx}}(x_i -\bar x) +\frac{\bar x^2}{s_{xx}^2}(x_i-\bar x)^2 \right] \\
+& =\sigma^2 \left [ \frac{1}{n}-\frac{2 \bar x}{n s_{xx}} \sum_{i=1}^n (x_i -\bar x) +\frac{\bar x^2}{s_{xx}^2} \sum_{i=1}^n(x_i-\bar x)^2 \right] \\
+& = \sigma^2 \left [ \frac{1}{n}-\frac{2 \bar x}{n s_{xx}} (n \bar x -n\bar x) +\frac{\bar x^2}{s_{xx}} \right] \\
+& = \sigma^2 \left [ \frac{s_{xx} +n \bar x^2}{n s_{xx}} \right] \\
+& = \sigma^2 \left [ \frac{\sum_{i=1}^n (x_i -\bar x)^2 +n \bar x^2}{n s_{xx}} \right] \\
+& = \sigma^2 \left [ \frac{\sum_{i=1}^n (x_i^2-2\bar x x_i+\bar x^2) +n \bar x^2}{n s_{xx}} \right] \\
+& = \sigma^2 \left ( \frac{\sum_{i=1}^n x_i^2}{n s_{xx}} \right).
+\end{align*}
+
+\end{enumerate}
+
+\end{problem}
+
+
+
+

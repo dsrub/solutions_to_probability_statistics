@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  27 DEC 2017 12:05
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  4 JAN 2018 18:32
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -614,21 +614,22 @@ LaTeX Warning: Label `fig:prob_18' multiply defined.
 
 LaTeX Warning: Label `fig:prob_19' multiply defined.
 
-) (./chpt7/chpt7.aux) (./chpt13/chpt13.aux))
+) (./chpt7/chpt7.aux) (./chpt8/chpt8.aux) (./chpt9/chpt9.aux)
+(./chpt13/chpt13.aux))
 \openout1 = `solutions_to_probability_book.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
 
 *geometry* detected driver: dvips
 *geometry* verbose mode - [ preamble ] result:
@@ -726,15 +727,15 @@ Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
 File: book_cover/book_cover.pdf Graphic file (type pdf)
 
 <use book_cover/book_cover.pdf>
-Package pdftex.def Info: book_cover/book_cover.pdf used on input line 55.
+Package pdftex.def Info: book_cover/book_cover.pdf used on input line 60.
 (pdftex.def)             Requested size: 614.31223pt x 794.96999pt.
 
-Overfull \hbox (72.15965pt too wide) in paragraph at lines 54--56
+Overfull \hbox (72.15965pt too wide) in paragraph at lines 59--61
  []|  [] 
  []
 
 
-LaTeX Warning: Float too large for page by 50.58896pt on input line 56.
+LaTeX Warning: Float too large for page by 50.58896pt on input line 61.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
@@ -1126,440 +1127,493 @@ Overfull \hbox (10.25464pt too wide) in paragraph at lines 417--417
 
 [133]) [134]
 Chapter 8.
-<chpt12/chapter_12.pdf, id=751, 614.295pt x 794.97pt>
-File: chpt12/chapter_12.pdf Graphic file (type pdf)
-
-<use chpt12/chapter_12.pdf>
-Package pdftex.def Info: chpt12/chapter_12.pdf used on input line 85.
-(pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
-File: chpt12/chapter_12.pdf Graphic file (type pdf)
- <use chpt12/chapter_12.pdf>
-Package pdftex.def Info: chpt12/chapter_12.pdf used on input line 85.
-(pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
-
-<chpt12/chapter_12.pdf, id=754, page=1, 614.295pt x 794.97pt>
-File: chpt12/chapter_12.pdf Graphic file (type pdf)
-
-<use chpt12/chapter_12.pdf, page 1>
-Package pdftex.def Info: chpt12/chapter_12.pdf, page1 used on input line 85.
-(pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
-File: chpt12/chapter_12.pdf Graphic file (type pdf)
- <use chpt12/chapter_12.pdf, page 1>
-Package pdftex.def Info: chpt12/chapter_12.pdf, page1 used on input line 85.
-(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
-
 [135
 
 
 ]
+\openout2 = `chpt8/chpt8.aux'.
+
+ (./chpt8/chpt8.tex [136
+
+] [137]
+Overfull \hbox (53.45422pt too wide) in paragraph at lines 117--118
+[]\OT1/cmr/m/n/10.95 Since $[](\OMS/cmsy/m/n/10.95 ^^A\OT1/cmr/m/n/10.95 )$ is 
+a mono-tonic in-creas-ing func-tion on $\U/msb/m/n/10.95 R$\OT1/cmr/m/n/10.95 ,
+ $[][] []\OML/cmm/m/it/10.95 L\OT1/cmr/m/n/10.95 (\OML/cmm/b/it/10.95 x\OT1/cmr
+/m/n/10.95 ; \OML/cmm/m/it/10.95 ^^R\OT1/cmr/m/n/10.95 ) = [][] [] [] \OML/cmm/
+m/it/10.95 L\OT1/cmr/m/n/10.95 (\OML/cmm/b/it/10.95 x\OT1/cmr/m/n/10.95 ; \OML/
+cmm/m/it/10.95 ^^R\OT1/cmr/m/n/10.95 )$.
+ []
+
+[138] [139] [140]
+Overfull \hbox (16.16373pt too wide) in paragraph at lines 265--266
+[]\OT1/cmr/m/n/10.95 In this prob-lem, we choose a ran-dom sam-ple of size $\OM
+L/cmm/m/it/10.95 n$ \OT1/cmr/m/n/10.95 from a pop-u-la-tion, $\OML/cmm/m/it/10.
+95 X[]; X[]; [] ; X[]$\OT1/cmr/m/n/10.95 ,
+ []
+
+[141] [142] [143] [144] [145] [146]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [147]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [148]
+Underfull \vbox (badness 5548) has occurred while \output is active []
+
+ [149]
+Underfull \vbox (badness 2671) has occurred while \output is active []
+
+ [150]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [151])
+[152]
+Chapter 9.
+[153
+
+
+]
+\openout2 = `chpt9/chpt9.aux'.
+
+ (./chpt9/chpt9.tex [154
+
+]) [155] [156
+
+
+]
+Chapter 10.
+<chpt12/chapter_12.pdf, id=822, 614.295pt x 794.97pt>
+File: chpt12/chapter_12.pdf Graphic file (type pdf)
+
+<use chpt12/chapter_12.pdf>
+Package pdftex.def Info: chpt12/chapter_12.pdf used on input line 96.
+(pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
+File: chpt12/chapter_12.pdf Graphic file (type pdf)
+ <use chpt12/chapter_12.pdf>
+Package pdftex.def Info: chpt12/chapter_12.pdf used on input line 96.
+(pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
+
+<chpt12/chapter_12.pdf, id=825, page=1, 614.295pt x 794.97pt>
+File: chpt12/chapter_12.pdf Graphic file (type pdf)
+
+<use chpt12/chapter_12.pdf, page 1>
+Package pdftex.def Info: chpt12/chapter_12.pdf, page1 used on input line 96.
+(pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
 File: chpt12/chapter_12.pdf Graphic file (type pdf)
  <use chpt12/chapter_12.pdf, page 1>
-Package pdftex.def Info: chpt12/chapter_12.pdf, page1 used on input line 85.
+Package pdftex.def Info: chpt12/chapter_12.pdf, page1 used on input line 96.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+
+[157]
+File: chpt12/chapter_12.pdf Graphic file (type pdf)
+ <use chpt12/chapter_12.pdf, page 1>
+Package pdftex.def Info: chpt12/chapter_12.pdf, page1 used on input line 96.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
 File: chpt12/chapter_12.pdf Graphic file (type pdf)
  <use chpt12/chapter_12.pdf, page 1>
-Package pdftex.def Info: chpt12/chapter_12.pdf, page1 used on input line 85.
+Package pdftex.def Info: chpt12/chapter_12.pdf, page1 used on input line 96.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
 File: chpt12/chapter_12.pdf Graphic file (type pdf)
 
 <use chpt12/chapter_12.pdf, page 1>
-Package pdftex.def Info: chpt12/chapter_12.pdf, page1 used on input line 85.
+Package pdftex.def Info: chpt12/chapter_12.pdf, page1 used on input line 96.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
- [136 <./chpt12/chapter_12.pdf>]
-<chpt12/chapter_12.pdf, id=790, page=2, 614.295pt x 794.97pt>
+ [158 <./chpt12/chapter_12.pdf>]
+<chpt12/chapter_12.pdf, id=862, page=2, 614.295pt x 794.97pt>
 File: chpt12/chapter_12.pdf Graphic file (type pdf)
 
 <use chpt12/chapter_12.pdf, page 2>
-Package pdftex.def Info: chpt12/chapter_12.pdf, page2 used on input line 85.
+Package pdftex.def Info: chpt12/chapter_12.pdf, page2 used on input line 96.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
 File: chpt12/chapter_12.pdf Graphic file (type pdf)
  <use chpt12/chapter_12.pdf, page 2>
-Package pdftex.def Info: chpt12/chapter_12.pdf, page2 used on input line 85.
+Package pdftex.def Info: chpt12/chapter_12.pdf, page2 used on input line 96.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
 File: chpt12/chapter_12.pdf Graphic file (type pdf)
 
 <use chpt12/chapter_12.pdf, page 2>
-Package pdftex.def Info: chpt12/chapter_12.pdf, page2 used on input line 85.
+Package pdftex.def Info: chpt12/chapter_12.pdf, page2 used on input line 96.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
- [137 <./chpt12/chapter_12.pdf>]
-<chpt12/chapter_12.pdf, id=818, page=3, 614.295pt x 794.97pt>
+ [159 <./chpt12/chapter_12.pdf>]
+<chpt12/chapter_12.pdf, id=890, page=3, 614.295pt x 794.97pt>
 File: chpt12/chapter_12.pdf Graphic file (type pdf)
 
 <use chpt12/chapter_12.pdf, page 3>
-Package pdftex.def Info: chpt12/chapter_12.pdf, page3 used on input line 85.
+Package pdftex.def Info: chpt12/chapter_12.pdf, page3 used on input line 96.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
 File: chpt12/chapter_12.pdf Graphic file (type pdf)
  <use chpt12/chapter_12.pdf, page 3>
-Package pdftex.def Info: chpt12/chapter_12.pdf, page3 used on input line 85.
+Package pdftex.def Info: chpt12/chapter_12.pdf, page3 used on input line 96.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
 File: chpt12/chapter_12.pdf Graphic file (type pdf)
 
 <use chpt12/chapter_12.pdf, page 3>
-Package pdftex.def Info: chpt12/chapter_12.pdf, page3 used on input line 85.
+Package pdftex.def Info: chpt12/chapter_12.pdf, page3 used on input line 96.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
- [138 <./chpt12/chapter_12.pdf>]
-<chpt12/chapter_12.pdf, id=834, page=4, 614.295pt x 794.97pt>
+ [160 <./chpt12/chapter_12.pdf>]
+<chpt12/chapter_12.pdf, id=906, page=4, 614.295pt x 794.97pt>
 File: chpt12/chapter_12.pdf Graphic file (type pdf)
 
 <use chpt12/chapter_12.pdf, page 4>
-Package pdftex.def Info: chpt12/chapter_12.pdf, page4 used on input line 85.
+Package pdftex.def Info: chpt12/chapter_12.pdf, page4 used on input line 96.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
 File: chpt12/chapter_12.pdf Graphic file (type pdf)
  <use chpt12/chapter_12.pdf, page 4>
-Package pdftex.def Info: chpt12/chapter_12.pdf, page4 used on input line 85.
+Package pdftex.def Info: chpt12/chapter_12.pdf, page4 used on input line 96.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
 File: chpt12/chapter_12.pdf Graphic file (type pdf)
 
 <use chpt12/chapter_12.pdf, page 4>
-Package pdftex.def Info: chpt12/chapter_12.pdf, page4 used on input line 85.
+Package pdftex.def Info: chpt12/chapter_12.pdf, page4 used on input line 96.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
- [139 <./chpt12/chapter_12.pdf>]
-<chpt12/chapter_12.pdf, id=845, page=5, 614.295pt x 794.97pt>
+ [161 <./chpt12/chapter_12.pdf>]
+<chpt12/chapter_12.pdf, id=917, page=5, 614.295pt x 794.97pt>
 File: chpt12/chapter_12.pdf Graphic file (type pdf)
 
 <use chpt12/chapter_12.pdf, page 5>
-Package pdftex.def Info: chpt12/chapter_12.pdf, page5 used on input line 85.
+Package pdftex.def Info: chpt12/chapter_12.pdf, page5 used on input line 96.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
 File: chpt12/chapter_12.pdf Graphic file (type pdf)
  <use chpt12/chapter_12.pdf, page 5>
-Package pdftex.def Info: chpt12/chapter_12.pdf, page5 used on input line 85.
+Package pdftex.def Info: chpt12/chapter_12.pdf, page5 used on input line 96.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
 File: chpt12/chapter_12.pdf Graphic file (type pdf)
 
 <use chpt12/chapter_12.pdf, page 5>
-Package pdftex.def Info: chpt12/chapter_12.pdf, page5 used on input line 85.
+Package pdftex.def Info: chpt12/chapter_12.pdf, page5 used on input line 96.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
- [140 <./chpt12/chapter_12.pdf>]
-<chpt12/chapter_12.pdf, id=865, page=6, 614.295pt x 794.97pt>
+ [162 <./chpt12/chapter_12.pdf>]
+<chpt12/chapter_12.pdf, id=937, page=6, 614.295pt x 794.97pt>
 File: chpt12/chapter_12.pdf Graphic file (type pdf)
 
 <use chpt12/chapter_12.pdf, page 6>
-Package pdftex.def Info: chpt12/chapter_12.pdf, page6 used on input line 85.
+Package pdftex.def Info: chpt12/chapter_12.pdf, page6 used on input line 96.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
 File: chpt12/chapter_12.pdf Graphic file (type pdf)
  <use chpt12/chapter_12.pdf, page 6>
-Package pdftex.def Info: chpt12/chapter_12.pdf, page6 used on input line 85.
+Package pdftex.def Info: chpt12/chapter_12.pdf, page6 used on input line 96.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
 File: chpt12/chapter_12.pdf Graphic file (type pdf)
 
 <use chpt12/chapter_12.pdf, page 6>
-Package pdftex.def Info: chpt12/chapter_12.pdf, page6 used on input line 85.
+Package pdftex.def Info: chpt12/chapter_12.pdf, page6 used on input line 96.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
- [141 <./chpt12/chapter_12.pdf>]
-<chpt12/chapter_12.pdf, id=869, page=7, 614.295pt x 794.97pt>
+ [163 <./chpt12/chapter_12.pdf>]
+<chpt12/chapter_12.pdf, id=942, page=7, 614.295pt x 794.97pt>
 File: chpt12/chapter_12.pdf Graphic file (type pdf)
 
 <use chpt12/chapter_12.pdf, page 7>
-Package pdftex.def Info: chpt12/chapter_12.pdf, page7 used on input line 85.
+Package pdftex.def Info: chpt12/chapter_12.pdf, page7 used on input line 96.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
 File: chpt12/chapter_12.pdf Graphic file (type pdf)
  <use chpt12/chapter_12.pdf, page 7>
-Package pdftex.def Info: chpt12/chapter_12.pdf, page7 used on input line 85.
+Package pdftex.def Info: chpt12/chapter_12.pdf, page7 used on input line 96.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
 File: chpt12/chapter_12.pdf Graphic file (type pdf)
 
 <use chpt12/chapter_12.pdf, page 7>
-Package pdftex.def Info: chpt12/chapter_12.pdf, page7 used on input line 85.
+Package pdftex.def Info: chpt12/chapter_12.pdf, page7 used on input line 96.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
- [142 <./chpt12/chapter_12.pdf>]
-<chpt12/chapter_12.pdf, id=873, page=8, 614.295pt x 794.97pt>
+ [164 <./chpt12/chapter_12.pdf>]
+<chpt12/chapter_12.pdf, id=946, page=8, 614.295pt x 794.97pt>
 File: chpt12/chapter_12.pdf Graphic file (type pdf)
 
 <use chpt12/chapter_12.pdf, page 8>
-Package pdftex.def Info: chpt12/chapter_12.pdf, page8 used on input line 85.
+Package pdftex.def Info: chpt12/chapter_12.pdf, page8 used on input line 96.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
 File: chpt12/chapter_12.pdf Graphic file (type pdf)
  <use chpt12/chapter_12.pdf, page 8>
-Package pdftex.def Info: chpt12/chapter_12.pdf, page8 used on input line 85.
+Package pdftex.def Info: chpt12/chapter_12.pdf, page8 used on input line 96.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
 File: chpt12/chapter_12.pdf Graphic file (type pdf)
 
 <use chpt12/chapter_12.pdf, page 8>
-Package pdftex.def Info: chpt12/chapter_12.pdf, page8 used on input line 85.
+Package pdftex.def Info: chpt12/chapter_12.pdf, page8 used on input line 96.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
- [143 <./chpt12/chapter_12.pdf>]
-<chpt12/chapter_12.pdf, id=877, page=9, 614.295pt x 794.97pt>
+ [165 <./chpt12/chapter_12.pdf>]
+<chpt12/chapter_12.pdf, id=950, page=9, 614.295pt x 794.97pt>
 File: chpt12/chapter_12.pdf Graphic file (type pdf)
 
 <use chpt12/chapter_12.pdf, page 9>
-Package pdftex.def Info: chpt12/chapter_12.pdf, page9 used on input line 85.
+Package pdftex.def Info: chpt12/chapter_12.pdf, page9 used on input line 96.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
 File: chpt12/chapter_12.pdf Graphic file (type pdf)
  <use chpt12/chapter_12.pdf, page 9>
-Package pdftex.def Info: chpt12/chapter_12.pdf, page9 used on input line 85.
+Package pdftex.def Info: chpt12/chapter_12.pdf, page9 used on input line 96.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
 File: chpt12/chapter_12.pdf Graphic file (type pdf)
 
 <use chpt12/chapter_12.pdf, page 9>
-Package pdftex.def Info: chpt12/chapter_12.pdf, page9 used on input line 85.
+Package pdftex.def Info: chpt12/chapter_12.pdf, page9 used on input line 96.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
- [144 <./chpt12/chapter_12.pdf>]
-<chpt12/chapter_12.pdf, id=883, page=10, 614.295pt x 794.97pt>
+ [166 <./chpt12/chapter_12.pdf>]
+<chpt12/chapter_12.pdf, id=956, page=10, 614.295pt x 794.97pt>
 File: chpt12/chapter_12.pdf Graphic file (type pdf)
 
 <use chpt12/chapter_12.pdf, page 10>
-Package pdftex.def Info: chpt12/chapter_12.pdf, page10 used on input line 85.
+Package pdftex.def Info: chpt12/chapter_12.pdf, page10 used on input line 96.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
 File: chpt12/chapter_12.pdf Graphic file (type pdf)
  <use chpt12/chapter_12.pdf, page 10>
-Package pdftex.def Info: chpt12/chapter_12.pdf, page10 used on input line 85.
+Package pdftex.def Info: chpt12/chapter_12.pdf, page10 used on input line 96.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
 File: chpt12/chapter_12.pdf Graphic file (type pdf)
 
 <use chpt12/chapter_12.pdf, page 10>
-Package pdftex.def Info: chpt12/chapter_12.pdf, page10 used on input line 85.
+Package pdftex.def Info: chpt12/chapter_12.pdf, page10 used on input line 96.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
- [145 <./chpt12/chapter_12.pdf>]
-<chpt12/chapter_12.pdf, id=888, page=11, 614.295pt x 794.97pt>
+ [167 <./chpt12/chapter_12.pdf>]
+<chpt12/chapter_12.pdf, id=960, page=11, 614.295pt x 794.97pt>
 File: chpt12/chapter_12.pdf Graphic file (type pdf)
 
 <use chpt12/chapter_12.pdf, page 11>
-Package pdftex.def Info: chpt12/chapter_12.pdf, page11 used on input line 85.
+Package pdftex.def Info: chpt12/chapter_12.pdf, page11 used on input line 96.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
 File: chpt12/chapter_12.pdf Graphic file (type pdf)
  <use chpt12/chapter_12.pdf, page 11>
-Package pdftex.def Info: chpt12/chapter_12.pdf, page11 used on input line 85.
+Package pdftex.def Info: chpt12/chapter_12.pdf, page11 used on input line 96.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
 File: chpt12/chapter_12.pdf Graphic file (type pdf)
 
 <use chpt12/chapter_12.pdf, page 11>
-Package pdftex.def Info: chpt12/chapter_12.pdf, page11 used on input line 85.
+Package pdftex.def Info: chpt12/chapter_12.pdf, page11 used on input line 96.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
- [146 <./chpt12/chapter_12.pdf>]
-<chpt12/chapter_12.pdf, id=892, page=12, 614.295pt x 794.97pt>
+ [168 <./chpt12/chapter_12.pdf>]
+<chpt12/chapter_12.pdf, id=964, page=12, 614.295pt x 794.97pt>
 File: chpt12/chapter_12.pdf Graphic file (type pdf)
 
 <use chpt12/chapter_12.pdf, page 12>
-Package pdftex.def Info: chpt12/chapter_12.pdf, page12 used on input line 85.
+Package pdftex.def Info: chpt12/chapter_12.pdf, page12 used on input line 96.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
 File: chpt12/chapter_12.pdf Graphic file (type pdf)
  <use chpt12/chapter_12.pdf, page 12>
-Package pdftex.def Info: chpt12/chapter_12.pdf, page12 used on input line 85.
+Package pdftex.def Info: chpt12/chapter_12.pdf, page12 used on input line 96.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
 File: chpt12/chapter_12.pdf Graphic file (type pdf)
 
 <use chpt12/chapter_12.pdf, page 12>
-Package pdftex.def Info: chpt12/chapter_12.pdf, page12 used on input line 85.
+Package pdftex.def Info: chpt12/chapter_12.pdf, page12 used on input line 96.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
- [147 <./chpt12/chapter_12.pdf>]
-<chpt12/chapter_12.pdf, id=896, page=13, 614.295pt x 794.97pt>
+ [169 <./chpt12/chapter_12.pdf>]
+<chpt12/chapter_12.pdf, id=969, page=13, 614.295pt x 794.97pt>
 File: chpt12/chapter_12.pdf Graphic file (type pdf)
 
 <use chpt12/chapter_12.pdf, page 13>
-Package pdftex.def Info: chpt12/chapter_12.pdf, page13 used on input line 85.
+Package pdftex.def Info: chpt12/chapter_12.pdf, page13 used on input line 96.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
 File: chpt12/chapter_12.pdf Graphic file (type pdf)
  <use chpt12/chapter_12.pdf, page 13>
-Package pdftex.def Info: chpt12/chapter_12.pdf, page13 used on input line 85.
+Package pdftex.def Info: chpt12/chapter_12.pdf, page13 used on input line 96.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
 File: chpt12/chapter_12.pdf Graphic file (type pdf)
 
 <use chpt12/chapter_12.pdf, page 13>
-Package pdftex.def Info: chpt12/chapter_12.pdf, page13 used on input line 85.
+Package pdftex.def Info: chpt12/chapter_12.pdf, page13 used on input line 96.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
- [148 <./chpt12/chapter_12.pdf>]
-<chpt12/chapter_12.pdf, id=902, page=14, 614.295pt x 794.97pt>
+ [170 <./chpt12/chapter_12.pdf>]
+<chpt12/chapter_12.pdf, id=975, page=14, 614.295pt x 794.97pt>
 File: chpt12/chapter_12.pdf Graphic file (type pdf)
 
 <use chpt12/chapter_12.pdf, page 14>
-Package pdftex.def Info: chpt12/chapter_12.pdf, page14 used on input line 85.
+Package pdftex.def Info: chpt12/chapter_12.pdf, page14 used on input line 96.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
 File: chpt12/chapter_12.pdf Graphic file (type pdf)
  <use chpt12/chapter_12.pdf, page 14>
-Package pdftex.def Info: chpt12/chapter_12.pdf, page14 used on input line 85.
+Package pdftex.def Info: chpt12/chapter_12.pdf, page14 used on input line 96.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
 File: chpt12/chapter_12.pdf Graphic file (type pdf)
 
 <use chpt12/chapter_12.pdf, page 14>
-Package pdftex.def Info: chpt12/chapter_12.pdf, page14 used on input line 85.
+Package pdftex.def Info: chpt12/chapter_12.pdf, page14 used on input line 96.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
- [149 <./chpt12/chapter_12.pdf>]
-<chpt12/chapter_12.pdf, id=906, page=15, 614.295pt x 794.97pt>
+ [171 <./chpt12/chapter_12.pdf>]
+<chpt12/chapter_12.pdf, id=979, page=15, 614.295pt x 794.97pt>
 File: chpt12/chapter_12.pdf Graphic file (type pdf)
 
 <use chpt12/chapter_12.pdf, page 15>
-Package pdftex.def Info: chpt12/chapter_12.pdf, page15 used on input line 85.
+Package pdftex.def Info: chpt12/chapter_12.pdf, page15 used on input line 96.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
 File: chpt12/chapter_12.pdf Graphic file (type pdf)
  <use chpt12/chapter_12.pdf, page 15>
-Package pdftex.def Info: chpt12/chapter_12.pdf, page15 used on input line 85.
+Package pdftex.def Info: chpt12/chapter_12.pdf, page15 used on input line 96.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
 File: chpt12/chapter_12.pdf Graphic file (type pdf)
 
 <use chpt12/chapter_12.pdf, page 15>
-Package pdftex.def Info: chpt12/chapter_12.pdf, page15 used on input line 85.
+Package pdftex.def Info: chpt12/chapter_12.pdf, page15 used on input line 96.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
- [150 <./chpt12/chapter_12.pdf>]
-<chpt12/chapter_12.pdf, id=910, page=16, 614.295pt x 794.97pt>
+ [172 <./chpt12/chapter_12.pdf>]
+<chpt12/chapter_12.pdf, id=983, page=16, 614.295pt x 794.97pt>
 File: chpt12/chapter_12.pdf Graphic file (type pdf)
 
 <use chpt12/chapter_12.pdf, page 16>
-Package pdftex.def Info: chpt12/chapter_12.pdf, page16 used on input line 85.
+Package pdftex.def Info: chpt12/chapter_12.pdf, page16 used on input line 96.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
 File: chpt12/chapter_12.pdf Graphic file (type pdf)
  <use chpt12/chapter_12.pdf, page 16>
-Package pdftex.def Info: chpt12/chapter_12.pdf, page16 used on input line 85.
+Package pdftex.def Info: chpt12/chapter_12.pdf, page16 used on input line 96.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
 File: chpt12/chapter_12.pdf Graphic file (type pdf)
 
 <use chpt12/chapter_12.pdf, page 16>
-Package pdftex.def Info: chpt12/chapter_12.pdf, page16 used on input line 85.
+Package pdftex.def Info: chpt12/chapter_12.pdf, page16 used on input line 96.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
- [151 <./chpt12/chapter_12.pdf>]
-<chpt12/chapter_12.pdf, id=927, page=17, 614.295pt x 794.97pt>
+ [173 <./chpt12/chapter_12.pdf>]
+<chpt12/chapter_12.pdf, id=999, page=17, 614.295pt x 794.97pt>
 File: chpt12/chapter_12.pdf Graphic file (type pdf)
 
 <use chpt12/chapter_12.pdf, page 17>
-Package pdftex.def Info: chpt12/chapter_12.pdf, page17 used on input line 85.
+Package pdftex.def Info: chpt12/chapter_12.pdf, page17 used on input line 96.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
 File: chpt12/chapter_12.pdf Graphic file (type pdf)
  <use chpt12/chapter_12.pdf, page 17>
-Package pdftex.def Info: chpt12/chapter_12.pdf, page17 used on input line 85.
+Package pdftex.def Info: chpt12/chapter_12.pdf, page17 used on input line 96.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
 File: chpt12/chapter_12.pdf Graphic file (type pdf)
 
 <use chpt12/chapter_12.pdf, page 17>
-Package pdftex.def Info: chpt12/chapter_12.pdf, page17 used on input line 85.
+Package pdftex.def Info: chpt12/chapter_12.pdf, page17 used on input line 96.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
- [152 <./chpt12/chapter_12.pdf>]
-<chpt12/chapter_12.pdf, id=932, page=18, 614.295pt x 794.97pt>
+ [174 <./chpt12/chapter_12.pdf>]
+<chpt12/chapter_12.pdf, id=1003, page=18, 614.295pt x 794.97pt>
 File: chpt12/chapter_12.pdf Graphic file (type pdf)
 
 <use chpt12/chapter_12.pdf, page 18>
-Package pdftex.def Info: chpt12/chapter_12.pdf, page18 used on input line 85.
+Package pdftex.def Info: chpt12/chapter_12.pdf, page18 used on input line 96.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
 File: chpt12/chapter_12.pdf Graphic file (type pdf)
  <use chpt12/chapter_12.pdf, page 18>
-Package pdftex.def Info: chpt12/chapter_12.pdf, page18 used on input line 85.
+Package pdftex.def Info: chpt12/chapter_12.pdf, page18 used on input line 96.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
 File: chpt12/chapter_12.pdf Graphic file (type pdf)
 
 <use chpt12/chapter_12.pdf, page 18>
-Package pdftex.def Info: chpt12/chapter_12.pdf, page18 used on input line 85.
+Package pdftex.def Info: chpt12/chapter_12.pdf, page18 used on input line 96.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
- [153 <./chpt12/chapter_12.pdf>]
-<chpt12/chapter_12.pdf, id=938, page=19, 614.295pt x 794.97pt>
+ [175 <./chpt12/chapter_12.pdf>]
+<chpt12/chapter_12.pdf, id=1010, page=19, 614.295pt x 794.97pt>
 File: chpt12/chapter_12.pdf Graphic file (type pdf)
 
 <use chpt12/chapter_12.pdf, page 19>
-Package pdftex.def Info: chpt12/chapter_12.pdf, page19 used on input line 85.
+Package pdftex.def Info: chpt12/chapter_12.pdf, page19 used on input line 96.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
 File: chpt12/chapter_12.pdf Graphic file (type pdf)
  <use chpt12/chapter_12.pdf, page 19>
-Package pdftex.def Info: chpt12/chapter_12.pdf, page19 used on input line 85.
+Package pdftex.def Info: chpt12/chapter_12.pdf, page19 used on input line 96.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
 File: chpt12/chapter_12.pdf Graphic file (type pdf)
 
 <use chpt12/chapter_12.pdf, page 19>
-Package pdftex.def Info: chpt12/chapter_12.pdf, page19 used on input line 85.
+Package pdftex.def Info: chpt12/chapter_12.pdf, page19 used on input line 96.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
- [154 <./chpt12/chapter_12.pdf>]
-<chpt12/chapter_12.pdf, id=947, page=20, 614.295pt x 794.97pt>
+ [176 <./chpt12/chapter_12.pdf>]
+<chpt12/chapter_12.pdf, id=1019, page=20, 614.295pt x 794.97pt>
 File: chpt12/chapter_12.pdf Graphic file (type pdf)
 
 <use chpt12/chapter_12.pdf, page 20>
-Package pdftex.def Info: chpt12/chapter_12.pdf, page20 used on input line 85.
+Package pdftex.def Info: chpt12/chapter_12.pdf, page20 used on input line 96.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
 File: chpt12/chapter_12.pdf Graphic file (type pdf)
  <use chpt12/chapter_12.pdf, page 20>
-Package pdftex.def Info: chpt12/chapter_12.pdf, page20 used on input line 85.
+Package pdftex.def Info: chpt12/chapter_12.pdf, page20 used on input line 96.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
 File: chpt12/chapter_12.pdf Graphic file (type pdf)
 
 <use chpt12/chapter_12.pdf, page 20>
-Package pdftex.def Info: chpt12/chapter_12.pdf, page20 used on input line 85.
+Package pdftex.def Info: chpt12/chapter_12.pdf, page20 used on input line 96.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
- [155 <./chpt12/chapter_12.pdf>]
-<chpt12/chapter_12.pdf, id=951, page=21, 614.295pt x 794.97pt>
+ [177 <./chpt12/chapter_12.pdf>]
+<chpt12/chapter_12.pdf, id=1023, page=21, 614.295pt x 794.97pt>
 File: chpt12/chapter_12.pdf Graphic file (type pdf)
 
 <use chpt12/chapter_12.pdf, page 21>
-Package pdftex.def Info: chpt12/chapter_12.pdf, page21 used on input line 85.
+Package pdftex.def Info: chpt12/chapter_12.pdf, page21 used on input line 96.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
 File: chpt12/chapter_12.pdf Graphic file (type pdf)
  <use chpt12/chapter_12.pdf, page 21>
-Package pdftex.def Info: chpt12/chapter_12.pdf, page21 used on input line 85.
+Package pdftex.def Info: chpt12/chapter_12.pdf, page21 used on input line 96.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
 File: chpt12/chapter_12.pdf Graphic file (type pdf)
 
 <use chpt12/chapter_12.pdf, page 21>
-Package pdftex.def Info: chpt12/chapter_12.pdf, page21 used on input line 85.
+Package pdftex.def Info: chpt12/chapter_12.pdf, page21 used on input line 96.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
- [156 <./chpt12/chapter_12.pdf>]
-<chpt12/chapter_12.pdf, id=955, page=22, 614.295pt x 794.97pt>
+ [178 <./chpt12/chapter_12.pdf>]
+<chpt12/chapter_12.pdf, id=1027, page=22, 614.295pt x 794.97pt>
 File: chpt12/chapter_12.pdf Graphic file (type pdf)
 
 <use chpt12/chapter_12.pdf, page 22>
-Package pdftex.def Info: chpt12/chapter_12.pdf, page22 used on input line 85.
+Package pdftex.def Info: chpt12/chapter_12.pdf, page22 used on input line 96.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
 File: chpt12/chapter_12.pdf Graphic file (type pdf)
  <use chpt12/chapter_12.pdf, page 22>
-Package pdftex.def Info: chpt12/chapter_12.pdf, page22 used on input line 85.
+Package pdftex.def Info: chpt12/chapter_12.pdf, page22 used on input line 96.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
 File: chpt12/chapter_12.pdf Graphic file (type pdf)
 
 <use chpt12/chapter_12.pdf, page 22>
-Package pdftex.def Info: chpt12/chapter_12.pdf, page22 used on input line 85.
+Package pdftex.def Info: chpt12/chapter_12.pdf, page22 used on input line 96.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
- [157 <./chpt12/chapter_12.pdf>]
-<chpt12/chapter_12.pdf, id=960, page=23, 614.295pt x 794.97pt>
+ [179 <./chpt12/chapter_12.pdf>]
+<chpt12/chapter_12.pdf, id=1031, page=23, 614.295pt x 794.97pt>
 File: chpt12/chapter_12.pdf Graphic file (type pdf)
 
 <use chpt12/chapter_12.pdf, page 23>
-Package pdftex.def Info: chpt12/chapter_12.pdf, page23 used on input line 85.
+Package pdftex.def Info: chpt12/chapter_12.pdf, page23 used on input line 96.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
 File: chpt12/chapter_12.pdf Graphic file (type pdf)
  <use chpt12/chapter_12.pdf, page 23>
-Package pdftex.def Info: chpt12/chapter_12.pdf, page23 used on input line 85.
+Package pdftex.def Info: chpt12/chapter_12.pdf, page23 used on input line 96.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
 File: chpt12/chapter_12.pdf Graphic file (type pdf)
 
 <use chpt12/chapter_12.pdf, page 23>
-Package pdftex.def Info: chpt12/chapter_12.pdf, page23 used on input line 85.
+Package pdftex.def Info: chpt12/chapter_12.pdf, page23 used on input line 96.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
- [158 <./chpt12/chapter_12.pdf>]
-<chpt12/chapter_12.pdf, id=966, page=24, 614.295pt x 794.97pt>
+ [180 <./chpt12/chapter_12.pdf>]
+<chpt12/chapter_12.pdf, id=1037, page=24, 614.295pt x 794.97pt>
 File: chpt12/chapter_12.pdf Graphic file (type pdf)
 
 <use chpt12/chapter_12.pdf, page 24>
-Package pdftex.def Info: chpt12/chapter_12.pdf, page24 used on input line 85.
+Package pdftex.def Info: chpt12/chapter_12.pdf, page24 used on input line 96.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
 File: chpt12/chapter_12.pdf Graphic file (type pdf)
  <use chpt12/chapter_12.pdf, page 24>
-Package pdftex.def Info: chpt12/chapter_12.pdf, page24 used on input line 85.
+Package pdftex.def Info: chpt12/chapter_12.pdf, page24 used on input line 96.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
 File: chpt12/chapter_12.pdf Graphic file (type pdf)
 
 <use chpt12/chapter_12.pdf, page 24>
-Package pdftex.def Info: chpt12/chapter_12.pdf, page24 used on input line 85.
+Package pdftex.def Info: chpt12/chapter_12.pdf, page24 used on input line 96.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
- [159 <./chpt12/chapter_12.pdf>]
-<chpt12/chapter_12.pdf, id=970, page=25, 614.295pt x 794.97pt>
+ [181 <./chpt12/chapter_12.pdf>]
+<chpt12/chapter_12.pdf, id=1042, page=25, 614.295pt x 794.97pt>
 File: chpt12/chapter_12.pdf Graphic file (type pdf)
 
 <use chpt12/chapter_12.pdf, page 25>
-Package pdftex.def Info: chpt12/chapter_12.pdf, page25 used on input line 85.
+Package pdftex.def Info: chpt12/chapter_12.pdf, page25 used on input line 96.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
 File: chpt12/chapter_12.pdf Graphic file (type pdf)
  <use chpt12/chapter_12.pdf, page 25>
-Package pdftex.def Info: chpt12/chapter_12.pdf, page25 used on input line 85.
+Package pdftex.def Info: chpt12/chapter_12.pdf, page25 used on input line 96.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
 File: chpt12/chapter_12.pdf Graphic file (type pdf)
 
 <use chpt12/chapter_12.pdf, page 25>
-Package pdftex.def Info: chpt12/chapter_12.pdf, page25 used on input line 85.
+Package pdftex.def Info: chpt12/chapter_12.pdf, page25 used on input line 96.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
- [160 <./chpt12/chapter_12.pdf>]
-Chapter 9.
-[161
+ [182 <./chpt12/chapter_12.pdf>]
+Chapter 11.
+[183
 
 ]
 \openout2 = `chpt13/chpt13.aux'.
 
- (./chpt13/chpt13.tex [162
+ (./chpt13/chpt13.tex [184
 
-] [163] [164]
-<chpt13/prob4.pdf, id=989, 823.87799pt x 289.08pt>
+] [185] [186]
+<chpt13/prob4.pdf, id=1060, 823.87799pt x 289.08pt>
 File: chpt13/prob4.pdf Graphic file (type pdf)
  <use chpt13/prob4.pdf>
 Package pdftex.def Info: chpt13/prob4.pdf used on input line 186.
@@ -1576,20 +1630,21 @@ File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 206.
- [165]) [166 <./chpt13/prob4.pdf>] (./solutions_to_probability_book.aux (./chpt
+ [187]) [188 <./chpt13/prob4.pdf>] (./solutions_to_probability_book.aux (./chpt
 1/chpt1.aux)
 (./chpt2/chpt2.aux) (./chpt3/chpt3.aux) (./chpt4/chpt4.aux) (./chpt5/chpt5.aux)
-(./chpt6/chpt6.aux) (./chpt7/chpt7.aux) (./chpt13/chpt13.aux))
+(./chpt6/chpt6.aux) (./chpt7/chpt7.aux) (./chpt8/chpt8.aux) (./chpt9/chpt9.aux)
+(./chpt13/chpt13.aux))
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 16005 strings out of 492995
- 303151 string characters out of 6132704
- 363141 words of memory out of 5000000
- 19115 multiletter control sequences out of 15000+600000
- 17656 words of font info for 67 fonts, out of 8000000 for 9000
+ 16028 strings out of 492995
+ 303436 string characters out of 6132704
+ 363838 words of memory out of 5000000
+ 19121 multiletter control sequences out of 15000+600000
+ 17824 words of font info for 68 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  55i,20n,54p,1562b,1469s stack positions out of 5000i,500n,10000p,200000b,80000s
  </Users/rubind/Library/texlive/2017/texmf-var/fonts/pk/ljfour/public/bbm/bbm
@@ -1597,40 +1652,42 @@ Here is how much of TeX's memory you used:
 a/cmbsy8.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm
 /cmbx10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/
 cmbx12.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mex10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-mi10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmm
-i12.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi
-6.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.
-pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pf
-b></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pf
-b></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib
-8.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.
-pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pf
-b></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb>
-</usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></u
-sr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/
-local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/loc
-al/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl10.pfb></usr/loca
-l/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local
-/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/t
-exlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/tex
-live/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texl
-ive/2017/texmf-dist/fonts/type1/public/lm/lmex10.pfb></usr/local/texlive/2017/t
-exmf-dist/fonts/type1/public/lm/lmmi10.pfb></usr/local/texlive/2017/texmf-dist/
-fonts/type1/public/lm/lmmi6.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1
-/public/lm/lmmi8.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/lm/
-lmmib10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/lm/lmr10.pfb
-></usr/local/texlive/2017/texmf-dist/fonts/type1/public/lm/lmr6.pfb></usr/local
-/texlive/2017/texmf-dist/fonts/type1/public/lm/lmr8.pfb></usr/local/texlive/201
-7/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local/texlive/2017/texmf-di
-st/fonts/type1/public/lm/lmsy8.pfb></usr/local/texlive/2017/texmf-dist/fonts/ty
-pe1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2017/texmf-dist/font
-s/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on solutions_to_probability_book.pdf (166 pages, 4295401 bytes).
+mex10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cmext
+ra/cmex8.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmmi10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmmi12.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mmi6.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmm
+i7.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8
+.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10
+.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cmextra/cm
+mib8.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr
+10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12
+.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.p
+fb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb>
+</usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></u
+sr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/
+local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl10.pfb></usr/l
+ocal/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/lo
+cal/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/loca
+l/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/
+texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/t
+exlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/te
+xlive/2017/texmf-dist/fonts/type1/public/lm/lmex10.pfb></usr/local/texlive/2017
+/texmf-dist/fonts/type1/public/lm/lmmi10.pfb></usr/local/texlive/2017/texmf-dis
+t/fonts/type1/public/lm/lmmi6.pfb></usr/local/texlive/2017/texmf-dist/fonts/typ
+e1/public/lm/lmmi8.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/l
+m/lmmib10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/lm/lmr10.p
+fb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/lm/lmr6.pfb></usr/loc
+al/texlive/2017/texmf-dist/fonts/type1/public/lm/lmr8.pfb></usr/local/texlive/2
+017/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local/texlive/2017/texmf-
+dist/fonts/type1/public/lm/lmsy8.pfb></usr/local/texlive/2017/texmf-dist/fonts/
+type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2017/texmf-dist/fo
+nts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on solutions_to_probability_book.pdf (188 pages, 4372586 bytes).
 
 PDF statistics:
- 1095 PDF objects out of 1200 (max. 8388607)
- 781 compressed objects within 8 object streams
+ 1175 PDF objects out of 1200 (max. 8388607)
+ 836 compressed objects within 9 object streams
  0 named destinations out of 1000 (max. 500000)
  253 words of extra memory for PDF output out of 10000 (max. 10000000)
 
