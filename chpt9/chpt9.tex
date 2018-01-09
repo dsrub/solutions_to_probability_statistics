@@ -1,4 +1,4 @@
-\begin{problem}{1} The posterior density can be found with Baye's rule:
+\begin{problem}{1} The posterior density can be found with Bayes' rule:
 \begin{equation*}
 f_{X|Y}(x|2) = \frac{P_{Y|X}(2|x)f_X(x)}{\int P_{Y|X}(2|x)f_X(x)dx},
 \end{equation*}
@@ -15,11 +15,11 @@ for $0\le x \le1$ and 0 otherwise.  As a sanity check, I made sure the posterior
 
 \end{problem}
 
-\begin{problem}{2} From Baye's rule we know that the posterior density is:
+\begin{problem}{2} From Baye's rule we know that the posterior density for $0\le x\le 1$ is:
 \begin{equation*}
 f_{X|Y}(x|5) \propof{x} P_{Y|X}(5|x)f_X(x) = 3x^3(1-x)^4,
 \end{equation*}
-where the symbol $\propof{x}$ means proportional to as a function of $x$.  Therefore, the MAP estimate is given by
+(and 0 otherwise) where the symbol $\propof{x}$ means proportional to as a function of $x$.  Therefore, the MAP estimate is given by
 \begin{equation*}
 \hat x_{MAP} = \argmax_{x \in [0, 1]}  \{3x^3(1-x)^4 \},
 \end{equation*}
@@ -63,8 +63,8 @@ From the equation above:
 \begin{align*}
 f_{Y|X}(y|x) &=\frac{x+\frac{3}{2}y^2}{\int x+\frac{3}{2}y^2dy} \\
 & = \frac{2x+3y^2}{2x+1} \\
-&=1+\frac{3y^2-1}{2x+1}
-\end{align*},
+&=1+\frac{3y^2-1}{2x+1},
+\end{align*}
 and thus we see that, to maximize this expression, if $3y^2-1\le 0$ we need to minimize the second term, while if $3y^2-1> 0$ we need to maximize it.  Therefore:
 \[
   \hat x_{ML} =
@@ -81,25 +81,751 @@ and thus we see that, to maximize this expression, if $3y^2-1\le 0$ we need to m
 \begin{problem}{4} The posterior distribution is:
 
 \begin{align*}
-f_{X|Y}(x|y) &= \frac{f_{X|Y}(x|y) f_{X}(x)}{\int f_{X|Y}(x|y) f_{X}(x) dx} \\
+f_{X|Y}(x|y) &= \frac{f_{Y|X}(y|x) f_{X}(x)}{\int f_{Y|X}(y|x) f_{X}(x) dx} \\
 & = \frac{(xy- \frac{x}{2}+1)(2x^2+\frac{1}{3})}{\int_0^1 (xy- \frac{x}{2}+1)(2x^2+\frac{1}{3}) dx}\\
-& = \frac{2x^3y+\frac{xy}{3}-x^3-\frac{x}{6}+2x^2+\frac{1}{3}}{\frac{2}{3}y+\frac{1}{2}},
+& = \frac{2x^3y+\frac{xy}{3}-x^3-\frac{x}{6}+2x^2+\frac{1}{3}}{\frac{2}{3}y+\frac{2}{3}},
 \end{align*} 
 so that
 \begin{align*}
 \hat x_M &= E[X|Y=y]\\
-& = \frac{1}{\frac{2}{3}y+\frac{1}{2}} \int_0^1 \left (2x^4y+\frac{x^2y}{3}-x^4-\frac{x^2}{6}+2x^3+\frac{x}{3} \right)dx \\
-& = \frac{23}{45}y+\frac{37}{90}.
+& = \frac{1}{\frac{2}{3}y+\frac{2}{3}} \int_0^1 \left (2x^4y+\frac{x^2y}{3}-x^4-\frac{x^2}{6}+2x^3+\frac{x}{3} \right)dx \\
+& = \frac{46y-37}{60(y+1)}.
 \end{align*} 
 
+\end{problem}
+
+\begin{problem}{5} $ $
+
+\begin{enumerate}
+ 
+ \item  First note that since $X \sim \mathcal N(0, 1)$, $W \sim \mathcal N(0, 1)$ (where $X$ and $W$ are independent), we have that $Y=2X+W \sim \mathcal N(0, 5)$.  Now, $aY+bX = a(2X+W)+bX = (2a+b)X+aW$ which is normal for all $a, b \in \mathbb R$, and thus $X$ and $Y$ are jointly normal.  Thus, by Theorem 5.4 in the book, I have that:
+\begin{equation*}
+\hat X_M = E[X|Y] = \mu_X+\rho \sigma_X \frac{Y-\mu_Y}{\sigma_Y}.
+\end{equation*}
+From the distributions of $X$ and $Y$, I have that $\mu_X =\mu_Y=0$, $\sigma_Y=\sqrt{5}$, $\sigma_X=1$ and:
+\begin{align*}
+Cov[X, Y] &= Cov[X, 2X+W] \\
+& = 2Var[X]+Cov[X, W] \\
+&= 2Var[X] ~~\mathrm{(since~}X, W~\mathrm{are~independent)} \\
+& = 2.
+\end{align*}
+Plugging in the values, I find that 
+\begin{align*}
+\hat X_M = E[X|Y] \\
+&= \frac{2}{\sqrt{5}}\cdot \frac{Y}{\sqrt{5}} \\
+&=\frac{2Y}{5}.
+\end{align*}
+
+\item To solve this problem, I use the facts that $X$ and $W$ are independent and $E[X^2]=E[W^2] =1$:
+\begin{align*}
+MSE &= E[(X-\hat X_M)^2] \\
+&=E[X^2]-2E[X\hat X_M]+E[\hat X_M^2] \\
+&=1-2 E\left [X \frac{2Y}{5}\right] +E\left[\left(\frac{2Y}{5}\right)^2\right] \\
+&=1-2 E\left [\frac{2}{5}(2X^2+XW)\right] +E\left [\frac{4}{25}(4X^2+4XW+W^2)\right] \\
+&=1-\frac{4}{5} \left (E[2X^2]+E[X]E[W] \right ) +\frac{4}{25} \left ( E[(4X^2]+4E[X]E[W]+E[W^2] \right ) \\
+&=1-\frac{4}{5} \left (2\cdot 1 \right ) +\frac{4}{25} \left ( 4\cdot 1+1 \right ) \\
+& = \frac{1}{5}.
+\end{align*}
+
+\item We know that $E[X^2] =1$, and from the derivation above we can see that $E[\hat X_M^2] = E[(2Y/5)^2] = 20/25=4/5$.  Also, from the derivation above $E[\tilde X^2] = MSE = 1/5$.  Therefore $E[\hat X_M^2]+E[\tilde X^2] = 4/5+1/5 =1$, and so the relation is verified.
+
+ 
+\end{enumerate}
 \end{problem}
 
 
 
 
+\begin{problem}{6} $ $
+
+\begin{enumerate}
+
+\item The linear MMSE estimator is given by
+\begin{equation*}
+\hat X_L = \frac{Cov[X, Y]}{Var[Y]}(Y-E[Y])+E[X],
+\end{equation*}
+and therefore I must find these values.  First note that since $X\sim Unif(0, 1)$, $E[X]=1/2$ and $Var[X] = 1/12$, which implies that $E[X^2] = 1/3$.  Also note that since $Y|X=x\sim Exp(1/(2x))$, $E[Y|X] = 2X$ and $Var[Y|X] = 4X^2$.  Now, since I know the distribution of $Y|X$, to find $E[Y]$, I use the law of iterated expectation:
+\begin{align*}
+E[Y] &= E[E[Y|X]] \\
+& = E[2X]\\
+& = 1.
+\end{align*}
+Similarly, to find $Var[Y]$, I use the law of total variance:
+\begin{align*}
+Var[Y] &= E[Var[Y|X]]+Var[E[Y|X]] \\
+& = E[4X^2]+Var[2X]\\
+& = 4E[X^2]+4Var[X]\\
+& = 4\cdot \frac{1}{3}+4\cdot \frac{1}{12}\\
+& = \frac{5}{3}.
+\end{align*}
+
+To find $Cov[X, Y]$, I first solve for $E[XY]$, again using the law of iterated expectation:
+\begin{align*}
+E[XY] &= E[E[XY|X]] \\
+&= E[XE[Y|X]] \\
+&= E[X2X] \\
+&= 2E[X^2] \\
+&= \frac{2}{3}.
+\end{align*}
+Thus I have that:
+\begin{align*}
+Cov[X,Y] &= E[XY] -E[X]E[Y] \\
+&= \frac{2}{3} -\frac{1}{2}\cdot 1  \\
+&=\frac{1}{6}.
+\end{align*}
+Plugging all these values into the formula for $\hat X_L $, I find that:
+\begin{equation*}
+\hat X_L = \frac{1}{10}Y+\frac{2}{5}.
+\end{equation*}
+
+\item The MSE of $\hat X_L$ is given by:
+\begin{align*}
+MSE &= (1-\rho^2)Var[X] \\
+& = \left (1-\frac{Cov[X, Y]^2}{Var[X] Var[Y]} \right)Var[X] \\
+& = \left (1-\frac{\left (\frac{1}{6} \right)^2}{\frac{1}{12}\cdot \frac{5}{3}} \right)\cdot \frac{1}{12} \\
+& = \frac{1}{15}.
+\end{align*}
+
+\item First, note that $E[Y^2] = Var[Y]+(E[Y])^2 = 5/3+1 = 8/3$.  Now, I have that:
+\begin{align*}
+E[\tilde X Y] & = E[(X-\hat X_L)Y] \\
+& = E\left[XY - \left(\frac{1}{10}Y+\frac{2}{5} \right)Y \right] \\
+& = E[XY] - \left( \frac{1}{10}E[Y^2] +\frac{2}{5}E[Y] \right) \\
+& = \frac{2}{3}- \left( \frac{1}{10}\cdot \frac{8}{3} +\frac{2}{5} \right) \\
+& = 0.
+\end{align*}
+
+
+\end{enumerate}
+\end{problem}
+
+\begin{problem}{7} $ $
+
+\begin{enumerate}
+\item  First note that $Y \sim \mathcal (0, \sigma_X^2+\sigma_W^2)$.  Also note that $aX+bY = (a+b)X+bW$ which is normally distributed for all $a, b \in \mathbb R$, and thus $X$ and $Y$ are jointly normal, and so by Theorem 5.4 in the book:
+\begin{equation*}
+\hat X_M = E[X|Y] = \mu_X+\rho \sigma_X \frac{Y-\mu_Y}{\sigma_Y}.
+\end{equation*}
+Solving for the covariance is easy: $Cov[X, Y] = Cov[X, X+W] = Var[X]+Cov[X, W]=Var[X]= \sigma_X^2$, where $Cov[X, W] = 0$ since $X$ and $W$ are independent.  I thus have that:
+\begin{align*}
+\hat X_M &= \mu_X+\frac{Cov[X, Y]}{\sigma_X \sigma_Y} \sigma_X \frac{Y-\mu_Y}{\sigma_Y} \\ 
+&= \frac{\sigma_X^2}{\sigma_X \sqrt{\sigma_X^2+\sigma_W^2}}\cdot \sigma_X \cdot \frac{Y}{\sqrt{\sigma_X^2+\sigma_W^2}} \\
+& = \frac{\sigma_X^2}{\sigma_X^2+\sigma_W^2}Y.
+\end{align*}
+
+\item The MSE is:
+\begin{align*}
+MSE(\hat X_M) &= E[(X - \hat X_M)^2]\\
+&= E[X^2]-2E[X\hat X_M]+E[\hat X_M^2]\\
+& = E[X^2]-2\frac{\sigma_X^2}{\sigma_X^2+\sigma_W^2}E\left [XY\right]+\left(\frac{\sigma_X^2}{\sigma_X^2+\sigma_W^2}\right)^2E\left[Y^2\right]\\
+& = E[X^2]-2\frac{\sigma_X^2}{\sigma_X^2+\sigma_W^2}E\left [X(X+W)\right]+\left(\frac{\sigma_X^2}{\sigma_X^2+\sigma_W^2} \right)^2E\left[(X+W)^2\right]\\
+& = E[X^2]-2\frac{\sigma_X^2}{\sigma_X^2+\sigma_W^2}\left( E[X^2]+E[X]E[W] \right)\\
+& +\left(\frac{\sigma_X^2}{\sigma_X^2+\sigma_W^2} \right)^2\left (E[X^2]+2E[X]E[W]+E[W^2] \right )\\
+& = \frac{\sigma_X^2 \sigma_W^2}{\sigma_X^2+\sigma_W^2},
+\end{align*}
+where in the second to last line I have used that $X$ and $W$ are independent, and where I have used that: $E[X^2] = \sigma_X^2 $, $E[W^2] = \sigma_W^2 $ and $E[X]=E[W]=0$.
+
+\end{enumerate}
+\end{problem}
+
+\begin{problem}{8}Following along Example 9.9 of the book, I use the principle of orthogonality to solve for $\hat X_L$.  I first note that since $E[X]=E[W_1]=E[W_2]=0$, $E[Y_1]=E[Y_2]=0$.  We would like the linear MMSE estimator to be of the form:
+\begin{equation*}
+\hat X_L =a Y_1+bY_2+c.
+\end{equation*}
+Now, using the first of the two orthogonality principle equations I can solve for $c$:
+\begin{equation*}
+0 = E[\tilde X] = E[X - \hat X_L]=E[X] - aE[Y_1]-bE[Y_2]-c = -c,
+\end{equation*}
+so that $c=0$.
+
+Using the second of the two orthogonality principle equations I may solve for the remaining constants by noting that
+\begin{equation*}
+Cov[\tilde X, Y_j] = Cov[X-\hat X_L, Y_j] = 0~~\mathrm{for}~j=1, 2,
+\end{equation*}
+and thus:
+\begin{equation*}
+Cov[X, Y_j] = Cov[\hat X_L, Y_j]~~\mathrm{for}~j=1, 2.
+\end{equation*}
+I now compute the four covariances, and plug them into the above equations (one for $j=1$ and one for $j=2$) to obtain a coupled set of equations in $a$ and $b$.
+
+For the $Cov[X, Y_j]$ covariances, I have
+\begin{equation*}
+Cov[X, Y_1] = Cov[X, 2X+W_1]=2Var[X]+Cov[X, W_1] = 2Var[X]=10,
+\end{equation*}
+where I have used the fact that since $X, W_1$ are independent, their covariance is 0.  Also, 
+\begin{equation*}
+Cov[X, Y_2] = Cov[X, X+W_2]=Var[X]+Cov[X, W_2] = Var[X]=5,
+\end{equation*}
+where again I have used independence.
+
+I now solve for the other two covariances:
+\begin{align*}
+Cov[\hat X_L, Y_1] &= Cov[aY_1+bY_2, Y_1] \\
+& =   aCov[Y_1, Y_1]+bCov[Y_2, Y_1] \\
+& = aCov[2X+W_1, 2X+W_1]+b Cov[X+W_2, 2X+W_1] \\
+& = a(4Var[X]+4Cov[X, W_1]+Var[W_1])\\
+&+b(2Var[X]+Cov[X, W_1]+2Cov[W_2, X]+Cov[W_2, W_1]) \\
+& = a(4Var[X]+Var[W_1])+2bVar[X] \\
+& = a(4\cdot5+2)+2\cdot b \cdot5 \\
+& = 22a+10b,
+\end{align*}
+and 
+\begin{align*}
+Cov[\hat X_L, Y_2] &= Cov[aY_1+bY_2, Y_2] \\
+& =   aCov[Y_1, Y_2]+bCov[Y_2, Y_2] \\
+& = aCov[2X+W_1, X+W_2]+b Cov[X+W_2, X+W_2] \\
+& = a(2Var[X]+2Cov[X, W_2]+Cov[W_1, X]+Cov[W_1, W_2])\\
+&+b(Var[X]+2Cov[X, W_2]+Var[W_2]) \\
+& = 2aVar[X]+b(Var[X]+Var[W_2]) \\
+& = 2\cdot a\cdot 5+b(5+5) \\
+& = 10a+10b
+\end{align*}
+where in both computations, I have used the independence of $X, W_1, W_2$. 
+
+Putting these 4 equations together, I get a coupled set of algebraic equations in $a$ and $b$:
+  \[
+\left\{
+                \begin{array}{ll}
+10 = 22a+10b \\
+5= 10a+10b,
+                \end{array}
+              \right.
+  \]
+resulting in $a = 5/12$ and $b = 1/12.$  The linear MMSE estimator of $X$ is thus:
+\begin{equation*}
+\hat X_L = \frac{5}{12}Y_1+\frac{1}{12}Y_2.
+\end{equation*}
+
+
+\end{problem}
+
+\begin{problem}{9}  In order to use the vector formula
+\begin{equation*}
+\hat X_L =\bm{C_{XY}} \bm{C_Y}^{-1}(\bm Y - E[\bm Y])+E[X],
+\end{equation*}
+to solve for the linear MMSE estimator, I need to compute the vectors/matrices that go into this formula.  Firstly, it can easily be shown that 
+\begin{equation*}
+E[\bm Y] = \begin{bmatrix} E[Y_1] \\ E[Y_2] \end{bmatrix} = \begin{bmatrix} 0 \\ 0 \end{bmatrix}.
+\end{equation*}
+
+The covariance matrix of $\bm Y$ is:
+\begin{align*}
+\bm{C_Y}  &=  \left[\begin{matrix}
+    E[(Y_1-E[Y_1])^2] & E[(Y_1-E[Y_1])(Y_2-E[Y_2])] \\
+    E[(Y_2-E[Y_2])(Y_1-E[Y_1])] & E[(Y_2-E[Y_2])^2] 
+\end{matrix}\right] \\
+&=  \left[\begin{matrix}
+    E[Y_1^2] & E[Y_1Y_2] \\
+    E[Y_2Y_1] & E[Y_2^2] 
+\end{matrix}\right] \\
+&=  \left[\begin{matrix}
+    E[(2X+W_1)^2] & E[(2X+W_1)(X+W_2)] \\
+    E[(X+W_2)(2X+W_1)] & E[(X+W_2)^2] 
+\end{matrix}\right] \\
+&=  \left[\begin{matrix}
+    E[4X^2+4XW_1+W_1^2] & E[2X^2+3XW_1+W_1W_2] \\
+    E[2X^2+3XW_1+W_1W_2]& E[X^2+2XW_2+W_2^2] 
+\end{matrix}\right] \\
+&=  \left[\begin{matrix}
+    4E[X^2]+E[W_1^2] & 2E[X^2] \\
+    2E[X^2] & E[X^2]+E[W_2^2] 
+\end{matrix}\right] \\
+&=  \left[\begin{matrix}
+    4\cdot 5+2 & 2\cdot 5 \\
+    2\cdot5 & 5+5 
+\end{matrix}\right] \\
+&=  \left[\begin{matrix}
+    22 & 10 \\
+    10 & 10 
+\end{matrix}\right], \\
+\end{align*}
+where I have used the fact that $X, W_1, W_2$ are independent.
+
+The cross-covariance matrix of $X$ and $\bm Y$ is:
+\begin{align*}
+\bm{C_{XY}}  &=  \left[\begin{matrix}
+    E[(X-E[X])(Y_1-E[Y_1])] &E[(X-E[X])(Y_2-E[Y_2])] 
+\end{matrix}\right] \\
+&=  \left[\begin{matrix}
+    E[XY_1] &E[XY_2] 
+\end{matrix}\right] \\
+&=  \left[\begin{matrix}
+    E[X(2X+W_1)] &E[X(X+W_2)] 
+\end{matrix}\right] \\
+&=  \left[\begin{matrix}
+    2E[X^2]+E[XW_1] & E[X^2]+E[XW_2] 
+\end{matrix}\right] \\
+&=  \left[\begin{matrix}
+    2E[X^2] & E[X^2]
+\end{matrix}\right] \\
+&=  \left[\begin{matrix}
+    10 & 5
+\end{matrix}\right],
+\end{align*}
+where, again, I have used the fact that $X, W_1, W_2$ are independent.
+
+Plugging these matrices into the formula for $\hat X_L$, I finally have:
+\begin{align*}
+\hat X_L &=\left[\begin{matrix}
+    10 & 5
+\end{matrix}\right] \left[\begin{matrix}
+    22 & 10 \\
+    10 & 10 
+\end{matrix}\right]^{-1}\bm Y \\
+& = \frac{5}{12}Y_1+\frac{1}{12}Y_2,
+\end{align*}
+which matches exactly with the answer found in the previous problem which utilized the orthogonality principle.
+
+\end{problem}
+
+\begin{problem}{10}  To solve this problem, I use the vector formula approach as in the previous problem.  It can easily be shown that
+\begin{equation*}
+E[\bm Y] = \begin{bmatrix} E[Y_1] \\ E[Y_2]\\ E[Y_3] \end{bmatrix} = \begin{bmatrix} 0 \\ 0 \\ 0 \end{bmatrix}.  
+\end{equation*}
+Also, since $E[Y_i]=0$ (for $i=1, 2, 3$), the covariance matrix of $\bm Y$ is
+\begin{equation*}
+\bm{C_Y}  =  \left[\begin{matrix}
+    E[Y_1^2] & E[Y_1Y_2] & E[Y_1Y_3] \\
+    E[Y_2 Y_1] & E[Y_2^2] & E[Y_2Y_3] \\
+    E[Y_3 Y_1] & E[Y_3Y_2] & E[Y_3^2].
+\end{matrix}\right] 
+\end{equation*}
+Therefore, I need to compute all of the pairwise expectations along the diagonal and in the upper right triangle of the matrix.  Notice that all of the pairwise expectations are of the form $E[Y_iY_j]$, where $Y_i = a_iX+b_iW_i$, so I derive a general formula for all 6 pairs for easy computation of the expectations:
+\begin{align*}
+E[Y_iY_j] &= E[(a_iX+b_iW_i)(a_jX+b_jW_j)] \\
+&= a_i a_jE[X^2]+a_ib_jE[XW_j]+b_ia_jE[W_iX]+b_ib_jE[W_iW_j] \\
+&= a_i a_jE[X^2] +b_ib_jE[W_i^2] \delta_{i, j}\\
+& = 5a_i a_j+b_i^2E[W_i^2] \delta_{i, j},
+\end{align*}
+where $\delta_{i, j}$ is the Kronecker-delta function, and where I used independence several times.  Using this formula, it is easy to find that
+\begin{equation*}
+\bm{C_Y}  =  \left[\begin{matrix}
+    22 & 10 & 10 \\
+    10& 10 & 5 \\
+    10 & 5& 17.
+\end{matrix}\right] 
+\end{equation*}
+
+Since $E[X] = 0$ and $E[Y_i]=0$ (for $i=1, 2, 3$), the cross-covariance matrix is also easy to compute
+\begin{align*}
+\bm{C_{XY}}  &=  \left[\begin{matrix}
+    E[XY_1] &E[XY_2] &E[XY_3]  
+\end{matrix}\right] \\
+&=  \left[\begin{matrix}
+    E[X(2X+W_1)] &E[X(X+W_2)] &E[X(X+W_3)]  
+\end{matrix}\right] \\
+&=  \left[\begin{matrix}
+    2E[X^2] & E[X^2]& E[X^2]
+\end{matrix}\right] \\
+&=  \left[\begin{matrix}
+    10 & 5& 5
+\end{matrix}\right] 
+\end{align*}
+
+Plugging these matrices into the vector formula for $\hat X_L$, I finally have:
+\begin{align*}
+\hat X_L &=\left[\begin{matrix}
+    10 & 5 & 5
+\end{matrix}\right] \left[\begin{matrix}
+    22 & 10 & 10 \\
+    10& 10 & 5 \\
+    10 & 5& 17
+\end{matrix}\right]^{-1}\bm Y \\
+& = \frac{60}{149}Y_1+\frac{12}{149}Y_2+\frac{5}{149}Y_3.
+\end{align*}
+
+
+\end{problem}
+
+\begin{problem}{11} $ $
+
+\begin{enumerate}
+\item The linear MMSE estimator is given by:
+\begin{equation*}
+\hat X_L = \frac{Cov[X, Y]}{Var[Y]}(Y-E[Y])+E[X],
+\end{equation*}
+and so I must compute the various terms in this equation.
+
+The expectations are 
+\begin{equation*}
+E[X] = E[Y]=\frac{3}{7},
+\end{equation*}
+while the covariance is
+\begin{align*}
+Cov[X, Y] &= E[XY]-E[X]E[Y] \\
+& = 0-\left (\frac{3}{7}\right)^2 \\
+& = -\frac{9}{49}.
+\end{align*}
+Finally, the variance of $Y$ is:
+\begin{align*}
+Var[Y] &= \left (0-\frac{3}{7} \right)^2 \cdot \left (\frac{1}{7}+\frac{3}{7}\right)+\left(1-\frac{3}{7}\right)^2 \cdot \frac{3}{7} \\
+& = \frac{12}{49}.
+\end{align*}
+Plugging these values into the above equation for $\hat X_L$,  I find that:
+\begin{equation*}
+\hat X_L = -\frac{3}{4}Y + \frac{3}{4}.
+\end{equation*}
+
+\item The MMSE estimator is given by 
+\begin{equation*}
+\hat X_M = E[X|Y],
+\end{equation*}
+and the conditional PMFs can easily be found to be
+\[
+P_{X|Y}(x|0)=
+  \begin{cases}
+                                   \frac{1}{4}& \text{for $x=0$} \\
+                                   \frac{3}{4} & \text{for $x=1$}
+  \end{cases}
+\]
+and
+\[
+P_{X|Y}(x|1)=
+  \begin{cases}
+                                  1& \text{for $x=0$} \\
+                                   0 & \text{for $x=1$}.
+  \end{cases}
+\]
+This results in the conditional expectations, $E[X|Y=0] = 3/4$ and $E[X|Y=1] = 0$, which can be combined into one expression using an indicator random variable:
+\begin{equation*}
+\hat X_M = \frac{3}{4} \mathbbm{1} \{ Y=0\}.
+\end{equation*}
+
+\item The MSE of $\hat X_M$ is given by:
+\begin{align*}
+MSE(\hat X_M) &= E[(X-\hat X_M)^2] \\
+& = \sum_{x, y} \left ( x-\frac{3}{4} \mathbbm{1} \{ y=0\}\right)^2P_{XY}(x, y) \\
+& = \left (0-\frac{3}{4} \mathbbm{1} \{ 0=0\} \right)^2 \cdot \frac{1}{7}+\left (1-\frac{3}{4} \mathbbm{1} \{ 0=0\} \right)^2 \cdot \frac{3}{7}+\left (0-\frac{3}{4} \mathbbm{1} \{ 1=0\} \right)^2 \cdot \frac{3}{7} \\
+& = \left (-\frac{3}{4} \right)^2 \cdot \frac{1}{7}+\left (1-\frac{3}{4}\right)^2 \cdot \frac{3}{7} \\
+& = \frac{3}{28}.
+\end{align*}
+
+\end{enumerate}
+\end{problem}
+
+\begin{problem}{12} $ $
+\begin{enumerate}
+\item Following along with the previous problem, I must calculate the terms that go into the formula for $\hat X_L$.  The expectations are:
+\begin{equation*}
+E[X] = \frac{1}{3}+\frac{1}{6} = \frac{1}{2}
+\end{equation*}
+and
+\begin{equation*}
+E[Y] = \frac{1}{3}+2\cdot \frac{1}{6} = \frac{2}{3},
+\end{equation*}
+while the covariance is:
+\begin{align*}
+Cov[X, Y] &= E[XY] -E[X]E[Y] \\
+& = 2\cdot \frac{1}{6}-\frac{2}{3}\cdot \frac{1}{2} \\
+& = 0.
+\end{align*}
+Therefore, the linear MMSE estimator is simply a constant:
+\begin{equation*}
+\hat X_L = E[X] = \frac{1}{2}.
+\end{equation*}
+
+\item The MSE for $\hat X_L$ is given by:
+\begin{align*}
+MSE(\hat X_L) & = E[(X-\hat X_L)^2] \\
+& = E[(X-\frac{1}{2})^2] \\
+& = E[X^2]-E[X]+\frac{1}{4} \\
+& =\frac{1}{2}-\frac{1}{2}+\frac{1}{4} \\
+& = \frac{1}{4}.
+\end{align*}
+
+\item To find $\hat X_M$, I must first find the conditional PMF of $X$:
+\[
+P_{X|Y}(x|0)=
+  \begin{cases}
+                                   \frac{1}{3}& \text{for $x=0$} \\
+                                   \frac{2}{3} & \text{for $x=1$},
+  \end{cases}
+\]
+\[
+P_{X|Y}(x|1)=
+  \begin{cases}
+                                  1& \text{for $x=0$} \\
+                                   0 & \text{for $x=1$}.
+  \end{cases}
+\]
+and
+\[
+P_{X|Y}(x|1)=
+  \begin{cases}
+                                  0& \text{for $x=0$} \\
+                                   1 & \text{for $x=1$}.
+  \end{cases}
+\]
+Thus, I have the conditional expectations, $E[X|Y=0] = 2/3$, $E[X|Y=1] = 0$, and $E[X|Y=2] = 1$, which can be combined into one expression using an indicator random variable:
+\begin{align*}
+\hat X_M &= E[X|Y] \\
+& =\frac{2}{3} \mathbbm{1} \{ Y=0\} + \mathbbm{1} \{ Y=2\}.
+\end{align*}
+
+\item The MSE of $\hat X_M$ is given by:
+\begin{align*}
+MSE(\hat X_M) & = E[(X-\hat X_M)^2] \\
+& = \sum_{x, y} \left ( x-\frac{2}{3} \mathbbm{1} \{ y=0\} - \mathbbm{1} \{ y=2\}\right)^2P_{XY}(x, y) \\
+& = \left (0-\frac{2}{3} \mathbbm{1} \{ 0=0\} - \mathbbm{1} \{ 0=2\} \right)^2 \cdot \frac{1}{6}+\left (1-\frac{2}{3} \mathbbm{1} \{ 0=0\} - \mathbbm{1} \{ 0=2\} \right)^2 \cdot \frac{1}{3} \\
+&+ \left (0-\frac{2}{3} \mathbbm{1} \{ 1=0\} - \mathbbm{1} \{ 1=2\} \right)^2 \cdot \frac{1}{3} + \left (1-\frac{2}{3} \mathbbm{1} \{ 2=0\} - \mathbbm{1} \{ 2=2\} \right)^2 \cdot \frac{1}{6} \\
+& = \left(0-\frac{2}{3} \right)^2\cdot \frac{1}{6}+\left(1-\frac{2}{3} \right)^2\cdot \frac{1}{3}+\left(0-0 \right)^2\cdot \frac{1}{3}+\left(1-1 \right)^2\cdot \frac{1}{6} \\
+& = \frac{1}{9}.
+\end{align*}
 
 
 
+\end{enumerate}
+\end{problem}
+
+\begin{problem}{13}  In this problem, the two hypotheses are:
+\begin{align*}
+&H_o: X=1 \\
+&H_1:X=-1,
+\end{align*}
+where the priors are $P(H_o)=p$ and $P(H_1)=1-p$.  Note that given $H_o$, $Y= 2 +W$ so that $Y|H_o \sim \mathcal N(2, \sigma^2)$, and that given $H_1$, $Y= -2 +W$ so that $Y|H_1 \sim \mathcal N(-2, \sigma^2)$.  The posterior probability of $H_o$ is thus:
+\begin{equation*}
+P(H_o|Y=y) \propof{x} f_Y(y|H_o)P(H_o) = \frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{(y-2)^2}{2\sigma^2}}p,
+\end{equation*}
+while the posterior probability of $H_1$ is thus:
+\begin{equation*}
+P(H_1|Y=y) \propof{x} f_Y(y|H_1)P(H_1) = \frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{(y+2)^2}{2\sigma^2}}(1-p).
+\end{equation*}
+The MAP decision rule for this problem is to accept $H_o$ if the posterior probability under $H_o$ is greater than or equal to the posterior probability under $H_1$.  In other words, we accept $H_o$ if:
+\begin{equation*}
+ \frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{(y-2)^2}{2\sigma^2}}p \ge \frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{(y+2)^2}{2\sigma^2}}(1-p),
+\end{equation*}
+otherwise we accept $H_1$.
+
+Using some algebra, this rule can be re-written as: if 
+\begin{equation*}
+y \ge \frac{\sigma^2}{2} \ln \left(\frac{1-p}{p} \right),
+\end{equation*}
+then accept $H_o$, otherwise accept $H_1$.
+
+
+\end{problem}
 
 
 
+\begin{problem}{14}  The error probability is given by:
+\begin{equation*}
+P_e = P(\mathrm{choose}~ H_1|H_o)P(H_o)+P(\mathrm{choose}~ H_o|H_1)P(H_1).
+\end{equation*}
+We can replace ``choose $H_1$" and ``choose $H_o$" with our decision rule to compute the conditional probabilities:
+\begin{align*}
+P(\mathrm{choose}~ H_1|H_o) &= P\left(Y<\frac{\sigma^2}{2} \ln \left(\frac{1-p}{p}\right)\Big|X=1\right) \\
+&= P\left(2X+W<\frac{\sigma^2}{2} \ln \left(\frac{1-p}{p}\right)\Big|X=1\right) \\
+&= P\left(2+W<\frac{\sigma^2}{2} \ln \left(\frac{1-p}{p}\right)\right) \\
+& = \Phi \left(\frac{\sigma}{2}\ln \left(\frac{1-p}{p}\right) -\frac{2}{\sigma} \right).
+\end{align*}
+Likewise, the other conditional probability is given by
+\begin{align*}
+P(\mathrm{choose}~ H_o|H_1) &= P\left(Y \ge \frac{\sigma^2}{2} \ln \left(\frac{1-p}{p}\right)\Big|X=-1\right) \\
+&= P\left(2X+W \ge \frac{\sigma^2}{2} \ln \left(\frac{1-p}{p}\right)\Big|X=-1\right) \\
+&= P\left(-2+W\ge \frac{\sigma^2}{2} \ln \left(\frac{1-p}{p}\right)\right) \\
+& = 1-\Phi \left(\frac{\sigma}{2}\ln \left(\frac{1-p}{p}\right) +\frac{2}{\sigma} \right).
+\end{align*}
+
+Plugging these conditional probabilities into the formula for the error probability, I find that
+\begin{equation*}
+P_e = \Phi \left(\frac{\sigma}{2}\ln \left(\frac{1-p}{p}\right) -\frac{2}{\sigma} \right)p+ \left[1-\Phi \left(\frac{\sigma}{2}\ln \left(\frac{1-p}{p}\right) +\frac{2}{\sigma} \right) \right](1-p).
+\end{equation*}
+
+\end{problem}
+
+\begin{problem}{15} Using the minimum cost decision method, we should accept $H_o$ if $P(H_o|y)C_{10} \ge P(H_1|y)C_{01}$.  Note that $C_{01}$ is the cost of choosing $H_o$ (there is no malfunction) given $H_1$ is true (there is a malfunction).  That is, $C_{01}$ is the cost of missing a malfunction, so that, as specified in the problem $C_{01} = 30 C_{10}$.  
+
+The left hand side of the inequality decision rule is therefore:
+\begin{align*}
+P(H_o|y)C_{10}  &= (1 - P(H_1|y))C_{10} \\
+& = 0.9C_{10},
+\end{align*}
+while the right hand side of the inequality is 
+\begin{align*}
+P(H_1|y)C_{01}  &= 0.1\cdot 30 C_{10} \\
+& = 3 C_{10}.
+\end{align*}
+Since the costs are usually not negative, we see that $P(H_1|y)C_{01} >P(H_o|y)C_{10}$ and we thus should accept $H_1$, the hypothesis that there \textit{is} a malfunction.
+
+
+\end{problem}
+
+\begin{problem}{16}
+For $X, Y$ jointly normal, we know from Theorem 5.4 in the book that:
+\begin{equation*}
+X|Y=y \sim \mathcal N \left (\mu_X+\rho \sigma_X\frac{y-\mu_Y}{\sigma_Y}, (1-\rho^2) \sigma_X^2  \right).
+\end{equation*}
+Since $X\sim \mathcal N(2,1)$ and $Y\sim \mathcal N(1,5)$, using the above formula, I have that the posterior distribution is $X|Y=1 \sim \mathcal N(2, 15/16)$.
+
+When choosing a confidence interval, to keep things symmetric, we usually choose the confidence interval such that $\alpha/2$ of the probability is in the left tail of the distribution (i.e., $P(X<a|Y=1) = \alpha /2$) and $\alpha/2$ of the probability is in the right tail of the distribution (i.e., $P(X>b|Y=1) = \alpha /2$).  Therefore to find the 90\% credible interval, $[a, b]$, I have the following equations:
+\begin{equation*}
+0.05 = \Phi \left(\frac{a-2}{\sqrt{15}/4} \right),
+\end{equation*}
+and
+\begin{equation*}
+1 - 0.05 = \Phi \left(\frac{b-2}{\sqrt{15}/4} \right).
+\end{equation*}
+Solving for $a$ and $b$ by using the inverse Gaussian CDF, I find that the 90\% credible interval is approximately $[0.41, 3.6]$.
+
+
+
+\end{problem} 
+
+\begin{problem}{17} $ $
+\begin{enumerate}
+
+
+\item The posterior distribution can be found using Bayes' rule.  For $x>0:$
+\begin{align*}
+f_{X|Y}(x|y) & \propof{x} P_{Y|X}(y|x)f_X(x) \\
+& \propof{x} e^{-x}x^yx^{\alpha-1}e^{-\beta x} \\
+& = e^{-x (\beta+1)} x^{\alpha+y -1} \\
+& \propof{x} (\beta+1)^{\alpha+y}e^{-x (\beta+1)} x^{\alpha+y -1},
+\end{align*}
+while for $x \le 0$, $f_{X|Y}(x|y) =0$.  The notation $\propof{x}$ means proportional to as a function of $x$.  Notice that since $\alpha>0$ and $y \ge 0$, $y+\alpha$ is therefore greater than 0.  Also, since $\beta>0$, $1+\beta>0$.  Therefore, this function is exactly of the form of a $Gamma(\alpha+y, \beta+1)$ distribution, and so we know that the normalizing constant is $\Gamma(\alpha+y)$.
+
+\item In the previous part of the problem, I showed that $X|Y=y \sim Gamma(\alpha+y, \beta+1)$, and therefore:
+\[
+f_{X|Y}(x|y)=
+  \begin{cases}
+                                  \frac{(\beta+1)^{\alpha+y}x^{\alpha+y-1}e^{-x(\beta+1)}}{\Gamma(\alpha+y)}& \text{for $x>0$} \\
+                                   0 & \text{otherwise}.
+  \end{cases}
+\]
+
+\item For $U \sim Gamma(\alpha, \lambda)$, as shown in Section 4.2.4 of the book, $E[U] = \alpha/\lambda$ and $Var[X] = \alpha/\lambda^2$.  Therefore, I have
+\begin{equation*}
+E[X|Y] = \frac{\alpha+Y}{ \beta+1}
+\end{equation*}
+and 
+\begin{equation*}
+Var[X|Y] = \frac{\alpha+Y}{ (\beta+1)^2}.
+\end{equation*}
+
+\end{enumerate}
+
+\end{problem}
+
+\begin{problem}{18} $ $
+\begin{enumerate}
+
+\item The posterior distribution can be found using Bayes' rule.  For $ 0 \le x\le 1:$
+\begin{align*}
+f_{X|Y}(x|y) & \propof{x} P_{Y|X}(y|x)f_X(x) \\
+& \propof{x}x^y(1-x)^{n-y}x^{\alpha-1}(1-x)^{\beta-1} \\
+& = x^{\alpha+y-1}(1-x)^{\beta+n-y-1},
+\end{align*}
+while for $x <0 $ and $x>1 $, $f_{X|Y}(x|y) =0$.  Now, since $\alpha>0$ and $y \ge 0$, $\alpha+y >0$.  Also, since $\beta>0$ and $n \ge y$, $\beta+n-y >0$.  Thus, since this equation, up to a normalization constant, has the exact same functional form as a $Beta(\alpha+y,\beta+n-y)$ distribution, the posterior is given by this distribution.
+
+\item Since the posterior is given by a $Beta(\alpha+y,\beta+n-y)$ distribution, I have that:
+\[
+f_{X|Y}(x|y)=
+  \begin{cases}
+                                   \frac{\Gamma(\alpha+\beta+n)}{\Gamma(\alpha+y)\Gamma(\beta+n-y)} x^{\alpha+y-1}(1-x)^{\beta+n-y-1}& \text{for $ 0 \le x\le 1$} \\
+                                   0 & \text{otherwise}.
+  \end{cases}
+\]
+
+\item Plugging in my values for $\alpha$ and $\beta$ into the formulas for the expectation and variance of a Beta distribution, I find:
+\begin{equation*}
+E[X|Y] = \frac{\alpha+Y}{\alpha+\beta +n}
+\end{equation*}
+and
+\begin{equation*}
+Var[X|Y] = \frac{(\alpha+Y)(\beta+n-Y)}{(\alpha+\beta +n)^2(\alpha+\beta+n+1)}.
+\end{equation*}
+
+\end{enumerate}
+\end{problem}
+
+
+
+\begin{problem}{19} $ $
+\begin{enumerate}
+
+
+\item Since $Y|X=x \sim Geom(x)$ I have that:
+\begin{equation*}
+P_{Y|X}(y|x) = x(1-x)^{y-1}~~~y=1, 2, 3, \ldots.
+\end{equation*}
+
+Now, the posterior distribution can be found using Bayes' rule.  For $ 0 \le x \le 1:$
+\begin{align*}
+f_{X|Y}(x|y) & \propof{x} P_{Y|X}(y|x)f_X(x) \\
+& \propof{x} x (1-x)^{y-1}x^{\alpha -1}(1-x)^{\beta-1} \\
+& = x^{(\alpha+1)-1}(1-x)^{(\beta+y-1)-1},
+\end{align*}
+while for $x <0 $ and $x>1 $, $f_{X|Y}(x|y) =0$. Since $\alpha>0$, $\alpha+1>0$.  Also, since $\beta >0$, $y-1 \ge 0$, $\beta+y-1>0$.  We thus see that up to a normalizing constant, this is the PDF for a $Beta(\alpha+1, \beta+y-1)$ distribution, and hence $X|Y=y \sim Beta(\alpha+1, \beta+y-1)$.
+
+\item Since $X|Y=y \sim Beta(\alpha+1, \beta+y-1)$, the posterior distribution is:
+\[
+f_{X|Y}(x|y)=
+  \begin{cases}
+                                   \frac{\Gamma(\alpha+\beta+y-1)}{\Gamma(\alpha+1)\Gamma(\beta+y-1)} x^{(\alpha+1)-1}(1-x)^{(\beta+y-1)-1}& \text{for $ 0 \le x\le 1$} \\
+                                   0 & \text{otherwise}.
+  \end{cases}
+\]
+
+\item Plugging in my values for $\alpha$ and $\beta$ into the formulas for the expectation and variance of a Beta distribution, I find:
+\begin{equation*}
+E[X|Y] = \frac{\alpha+1}{\alpha+\beta +Y}
+\end{equation*}
+and
+\begin{equation*}
+Var[X|Y] = \frac{(\alpha+1)(\beta+Y-1)}{(\alpha+\beta +Y)^2(\alpha+\beta+Y+1)}.
+\end{equation*}
+
+
+\end{enumerate}
+\end{problem}
+ 
+ 
+ \begin{problem}{20} $ $
+\begin{enumerate}
+
+\item Since $Y_i|X=x\distas{iid} Exp(x)$, I have that
+\[
+f_{Y_i|X}(y|x)=
+  \begin{cases}
+                                   x e^{-xy}& \text{for $ y>0$} \\
+                                   0 & \text{otherwise}.
+  \end{cases}
+\]
+The likelihood function is thus:
+\begin{align*}
+L(\bm Y; x) &= f_{Y_1, Y_2, \ldots, Y_n|X}(y_1,y_2, \ldots, y_n|x) \\
+& = \prod_{i=1}^n f_{Y_i|X}(y_i|x)~~(\mathrm{by~independence}) \\
+& = \prod_{i=1}^n x e^{-xy_i} \\
+& = x^n e^{-x\sum_{i=1}^n y_i}.
+\end{align*}
+
+\item Since $X\sim Gamma(\alpha, \beta)$, I have that $f_X(x) \propof{x} x^{\alpha-1} e^{-\beta x}$ for $x>0$ and $f_X(x)=0$ otherwise.  Therefore, for $x>0, $the posterior is:
+\begin{align*}
+f_{X|Y_1, Y_2, \ldots, Y_n}(x|y_1,y_2, \ldots, y_n) &\propof{x} f_{Y_1, Y_2, \ldots, Y_n|X}(y_1,y_2, \ldots, y_n|x) f_X(x) \\
+& = L(\bm Y; x) f_X(x) \\
+& \propof{x}  x^n e^{-x\sum_{i=1}^n y_i} x^{\alpha-1}e^{-\beta x} \\
+& = x^{\alpha+n-1}e^{-x\left(\sum_{i=1}^n y_i +\beta \right)},
+\end{align*}
+while for $x \le 0$, $f_{X|Y_1, Y_2, \ldots, Y_n}(x|y_1,y_2, \ldots, y_n)=0$. Now, since $\alpha$ and $n$ are greater than 0, so too is $\alpha+n$.  Further since it is assumed that $Y_i|X \sim Exp(X)$, it is implicit that all $y_i$s are greater than 0, and since $\beta>0$, so too is $\sum_{i=1}^n y_i +\beta $.  Therefore, we see that, up to a normalizing constant, the posterior has the functional form of a $Gamma(\alpha+n, \sum_{i=1}^n y_i +\beta )$ distribution, so that $X|\bm{Y}=\bm{y} \sim Gamma(\alpha+n, \sum_{i=1}^n y_i +\beta )$.
+
+\item The posterior PDF is given by:
+\[
+f_{X|Y_1, Y_2, \ldots, Y_n}(x|y_1,y_2, \ldots, y_n)=
+  \begin{cases}
+                                   \frac{(\sum_{i=1}^n y_i +\beta)^{\alpha+n}x^{\alpha+n-1}e^{-x\left(\sum_{i=1}^n y_i +\beta \right)} }{\Gamma(\alpha+n)}& \text{for $x>0$}\\
+                                   0 & \text{otherwise}.
+  \end{cases}
+\]
+
+
+\item For $U \sim Gamma(\alpha, \lambda)$, as shown in Section 4.2.4 of the book, $E[U] = \alpha/\lambda$ and $Var[X] = \alpha/\lambda^2$.  Therefore, I have
+\begin{equation*}
+E[X|\bm{Y}] = \frac{\alpha+n}{\sum_{i=1}^n Y_i +\beta}
+\end{equation*}
+and 
+\begin{equation*}
+Var[X| \bm{Y}] = \frac{\alpha+n}{\left ( \sum_{i=1}^n Y_i +\beta \right)^2}.
+\end{equation*}
+
+\end{enumerate}
+\end{problem}
