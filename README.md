@@ -6,6 +6,8 @@ Introduction to Probability, Statistics and Random Processes
 
 ---
 
+- Link to PDF of [book](https://github.com/dsrub/solutions_to_probability_statistics/blob/master/solutions_to_probability_book.pdf).
+
 ![book_cover](/book_cover/book_cover_mini.jpg)
 
 ## Table of Contents
