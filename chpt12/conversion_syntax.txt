@@ -1,6 +1,10 @@
 ipython nbconvert --to markdown chapter_12.ipynb
 
-#include \pagenumbering{gobble} on the first line to suppress numbering
+
+#manually include the following in the markdown file to suppress numbering: 
+
+\pagenumbering{gobble} 
+
 
 pandoc --highlight-style tango --latex-engine=xelatex -V geometry:"margin=1in, bottom=.7in" -V fontsize=11pt -fmarkdown-implicit_figures chapter_12.md -o chapter_12.pdf
 
